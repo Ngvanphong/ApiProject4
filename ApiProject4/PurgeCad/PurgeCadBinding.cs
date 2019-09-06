@@ -8,6 +8,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
 using ApiProject4.Helper;
+using System.Windows.Forms;
 
 namespace ApiProject4.PurgeCad
 {
@@ -39,6 +40,7 @@ namespace ApiProject4.PurgeCad
                         
                     }
                 }
+                MessageBox.Show("Purging cad is finished");
             }
             return Result.Succeeded;
         }  
