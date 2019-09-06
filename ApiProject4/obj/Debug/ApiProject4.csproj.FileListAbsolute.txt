@@ -1,0 +1,5 @@
+C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\bin\Debug\ApiProject4.dll
+C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\bin\Debug\ApiProject4.pdb
+C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\Debug\ApiProject4.csprojResolveAssemblyReference.cache
+C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\Debug\ApiProject4.dll
+C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\Debug\ApiProject4.pdb
