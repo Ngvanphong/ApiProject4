@@ -20,9 +20,27 @@ namespace ApiProject4.PurgeCad
             Document doc = uiApp.ActiveUIDocument.Document;
             if (CheckAccess.CheckLicense() == true)
             {
-                //AppPanelChangeSheetNumber.ShowFormChange();
+                var fileredCad = new FilteredElementCollector(doc).OfClass(typeof(ImportInstance)).Cast<ImportInstance>().Where(i => i.IsLinked == false).ToList();
+                foreach(var item in fileredCad)
+                {
+                    using(Transaction t= new Transaction(doc, "DeleteCad"))
+                    {
+                        t.Start();
+                        try
+                        {
+                            doc.Delete(item.Id);
+                            t.Commit();
+                        }
+                        catch
+                        {
+                            t.Commit();
+                            continue;
+                        }
+                        
+                    }
+                }
             }
             return Result.Succeeded;
-        }
+        }  
     }
 }
