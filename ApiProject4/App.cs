@@ -16,6 +16,8 @@ namespace ApiProject4
         {
             PurgeCadButton purgeCadClass = new PurgeCadButton();
             purgeCadClass.PurgeCad(a);
+            ScopeBoxButton scopeBoxclass = new ScopeBoxButton();
+            scopeBoxclass.ScopeBox(a);
             return Result.Succeeded;
         }
 
