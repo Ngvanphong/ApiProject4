@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Button\AlignLeftButton.cs" />
     <Compile Include="Button\PurgeCadButton.cs" />
     <Compile Include="Button\ScopeBoxButton.cs" />
     <Compile Include="Command.cs" />
@@ -113,7 +114,9 @@
     <None Include="Resources\box-5-16.png" />
     <None Include="Resources\dustbin.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="AlignElement\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

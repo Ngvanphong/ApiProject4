@@ -18,6 +18,10 @@ namespace ApiProject4
             purgeCadClass.PurgeCad(a);
             ScopeBoxButton scopeBoxclass = new ScopeBoxButton();
             scopeBoxclass.ScopeBox(a);
+
+            AlignLeftButton alignButtonClass = new AlignLeftButton();
+            alignButtonClass.AlignLeft(a);
+           
             return Result.Succeeded;
         }
 
