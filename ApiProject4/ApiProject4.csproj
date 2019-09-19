@@ -84,8 +84,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlignElement\AlignLeftBinding.cs" />
+    <Compile Include="AlignElement\AlignTopBinding.cs" />
+    <Compile Include="AlignElement\ArrangeBinding.cs" />
+    <Compile Include="AlignElement\ArrangeHorizontallyBinding.cs" />
+    <Compile Include="AlignElement\Constant.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Button\AlignLeftButton.cs" />
+    <Compile Include="Button\AllignRightButton.cs" />
     <Compile Include="Button\PurgeCadButton.cs" />
     <Compile Include="Button\ScopeBoxButton.cs" />
     <Compile Include="Command.cs" />
@@ -114,9 +120,7 @@
     <None Include="Resources\box-5-16.png" />
     <None Include="Resources\dustbin.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AlignElement\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

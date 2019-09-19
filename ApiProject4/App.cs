@@ -21,6 +21,8 @@ namespace ApiProject4
 
             AlignLeftButton alignButtonClass = new AlignLeftButton();
             alignButtonClass.AlignLeft(a);
+            AllignRightButton alignRightClass = new AllignRightButton();
+            alignRightClass.AlignRight(a);
            
             return Result.Succeeded;
         }
