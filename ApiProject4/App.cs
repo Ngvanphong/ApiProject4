@@ -23,7 +23,9 @@ namespace ApiProject4
             alignButtonClass.AlignLeft(a);
             AllignRightButton alignRightClass = new AllignRightButton();
             alignRightClass.AlignRight(a);
-           
+            ExportExcelButton exportExcel = new ExportExcelButton();
+            exportExcel.CreateExportExcel(a);
+
             return Result.Succeeded;
         }
 

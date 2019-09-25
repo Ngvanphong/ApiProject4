@@ -45,8 +45,6 @@ namespace ApiProject4.ScopeBox
                 lvi.Tag = lvi;
                 AppPanelScopeBox.myFormScopeBox.listViewScopeBox.Items.Add(lvi);
             }
-
-
         }
     }
 

@@ -118,7 +118,7 @@ namespace ApiProject4.Helper
                 case StorageType.ElementId:
                     ElementId idVal = param.AsElementId();
                     val = idVal.IntegerValue.ToString();
-                    break;
+                    break;      
                 case StorageType.None:
                     break;
             }
