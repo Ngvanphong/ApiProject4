@@ -90,7 +90,7 @@ namespace ApiProject4.ExportExcel
                                         ParameterRevit.SetValueParaMulti(para, value);
                                         t2.Commit();
                                     }
-                                    catch { t2.Commit(); continue; }                                    
+                                    catch { t2.Commit(); }                                    
                                 }
                             }
                         }
