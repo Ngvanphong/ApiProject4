@@ -124,5 +124,30 @@ namespace ApiProject4.Helper
             }
             return val;
         }
+
+        public static void SetValueParaMulti(Parameter param,string value)
+        {
+            // To get to the parameter value, we need to pause it depending on its storage type 
+            switch (param.StorageType)
+            {
+                case StorageType.Double:
+                    double dVal = double.Parse(value);
+                    param.Set(dVal);
+                    break;
+                case StorageType.Integer:
+                    int iVal = int.Parse(value);
+                    param.Set(iVal);
+                    break;
+                case StorageType.String:
+                    param.Set(value);
+                    break;
+                case StorageType.ElementId:
+                    ElementId elementIdVal = new ElementId(int.Parse(value));
+                    param.Set(elementIdVal);
+                    break;
+                case StorageType.None:
+                    break;
+            }
+        }
     }
 }

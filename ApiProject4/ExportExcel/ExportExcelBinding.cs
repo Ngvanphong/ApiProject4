@@ -22,7 +22,6 @@ namespace ApiProject4.ExportExcel
             {
                 AppPenalExportExcel.ShowFormExportExcel();
                 Infomation.ScheduleInfor(doc);
-                Infomation.ElementInFor();
             }
             return Result.Succeeded;
         }
@@ -39,27 +38,8 @@ namespace ApiProject4.ExportExcel
                 lvi.Tag = lvi;
                 AppPenalExportExcel.myFormExportExcel.listViewSchedule.Items.Add(lvi);
             }
+            AppPenalExportExcel.myFormExportExcel.textBoxFolerOutput.Text= Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments).ToString();
         }
 
-        public static void ElementInFor()
-        {
-            List<string> listEle = new List<string>
-            {
-                Constants.sheet,
-                Constants.view,
-                Constants.material,
-                Constants.lineStyles,
-                Constants.objectStyles,
-                Constants.sharedParameter
-            };
-            foreach (string item in listEle)
-            {
-                var row = new string[] { item };
-                var lvi = new ListViewItem(row);
-                lvi.Tag = lvi;
-                AppPenalExportExcel.myFormExportExcel.listViewElement.Items.Add(lvi);
-            }
-
-        }
     }
 }

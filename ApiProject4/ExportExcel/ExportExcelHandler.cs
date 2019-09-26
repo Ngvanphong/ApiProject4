@@ -13,6 +13,7 @@ using OfficeOpenXml;
 using OfficeOpenXml.Table;
 using ApiProject4.Helper;
 using System.Data;
+using OfficeOpenXml.Style;
 
 namespace ApiProject4.ExportExcel
 {
@@ -31,6 +32,10 @@ namespace ApiProject4.ExportExcel
         public void ScheduleExport(Document doc)
         {
             var listItems = AppPenalExportExcel.myFormExportExcel.listViewSchedule.CheckedItems;
+            if (listItems.Count == 0)
+            {
+                return;
+            }
             List<string> listNameSchedule = new List<string>();
             foreach (ListViewItem item in listItems)
             {
@@ -48,6 +53,11 @@ namespace ApiProject4.ExportExcel
             if (AppPenalExportExcel.myFormExportExcel.radioButtonOneFile.Checked)
             {
                 string name = AppPenalExportExcel.myFormExportExcel.textBoxFileName.Text;
+                if (name == "" || name == null)
+                {
+                    MessageBox.Show("Error: You must input name");
+                    return;
+                }
                 string fullPath = AppPenalExportExcel.myFormExportExcel.textBoxFolerOutput.Text + @"\" + name + ".xlsx";
                 FileInfo file = new FileInfo(fullPath);
                 if (file.Exists)
@@ -57,6 +67,7 @@ namespace ApiProject4.ExportExcel
                 }
                 using (ExcelPackage package = new ExcelPackage(file))
                 {
+
                     foreach (var view in listScheduleSelect)
                     {
                         try
@@ -75,34 +86,100 @@ namespace ApiProject4.ExportExcel
                                         if (i == 0)
                                         {
                                             datatable.Columns.Add(view.GetCellText(SectionType.Body, i, j).ToString(), typeof(string));
-                                        }else { break; }
+                                        }
+                                        else { break; }
                                     }
                                     if (i != 0)
                                     {
                                         var row = datatable.NewRow();
-                                        for (int j=0; j < nColumns; j++)
+                                        for (int j = 0; j < nColumns; j++)
                                         {
                                             var value = view.GetCellText(SectionType.Body, i, j).ToString();
                                             row[j] = value;
                                         }
                                         datatable.Rows.Add(row);
                                     }
-                                   
+
                                 }
                                 ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(view.Name);
-                                worksheet.Cells["A1"].LoadFromDataTable(datatable, true, TableStyles.Light1);
-                                worksheet.Cells.AutoFitColumns();
-                                package.Save();
+                                worksheet.Cells["A1"].LoadFromDataTable(datatable, true);
                             }
                         }
                         catch (Exception ex) { continue; }
                     }
+                    foreach (ExcelWorksheet worksheet in package.Workbook.Worksheets)
+                    {
+                        for (int i = 0; i < 50; i++)
+                        {
+                            worksheet.Column(i + 1).AutoFit();
+                        }
+                    }
+                    package.Save();
                 }
             }
             else if (AppPenalExportExcel.myFormExportExcel.radioButtonManyFile.Checked)
             {
+                foreach (var view in listScheduleSelect)
+                {
+                    string name = view.Name;
+                    string fullPath = AppPenalExportExcel.myFormExportExcel.textBoxFolerOutput.Text + @"\" + name + ".xlsx";
+                    FileInfo file = new FileInfo(fullPath);
+                    if (file.Exists)
+                    {
+                        file.Delete();
+                        file = new FileInfo(fullPath);
+                    }
+                    using (ExcelPackage package = new ExcelPackage(file))
+                    {
+                        try
+                        {
+                            TableData table = view.GetTableData();
+                            TableSectionData section = table.GetSectionData(SectionType.Body);
+                            int nRows = section.NumberOfRows;
+                            int nColumns = section.NumberOfColumns;
+                            var datatable = new DataTable("tblData");
+                            if (nRows > 1)
+                            {
+                                for (int i = 0; i < nRows; i++)
+                                {
+                                    for (int j = 0; j < nColumns; j++)
+                                    {
+                                        if (i == 0)
+                                        {
+                                            datatable.Columns.Add(view.GetCellText(SectionType.Body, i, j).ToString(), typeof(string));
+                                        }
+                                        else { break; }
+                                    }
+                                    if (i != 0)
+                                    {
+                                        var row = datatable.NewRow();
+                                        for (int j = 0; j < nColumns; j++)
+                                        {
+                                            var value = view.GetCellText(SectionType.Body, i, j).ToString();
+                                            row[j] = value;
+                                        }
+                                        datatable.Rows.Add(row);
+                                    }
 
+                                }
+                                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(view.Name);
+                                worksheet.Cells["A1"].LoadFromDataTable(datatable, true);
+                            }
+                        }
+                        catch (Exception ex) { continue; }
+
+                        foreach (ExcelWorksheet worksheet in package.Workbook.Worksheets)
+                        {
+                            for (int i = 0; i < 50; i++)
+                            {
+                                worksheet.Column(i + 1).AutoFit();
+                            }
+                        }
+                        package.Save();
+                    }
+                }
             }
+            MessageBox.Show("The exporting is finished");
         }
     }
 

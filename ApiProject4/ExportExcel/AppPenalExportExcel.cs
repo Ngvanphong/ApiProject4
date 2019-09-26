@@ -16,7 +16,11 @@ namespace ApiProject4.ExportExcel
         {
             ExportExcelHandler handlerExcel = new ExportExcelHandler();
             ExternalEvent eventExport = ExternalEvent.Create(handlerExcel);
-            myFormExportExcel = new frmExportExcel(eventExport, handlerExcel);
+            ImportHandler handlerImport = new ImportHandler();
+            ExternalEvent eventImport = ExternalEvent.Create(handlerImport);
+            GetWorksheetHandler handlerGet = new GetWorksheetHandler();
+            ExternalEvent eventGet = ExternalEvent.Create(handlerGet);
+            myFormExportExcel = new frmExportExcel(eventExport, handlerExcel,eventImport,handlerImport,eventGet,handlerGet);
             myFormExportExcel.Show();
         }
     }
