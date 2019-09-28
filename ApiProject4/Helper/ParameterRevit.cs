@@ -131,7 +131,7 @@ namespace ApiProject4.Helper
             switch (param.StorageType)
             {
                 case StorageType.Double:
-                    double dVal = double.Parse(value);
+                    double dVal = double.Parse(value)/(0.3048 * 1000);
                     param.Set(dVal);
                     break;
                 case StorageType.Integer:

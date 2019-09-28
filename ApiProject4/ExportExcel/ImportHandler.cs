@@ -75,7 +75,7 @@ namespace ApiProject4.ExportExcel
                             if (value != value2)
                             {
                                 var defindField = viewSchedule.Definition;
-                                string heading = defindField.GetField(c).ColumnHeading;
+                                string heading = defindField.GetField(c).GetName();
                                 Element element = getElement(doc, section, viewSchedule, g);
                                 using (Transaction t2 = new Transaction(doc, "UpdateTable"))
                                 {
