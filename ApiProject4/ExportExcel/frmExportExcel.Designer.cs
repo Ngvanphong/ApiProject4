@@ -42,12 +42,12 @@
             this.listViewSchedule = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TagImportExcel = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxInputFile = new System.Windows.Forms.TextBox();
-            this.btnInputPath = new System.Windows.Forms.Button();
-            this.btnImport = new System.Windows.Forms.Button();
             this.listViewInputFile = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnImport = new System.Windows.Forms.Button();
+            this.btnInputPath = new System.Windows.Forms.Button();
+            this.textBoxInputFile = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControlExcel.SuspendLayout();
             this.tabExportExcel.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -178,6 +178,7 @@
             this.listViewSchedule.TabIndex = 0;
             this.listViewSchedule.UseCompatibleStateImageBehavior = false;
             this.listViewSchedule.View = System.Windows.Forms.View.Details;
+            this.listViewSchedule.SelectedIndexChanged += new System.EventHandler(this.listViewSchedule_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -200,43 +201,6 @@
             this.TagImportExcel.Text = "Import";
             this.TagImportExcel.Click += new System.EventHandler(this.tabPage2_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "File path:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // textBoxInputFile
-            // 
-            this.textBoxInputFile.Location = new System.Drawing.Point(69, 22);
-            this.textBoxInputFile.Name = "textBoxInputFile";
-            this.textBoxInputFile.Size = new System.Drawing.Size(505, 20);
-            this.textBoxInputFile.TabIndex = 1;
-            // 
-            // btnInputPath
-            // 
-            this.btnInputPath.Location = new System.Drawing.Point(580, 20);
-            this.btnInputPath.Name = "btnInputPath";
-            this.btnInputPath.Size = new System.Drawing.Size(75, 23);
-            this.btnInputPath.TabIndex = 2;
-            this.btnInputPath.Text = "Input";
-            this.btnInputPath.UseVisualStyleBackColor = true;
-            this.btnInputPath.Click += new System.EventHandler(this.btnInputPath_Click);
-            // 
-            // btnImport
-            // 
-            this.btnImport.Location = new System.Drawing.Point(580, 441);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(75, 31);
-            this.btnImport.TabIndex = 4;
-            this.btnImport.Text = "Import";
-            this.btnImport.UseVisualStyleBackColor = true;
-            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
-            // 
             // listViewInputFile
             // 
             this.listViewInputFile.CheckBoxes = true;
@@ -254,6 +218,43 @@
             // 
             this.columnHeader2.Text = "Worksheet Name";
             this.columnHeader2.Width = 641;
+            // 
+            // btnImport
+            // 
+            this.btnImport.Location = new System.Drawing.Point(580, 441);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(75, 31);
+            this.btnImport.TabIndex = 4;
+            this.btnImport.Text = "Import";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // btnInputPath
+            // 
+            this.btnInputPath.Location = new System.Drawing.Point(580, 20);
+            this.btnInputPath.Name = "btnInputPath";
+            this.btnInputPath.Size = new System.Drawing.Size(75, 23);
+            this.btnInputPath.TabIndex = 2;
+            this.btnInputPath.Text = "Input";
+            this.btnInputPath.UseVisualStyleBackColor = true;
+            this.btnInputPath.Click += new System.EventHandler(this.btnInputPath_Click);
+            // 
+            // textBoxInputFile
+            // 
+            this.textBoxInputFile.Location = new System.Drawing.Point(69, 22);
+            this.textBoxInputFile.Name = "textBoxInputFile";
+            this.textBoxInputFile.Size = new System.Drawing.Size(505, 20);
+            this.textBoxInputFile.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "File path:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // frmExportExcel
             // 

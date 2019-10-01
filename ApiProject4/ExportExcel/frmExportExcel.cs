@@ -90,5 +90,10 @@ namespace ApiProject4.ExportExcel
         {
             _eventImport.Raise();
         }
+
+        private void listViewSchedule_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

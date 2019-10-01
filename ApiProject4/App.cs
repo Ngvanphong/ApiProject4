@@ -25,6 +25,8 @@ namespace ApiProject4
             alignRightClass.AlignRight(a);
             ExportExcelButton exportExcel = new ExportExcelButton();
             exportExcel.CreateExportExcel(a);
+            PrinterSortButton printSort = new PrinterSortButton();
+            printSort.PrintSort(a);
 
             return Result.Succeeded;
         }

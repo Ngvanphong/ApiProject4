@@ -40,11 +40,11 @@ namespace ApiProject4.Button
             }
             Image img = ApiProject4.Properties.Resources.Excel_icon;
             ImageSource imgSrc = Helper.Extension.GetImageSource(img);
-            PushButtonData btnData = new PushButtonData("ExportExcel", "ExportExcel",
+            PushButtonData btnData = new PushButtonData("ExportImport", "ExportImport",
                 Assembly.GetExecutingAssembly().Location, "ApiProject4.ExportExcel.ExportExcelBinding")
             {
-                ToolTip = "Export schedule to excel",
-                LongDescription = "Export schedule to excel",
+                ToolTip = "Export and import schedule to excel",
+                LongDescription = "Export and import schedule to excel",
                 Image = imgSrc,
                 LargeImage = imgSrc,
             };
