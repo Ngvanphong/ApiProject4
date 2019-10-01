@@ -15,16 +15,15 @@ namespace ApiProject4.PrintSort
     {
         private PrintSortHandler _handlerPrint;
         private ExternalEvent _eventPrint;
-        private SelectPrinterSetHandler _handlerSelect;
-        private ExternalEvent _eventSelect;
-
-        public frmPrintSort(ExternalEvent eventPrint, PrintSortHandler handlerPrint, ExternalEvent eventSelect, SelectPrinterSetHandler handlerSelect)
+        private PrintActionHandler _handlerPrintAction;
+        private ExternalEvent _eventPrintAction;
+        public frmPrintSort(ExternalEvent eventPrint, PrintSortHandler handlerPrint, ExternalEvent eventPrintAction, PrintActionHandler handlerPrintAction)
         {
             InitializeComponent();
             _eventPrint = eventPrint;
             _handlerPrint = handlerPrint;
-            _eventSelect = eventSelect;
-            _handlerSelect = handlerSelect;
+            _eventPrintAction = eventPrintAction;
+            _handlerPrintAction = handlerPrintAction;
 
         }
 
@@ -37,6 +36,21 @@ namespace ApiProject4.PrintSort
         {
             AppPenalPrintSort.myFormPrintSort.textBoxNamePrinterSet.Text = 
                 AppPenalPrintSort.myFormPrintSort.listBoxSetPrinter.GetItemText(AppPenalPrintSort.myFormPrintSort.listBoxSetPrinter.SelectedItem);
+        }
+
+        private void frmPrintSort_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSetPrint_Click(object sender, EventArgs e)
+        {
+            _eventPrint.Raise();
+        }
+
+        private void btnPrinterAction_Click(object sender, EventArgs e)
+        {
+            _eventPrintAction.Raise();
         }
     }
 }

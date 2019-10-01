@@ -13,13 +13,15 @@ namespace ApiProject4.PrintSort
    public static class AppPenalPrintSort
     {
         public static frmPrintSort myFormPrintSort;
+        public static ViewSet mySetAll;
         public static void ShowFormPrint()
         {
+            mySetAll = new ViewSet();
             PrintSortHandler handlerPrint = new PrintSortHandler();
             ExternalEvent eventPrint = ExternalEvent.Create(handlerPrint);
-            SelectPrinterSetHandler handlerSelect = new SelectPrinterSetHandler();
-            ExternalEvent eventSelect = ExternalEvent.Create(handlerSelect);
-            myFormPrintSort = new frmPrintSort(eventPrint, handlerPrint, eventSelect, handlerSelect);
+            PrintActionHandler handlerPrintAction = new PrintActionHandler();
+            ExternalEvent eventPrintAction = ExternalEvent.Create(handlerPrintAction);
+            myFormPrintSort = new frmPrintSort(eventPrint, handlerPrint, eventPrintAction, handlerPrintAction);
             myFormPrintSort.Show();
         }
     }
