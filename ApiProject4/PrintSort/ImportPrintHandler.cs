@@ -40,9 +40,7 @@ namespace ApiProject4.PrintSort
                             AppPenalPrintSort.listSheetPrint.Add(sheet);
                         }
                     }
-
-                }
-                
+                }                
             }
 
         }

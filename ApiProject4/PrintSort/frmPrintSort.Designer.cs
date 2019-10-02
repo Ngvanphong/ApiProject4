@@ -90,7 +90,7 @@
             this.btnPrinterAction.Name = "btnPrinterAction";
             this.btnPrinterAction.Size = new System.Drawing.Size(75, 23);
             this.btnPrinterAction.TabIndex = 5;
-            this.btnPrinterAction.Text = "Print";
+            this.btnPrinterAction.Text = "Print Exit";
             this.btnPrinterAction.UseVisualStyleBackColor = true;
             this.btnPrinterAction.Click += new System.EventHandler(this.btnPrinterAction_Click);
             // 
