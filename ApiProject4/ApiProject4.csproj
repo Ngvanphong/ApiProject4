@@ -119,12 +119,14 @@
     <Compile Include="Helper\Extension.cs" />
     <Compile Include="Helper\ParameterRevit.cs" />
     <Compile Include="PrintSort\AppPenalPrintSort.cs" />
+    <Compile Include="PrintSort\ExportPrintHandler.cs" />
     <Compile Include="PrintSort\frmPrintSort.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PrintSort\frmPrintSort.Designer.cs">
       <DependentUpon>frmPrintSort.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrintSort\ImportPrintHandler.cs" />
     <Compile Include="PrintSort\PrintActionHandler.cs" />
     <Compile Include="PrintSort\PrintSortBinding.cs" />
     <Compile Include="PrintSort\PrintSortHandler.cs" />

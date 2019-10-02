@@ -17,19 +17,47 @@ namespace ApiProject4.PrintSort
             PrintManager printManager = doc.PrintManager;
             printManager.PrintRange = PrintRange.Select;
             ViewSheetSetting vss = printManager.ViewSheetSetting;
-            using (Transaction t = new Transaction(doc, "SetPrint"))
+            foreach (ViewSheet vprint in AppPenalPrintSort.listSheetPrint)
             {
-                t.Start();
-                vss.CurrentViewSheetSet.Views = AppPenalPrintSort.mySetAll;
-                vss.Save();
-                t.Commit();
+                try
+                {
+                    AppPenalPrintSort.mySetAll.Insert(vprint);
+                }
+                catch { continue; }
             }
-            AppPenalPrintSort.myFormPrintSort.Hide();
+            try
+            {
+                using (Transaction t = new Transaction(doc, "SetPrint"))
+                {
+                    t.Start();
+                    vss.CurrentViewSheetSet.Views = AppPenalPrintSort.mySetAll;
+                    vss.Save();
+                    t.Commit();
+                }
+            }
+            catch{}
+            foreach (ViewSheet sheetPrint in AppPenalPrintSort.listSheetPrint)
+            {
+             printManager.SubmitPrint(sheetPrint);
+            }
+            printManager.Dispose();
+            AppPenalPrintSort.myFormPrintSort.Hide(); 
         }
 
         public string GetName()
         {
             return "PrintAction";
+        }   
+    }
+    public class ExcelSheet
+    {
+        public ExcelSheet(string number,string name)
+        {
+            SheetNumber = number;
+            SheetName = name;
         }
+        public string SheetNumber { get; set; }
+        public string SheetName { get; set; }
+
     }
 }

@@ -34,6 +34,10 @@
             this.textBoxNamePrinterSet = new System.Windows.Forms.TextBox();
             this.btnSetPrint = new System.Windows.Forms.Button();
             this.btnPrinterAction = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxPathExcel = new System.Windows.Forms.TextBox();
+            this.btnImportPrint = new System.Windows.Forms.Button();
+            this.btnExportPrint = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxSetPrinter
@@ -57,7 +61,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 216);
+            this.label2.Location = new System.Drawing.Point(13, 244);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 2;
@@ -65,14 +69,14 @@
             // 
             // textBoxNamePrinterSet
             // 
-            this.textBoxNamePrinterSet.Location = new System.Drawing.Point(98, 213);
+            this.textBoxNamePrinterSet.Location = new System.Drawing.Point(98, 241);
             this.textBoxNamePrinterSet.Name = "textBoxNamePrinterSet";
             this.textBoxNamePrinterSet.Size = new System.Drawing.Size(160, 20);
             this.textBoxNamePrinterSet.TabIndex = 3;
             // 
             // btnSetPrint
             // 
-            this.btnSetPrint.Location = new System.Drawing.Point(263, 211);
+            this.btnSetPrint.Location = new System.Drawing.Point(263, 239);
             this.btnSetPrint.Name = "btnSetPrint";
             this.btnSetPrint.Size = new System.Drawing.Size(75, 23);
             this.btnSetPrint.TabIndex = 4;
@@ -82,23 +86,62 @@
             // 
             // btnPrinterAction
             // 
-            this.btnPrinterAction.Location = new System.Drawing.Point(344, 211);
+            this.btnPrinterAction.Location = new System.Drawing.Point(344, 239);
             this.btnPrinterAction.Name = "btnPrinterAction";
             this.btnPrinterAction.Size = new System.Drawing.Size(75, 23);
             this.btnPrinterAction.TabIndex = 5;
-            this.btnPrinterAction.Text = "Save";
+            this.btnPrinterAction.Text = "Print";
             this.btnPrinterAction.UseVisualStyleBackColor = true;
             this.btnPrinterAction.Click += new System.EventHandler(this.btnPrinterAction_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 215);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Excel file:";
+            // 
+            // textBoxPathExcel
+            // 
+            this.textBoxPathExcel.Location = new System.Drawing.Point(98, 212);
+            this.textBoxPathExcel.Name = "textBoxPathExcel";
+            this.textBoxPathExcel.Size = new System.Drawing.Size(160, 20);
+            this.textBoxPathExcel.TabIndex = 6;
+            // 
+            // btnImportPrint
+            // 
+            this.btnImportPrint.Location = new System.Drawing.Point(265, 210);
+            this.btnImportPrint.Name = "btnImportPrint";
+            this.btnImportPrint.Size = new System.Drawing.Size(75, 23);
+            this.btnImportPrint.TabIndex = 7;
+            this.btnImportPrint.Text = "Import";
+            this.btnImportPrint.UseVisualStyleBackColor = true;
+            this.btnImportPrint.Click += new System.EventHandler(this.btnImportPrint_Click);
+            // 
+            // btnExportPrint
+            // 
+            this.btnExportPrint.Location = new System.Drawing.Point(344, 210);
+            this.btnExportPrint.Name = "btnExportPrint";
+            this.btnExportPrint.Size = new System.Drawing.Size(75, 23);
+            this.btnExportPrint.TabIndex = 7;
+            this.btnExportPrint.Text = "Export";
+            this.btnExportPrint.UseVisualStyleBackColor = true;
+            this.btnExportPrint.Click += new System.EventHandler(this.btnExportPrint_Click);
             // 
             // frmPrintSort
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 243);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(429, 273);
+            this.Controls.Add(this.btnExportPrint);
+            this.Controls.Add(this.btnImportPrint);
+            this.Controls.Add(this.textBoxPathExcel);
             this.Controls.Add(this.btnPrinterAction);
             this.Controls.Add(this.btnSetPrint);
             this.Controls.Add(this.textBoxNamePrinterSet);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxSetPrinter);
@@ -122,5 +165,9 @@
         public System.Windows.Forms.TextBox textBoxNamePrinterSet;
         public System.Windows.Forms.Button btnSetPrint;
         public System.Windows.Forms.Button btnPrinterAction;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Button btnExportPrint;
+        public System.Windows.Forms.Button btnImportPrint;
+        public System.Windows.Forms.TextBox textBoxPathExcel;
     }
 }

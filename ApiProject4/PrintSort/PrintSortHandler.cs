@@ -18,13 +18,13 @@ namespace ApiProject4.PrintSort
             printManager.PrintRange = PrintRange.Select;
             ViewSheetSetting vss = null;
             vss = printManager.ViewSheetSetting;
-            string setName = AppPenalPrintSort.myFormPrintSort.textBoxNamePrinterSet.Text;
+            string setName = AppPenalPrintSort.myFormPrintSort.textBoxNamePrinterSet.Text; 
             if (setName == "" || setName == string.Empty)
             {
                 MessageBox.Show("You must input name set");
                 return;
             }
-
+            List<ViewSheet> listOldViewSheet = new List<ViewSheet>();
             using (Transaction t = new Transaction(doc, "SaveSetSheet"))
             {
                 t.Start();
@@ -35,19 +35,10 @@ namespace ApiProject4.PrintSort
                 }
                 catch
                 {
-                    List<ViewSheetSet> viewSets = new FilteredElementCollector(doc).OfClass(typeof(ViewSheetSet)).Cast<ViewSheetSet>().ToList();
-                    foreach(ViewSheetSet viewSet in viewSets)
-                    {
-                        if (viewSet.Name == setName)
-                        {
-                            vss.CurrentViewSheetSet = viewSet;
-                            break;
-                        }
-                    }
                     t.Commit();
                 }
             }
-            var selectIds = app.ActiveUIDocument.Selection.GetElementIds();
+            var selectIds = app.ActiveUIDocument.Selection.GetElementIds().ToList();
             List<ViewSheet> listSheet = new List<ViewSheet>();
             foreach (ElementId id in selectIds)
             {
@@ -68,15 +59,14 @@ namespace ApiProject4.PrintSort
 
             }
             listSheet = (from ViewSheet vp in listSheet orderby vp.SheetNumber ascending select vp).ToList();
-            foreach (ViewSheet vprint in listSheet)
+            foreach(var viewAdd in listSheet)
             {
-                try
+                if (AppPenalPrintSort.listSheetPrint.Exists(x => x.SheetNumber == viewAdd.SheetNumber)==false)
                 {
-                    AppPenalPrintSort.mySetAll.Insert(vprint);
+                    AppPenalPrintSort.listSheetPrint.Add(viewAdd);
                 }
-                catch (Exception ex) { continue; }
-            }
-            MessageBox.Show("You have added: " + listSheet.Count() + " sheets");
+            }           
+            MessageBox.Show("You have added: " + selectIds.Count()+ " sheets");
         }
 
         public string GetName()

@@ -14,14 +14,21 @@ namespace ApiProject4.PrintSort
     {
         public static frmPrintSort myFormPrintSort;
         public static ViewSet mySetAll;
+        public static List<ViewSheet> listSheetPrint;
         public static void ShowFormPrint()
         {
             mySetAll = new ViewSet();
+            listSheetPrint = new List<ViewSheet>();
             PrintSortHandler handlerPrint = new PrintSortHandler();
             ExternalEvent eventPrint = ExternalEvent.Create(handlerPrint);
             PrintActionHandler handlerPrintAction = new PrintActionHandler();
             ExternalEvent eventPrintAction = ExternalEvent.Create(handlerPrintAction);
-            myFormPrintSort = new frmPrintSort(eventPrint, handlerPrint, eventPrintAction, handlerPrintAction);
+            ExportPrintHandler handlerExport = new ExportPrintHandler();
+            ExternalEvent eventExportPrint = ExternalEvent.Create(handlerExport);
+            ImportPrintHandler handlerImport = new ImportPrintHandler();
+            ExternalEvent eventImportPrint = ExternalEvent.Create(handlerImport);
+            myFormPrintSort = new frmPrintSort(eventPrint, handlerPrint, eventPrintAction, handlerPrintAction,
+               eventExportPrint, handlerExport, eventImportPrint, handlerImport);
             myFormPrintSort.Show();
         }
     }
