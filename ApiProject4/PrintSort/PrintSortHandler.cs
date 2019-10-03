@@ -81,16 +81,12 @@ namespace ApiProject4.PrintSort
             {
                 List<ViewSheet> listSheets = new FilteredElementCollector(doc).OfClass(typeof(ViewSheet)).Cast<ViewSheet>().ToList();
                 ViewSchedule viewSchedule = null;
-                try
-                {
-                    viewSchedule = doc.ActiveView as ViewSchedule;
-                }
-                catch
+                viewSchedule = doc.ActiveView as ViewSchedule;
+                if (viewSchedule == null)
                 {
                     MessageBox.Show("You must go to schedule sheet");
                     return;
                 }
-
                 TableData table = viewSchedule.GetTableData();
                 TableSectionData section = table.GetSectionData(SectionType.Body);
                 int nRows = section.NumberOfRows;
@@ -134,6 +130,7 @@ namespace ApiProject4.PrintSort
                     }
                     catch { continue; }
                 }
+                MessageBox.Show("The setting is finished");
 
             }
            
