@@ -141,9 +141,9 @@
             this.groupBox1.Controls.Add(this.listBoxSetPrinter);
             this.groupBox1.Controls.Add(this.textBoxNamePrinterSet);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(171, 31);
+            this.groupBox1.Location = new System.Drawing.Point(170, 31);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(255, 183);
+            this.groupBox1.Size = new System.Drawing.Size(256, 183);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Set print";
@@ -154,7 +154,7 @@
             this.groupBox2.Controls.Add(this.radioButtonAutoSchedule);
             this.groupBox2.Location = new System.Drawing.Point(6, 31);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(159, 183);
+            this.groupBox2.Size = new System.Drawing.Size(163, 183);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Method printing";

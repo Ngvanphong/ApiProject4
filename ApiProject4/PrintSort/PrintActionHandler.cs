@@ -7,6 +7,8 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Threading;
+
 namespace ApiProject4.PrintSort
 {
     public class PrintActionHandler : IExternalEventHandler
@@ -39,6 +41,7 @@ namespace ApiProject4.PrintSort
             foreach (ViewSheet sheetPrint in AppPenalPrintSort.listSheetPrint)
             {
              printManager.SubmitPrint(sheetPrint);
+             Thread.Sleep(300);
             }
             printManager.Dispose();
             AppPenalPrintSort.myFormPrintSort.Hide(); 
