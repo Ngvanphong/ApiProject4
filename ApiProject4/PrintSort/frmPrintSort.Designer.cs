@@ -38,14 +38,20 @@
             this.textBoxPathExcel = new System.Windows.Forms.TextBox();
             this.btnImportPrint = new System.Windows.Forms.Button();
             this.btnExportPrint = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButtonAutoSchedule = new System.Windows.Forms.RadioButton();
+            this.radioButtonManualChoose = new System.Windows.Forms.RadioButton();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBoxSetPrinter
             // 
             this.listBoxSetPrinter.FormattingEnabled = true;
-            this.listBoxSetPrinter.Location = new System.Drawing.Point(12, 29);
+            this.listBoxSetPrinter.Location = new System.Drawing.Point(13, 17);
             this.listBoxSetPrinter.Name = "listBoxSetPrinter";
-            this.listBoxSetPrinter.Size = new System.Drawing.Size(407, 173);
+            this.listBoxSetPrinter.Size = new System.Drawing.Size(236, 134);
             this.listBoxSetPrinter.TabIndex = 0;
             this.listBoxSetPrinter.SelectedIndexChanged += new System.EventHandler(this.listBoxSetPrinter_SelectedIndexChanged);
             // 
@@ -61,22 +67,22 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 244);
+            this.label2.Location = new System.Drawing.Point(4, 160);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Name printer set:";
+            this.label2.Text = "Name set:";
             // 
             // textBoxNamePrinterSet
             // 
-            this.textBoxNamePrinterSet.Location = new System.Drawing.Point(98, 241);
+            this.textBoxNamePrinterSet.Location = new System.Drawing.Point(57, 157);
             this.textBoxNamePrinterSet.Name = "textBoxNamePrinterSet";
-            this.textBoxNamePrinterSet.Size = new System.Drawing.Size(160, 20);
+            this.textBoxNamePrinterSet.Size = new System.Drawing.Size(192, 20);
             this.textBoxNamePrinterSet.TabIndex = 3;
             // 
             // btnSetPrint
             // 
-            this.btnSetPrint.Location = new System.Drawing.Point(263, 239);
+            this.btnSetPrint.Location = new System.Drawing.Point(270, 247);
             this.btnSetPrint.Name = "btnSetPrint";
             this.btnSetPrint.Size = new System.Drawing.Size(75, 23);
             this.btnSetPrint.TabIndex = 4;
@@ -86,7 +92,7 @@
             // 
             // btnPrinterAction
             // 
-            this.btnPrinterAction.Location = new System.Drawing.Point(344, 239);
+            this.btnPrinterAction.Location = new System.Drawing.Point(351, 247);
             this.btnPrinterAction.Name = "btnPrinterAction";
             this.btnPrinterAction.Size = new System.Drawing.Size(75, 23);
             this.btnPrinterAction.TabIndex = 5;
@@ -97,7 +103,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 215);
+            this.label3.Location = new System.Drawing.Point(13, 223);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 2;
@@ -105,14 +111,14 @@
             // 
             // textBoxPathExcel
             // 
-            this.textBoxPathExcel.Location = new System.Drawing.Point(98, 212);
+            this.textBoxPathExcel.Location = new System.Drawing.Point(71, 220);
             this.textBoxPathExcel.Name = "textBoxPathExcel";
-            this.textBoxPathExcel.Size = new System.Drawing.Size(160, 20);
+            this.textBoxPathExcel.Size = new System.Drawing.Size(195, 20);
             this.textBoxPathExcel.TabIndex = 6;
             // 
             // btnImportPrint
             // 
-            this.btnImportPrint.Location = new System.Drawing.Point(265, 210);
+            this.btnImportPrint.Location = new System.Drawing.Point(272, 218);
             this.btnImportPrint.Name = "btnImportPrint";
             this.btnImportPrint.Size = new System.Drawing.Size(75, 23);
             this.btnImportPrint.TabIndex = 7;
@@ -122,7 +128,7 @@
             // 
             // btnExportPrint
             // 
-            this.btnExportPrint.Location = new System.Drawing.Point(344, 210);
+            this.btnExportPrint.Location = new System.Drawing.Point(351, 218);
             this.btnExportPrint.Name = "btnExportPrint";
             this.btnExportPrint.Size = new System.Drawing.Size(75, 23);
             this.btnExportPrint.TabIndex = 7;
@@ -130,21 +136,65 @@
             this.btnExportPrint.UseVisualStyleBackColor = true;
             this.btnExportPrint.Click += new System.EventHandler(this.btnExportPrint_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.listBoxSetPrinter);
+            this.groupBox1.Controls.Add(this.textBoxNamePrinterSet);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(171, 31);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(255, 183);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Set print";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radioButtonManualChoose);
+            this.groupBox2.Controls.Add(this.radioButtonAutoSchedule);
+            this.groupBox2.Location = new System.Drawing.Point(6, 31);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(159, 183);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Method printing";
+            // 
+            // radioButtonAutoSchedule
+            // 
+            this.radioButtonAutoSchedule.AutoSize = true;
+            this.radioButtonAutoSchedule.Location = new System.Drawing.Point(6, 17);
+            this.radioButtonAutoSchedule.Name = "radioButtonAutoSchedule";
+            this.radioButtonAutoSchedule.Size = new System.Drawing.Size(152, 17);
+            this.radioButtonAutoSchedule.TabIndex = 0;
+            this.radioButtonAutoSchedule.Text = "Auto follow schedule sheet";
+            this.radioButtonAutoSchedule.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonManualChoose
+            // 
+            this.radioButtonManualChoose.AutoSize = true;
+            this.radioButtonManualChoose.Checked = true;
+            this.radioButtonManualChoose.Location = new System.Drawing.Point(6, 40);
+            this.radioButtonManualChoose.Name = "radioButtonManualChoose";
+            this.radioButtonManualChoose.Size = new System.Drawing.Size(133, 17);
+            this.radioButtonManualChoose.TabIndex = 0;
+            this.radioButtonManualChoose.TabStop = true;
+            this.radioButtonManualChoose.Text = "Manual choose adding";
+            this.radioButtonManualChoose.UseVisualStyleBackColor = true;
+            // 
             // frmPrintSort
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(429, 273);
+            this.ClientSize = new System.Drawing.Size(434, 279);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnExportPrint);
+            this.Controls.Add(this.btnSetPrint);
             this.Controls.Add(this.btnImportPrint);
             this.Controls.Add(this.textBoxPathExcel);
             this.Controls.Add(this.btnPrinterAction);
-            this.Controls.Add(this.btnSetPrint);
-            this.Controls.Add(this.textBoxNamePrinterSet);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBoxSetPrinter);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmPrintSort";
@@ -152,6 +202,10 @@
             this.Text = "frmPrintSort";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.frmPrintSort_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,5 +223,9 @@
         public System.Windows.Forms.Button btnExportPrint;
         public System.Windows.Forms.Button btnImportPrint;
         public System.Windows.Forms.TextBox textBoxPathExcel;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.RadioButton radioButtonManualChoose;
+        public System.Windows.Forms.RadioButton radioButtonAutoSchedule;
     }
 }

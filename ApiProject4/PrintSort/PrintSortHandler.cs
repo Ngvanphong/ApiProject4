@@ -24,7 +24,6 @@ namespace ApiProject4.PrintSort
                 MessageBox.Show("You must input name set");
                 return;
             }
-            List<ViewSheet> listOldViewSheet = new List<ViewSheet>();
             using (Transaction t = new Transaction(doc, "SaveSetSheet"))
             {
                 t.Start();
@@ -35,38 +34,109 @@ namespace ApiProject4.PrintSort
                 }
                 catch
                 {
+                    List<ViewSheetSet> coll = new FilteredElementCollector(doc).OfClass(typeof(ViewSheetSet)).Cast<ViewSheetSet>().ToList();
+                    foreach(var print in coll)
+                    {
+                        if (print.Name == setName)
+                        {
+                            vss.CurrentViewSheetSet = print;
+                            break;
+                        }
+                    }
                     t.Commit();
                 }
             }
-            var selectIds = app.ActiveUIDocument.Selection.GetElementIds().ToList();
-            List<ViewSheet> listSheet = new List<ViewSheet>();
-            foreach (ElementId id in selectIds)
+            if (AppPenalPrintSort.myFormPrintSort.radioButtonManualChoose.Checked)
             {
-                try
+                var selectIds = app.ActiveUIDocument.Selection.GetElementIds().ToList();
+                List<ViewSheet> listSheet = new List<ViewSheet>();
+                foreach (ElementId id in selectIds)
                 {
-                    ViewSheet view = doc.GetElement(id) as ViewSheet;
-                    if (view != null)
+                    try
                     {
-                        listSheet.Add(view);
+                        ViewSheet view = doc.GetElement(id) as ViewSheet;
+                        if (view != null)
+                        {
+                            listSheet.Add(view);
+                        }
+                    }
+                    catch { continue; }
+                }
+                if (listSheet.Count() == 0)
+                {
+                    MessageBox.Show("You must choose sheets");
+                    return;
+
+                }
+                listSheet = (from ViewSheet vp in listSheet orderby vp.SheetNumber ascending select vp).ToList();
+                foreach (var viewAdd in listSheet)
+                {
+                    if (AppPenalPrintSort.listSheetPrint.Exists(x => x.SheetNumber == viewAdd.SheetNumber) == false)
+                    {
+                        AppPenalPrintSort.listSheetPrint.Add(viewAdd);
                     }
                 }
-                catch { continue; }
-            }
-            if (listSheet.Count() == 0)
+                MessageBox.Show("You have added: " + selectIds.Count() + " sheets");
+            }else if (AppPenalPrintSort.myFormPrintSort.radioButtonAutoSchedule.Checked)
             {
-                MessageBox.Show("You must choose sheets");
-                return;
+                List<ViewSheet> listSheets = new FilteredElementCollector(doc).OfClass(typeof(ViewSheet)).Cast<ViewSheet>().ToList();
+                ViewSchedule viewSchedule = null;
+                try
+                {
+                    viewSchedule = doc.ActiveView as ViewSchedule;
+                }
+                catch
+                {
+                    MessageBox.Show("You must go to schedule sheet");
+                    return;
+                }
+
+                TableData table = viewSchedule.GetTableData();
+                TableSectionData section = table.GetSectionData(SectionType.Body);
+                int nRows = section.NumberOfRows;
+                int nColumns = section.NumberOfColumns;
+                int indexSheetNumber = 1500;
+                for( int c = 0; c < nColumns; c++)
+                {
+                    var defindField = viewSchedule.Definition;
+                    string paramName = defindField.GetField(c).GetName();
+                    if(paramName== "Sheet Number")
+                    {
+                        indexSheetNumber = c;
+                        break;
+                    }
+                }
+                if (indexSheetNumber == 1500)
+                {
+                    MessageBox.Show("You must add Sheet Number to Schedule Table");
+                    return;
+                }
+                var para = section.GetCellText(0, 2).ToString();
+                for(int r = 1; r < nRows; r++)
+                {
+                    try
+                    {
+                        string sheetNumber = null;
+                        sheetNumber = viewSchedule.GetCellText(SectionType.Body,r, indexSheetNumber).ToString();
+                        if (sheetNumber != null&&sheetNumber!="")
+                        {
+                            foreach(ViewSheet sheet in listSheets)
+                            {
+                                if (sheet.SheetNumber == sheetNumber)
+                                {
+                                    if (AppPenalPrintSort.listSheetPrint.Exists(x => x.SheetNumber == sheetNumber) == false)
+                                    {
+                                        AppPenalPrintSort.listSheetPrint.Add(sheet);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    catch { continue; }
+                }
 
             }
-            listSheet = (from ViewSheet vp in listSheet orderby vp.SheetNumber ascending select vp).ToList();
-            foreach(var viewAdd in listSheet)
-            {
-                if (AppPenalPrintSort.listSheetPrint.Exists(x => x.SheetNumber == viewAdd.SheetNumber)==false)
-                {
-                    AppPenalPrintSort.listSheetPrint.Add(viewAdd);
-                }
-            }           
-            MessageBox.Show("You have added: " + selectIds.Count()+ " sheets");
+           
         }
 
         public string GetName()

@@ -32,8 +32,7 @@ namespace ApiProject4.PrintSort
     public class Information
     {
         public static void GetInforForm(Document doc)
-        {
-            PrintManager printManager = doc.PrintManager;
+        {          
             List<ViewSheetSet> coll = new FilteredElementCollector(doc).OfClass(typeof(ViewSheetSet)).Cast<ViewSheetSet>().ToList();
             if (coll.Count() > 0)
             {
