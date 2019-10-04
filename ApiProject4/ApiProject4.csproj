@@ -149,10 +149,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApiProject4.addin" />
+    <None Include="Resources\dustbin.png" />
+    <None Include="Resources\Print_icon.png" />
+    <None Include="Resources\Excel_icon.png" />
+    <None Include="Resources\box_5_16.png" />
     <None Include="Resources\Print-icon.png" />
     <None Include="Resources\Excel-icon.png" />
     <None Include="Resources\box-5-16.png" />
-    <None Include="Resources\dustbin.png" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
