@@ -22,18 +22,18 @@ namespace ApiProject4.ExportExcel
         public void Execute(UIApplication app)
         {
             Document doc = app.ActiveUIDocument.Document;
-            ScheduleExport(doc);
+            ScheduleExportExcel(doc);
         }
-
         public string GetName()
         {
-            return "ExportToExcel";
+            return "ExportToExcelMy";
         }
-        public void ScheduleExport(Document doc)
+        public void ScheduleExportExcel(Document doc)
         {
             var listItems = AppPenalExportExcel.myFormExportExcel.listViewSchedule.CheckedItems;
             if (listItems.Count == 0)
             {
+                MessageBox.Show("You must choose schedules");
                 return;
             }
             List<string> listNameSchedule = new List<string>();

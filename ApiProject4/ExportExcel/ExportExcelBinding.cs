@@ -17,7 +17,8 @@ namespace ApiProject4.ExportExcel
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            Document doc = commandData.Application.ActiveUIDocument.Document;
+            UIApplication uiApp = commandData.Application;
+            Document doc = uiApp.ActiveUIDocument.Document;
             if (CheckAccess.CheckLicense() == true)
             {
                 AppPenalExportExcel.ShowFormExportExcel();

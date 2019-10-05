@@ -178,7 +178,6 @@
             this.listViewSchedule.TabIndex = 0;
             this.listViewSchedule.UseCompatibleStateImageBehavior = false;
             this.listViewSchedule.View = System.Windows.Forms.View.Details;
-            this.listViewSchedule.SelectedIndexChanged += new System.EventHandler(this.listViewSchedule_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -199,7 +198,6 @@
             this.TagImportExcel.Size = new System.Drawing.Size(661, 478);
             this.TagImportExcel.TabIndex = 1;
             this.TagImportExcel.Text = "Import";
-            this.TagImportExcel.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // listViewInputFile
             // 
@@ -254,7 +252,6 @@
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "File path:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // frmExportExcel
             // 
@@ -267,6 +264,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmExportExcel";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.frmExportExcel_Load);
             this.tabControlExcel.ResumeLayout(false);
             this.tabExportExcel.ResumeLayout(false);
             this.tabExportExcel.PerformLayout();

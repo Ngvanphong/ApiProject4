@@ -32,11 +32,7 @@ namespace ApiProject4.ExportExcel
             _handlerGet = handlerGet;
         }
 
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
+    
         private void btnFolderOutput_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folder = new FolderBrowserDialog();
@@ -53,11 +49,7 @@ namespace ApiProject4.ExportExcel
             _eventExport.Raise();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void btnInputPath_Click(object sender, EventArgs e)
         {
             OpenFileDialog file = new OpenFileDialog();
@@ -91,7 +83,7 @@ namespace ApiProject4.ExportExcel
             _eventImport.Raise();
         }
 
-        private void listViewSchedule_SelectedIndexChanged(object sender, EventArgs e)
+        private void frmExportExcel_Load(object sender, EventArgs e)
         {
 
         }

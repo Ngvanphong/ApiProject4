@@ -5,10 +5,9 @@ C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\bin\Debug\FoxLe
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\bin\Debug\System.Text.RegularExpressions.dll
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\bin\Debug\EPPlus.xml
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.ExportExcel.frmExportExcel.resources
+C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.PrintSort.frmPrintSort.resources
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.Properties.Resources.resources
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.ScopeBox.frmScopeBox.resources
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.csproj.GenerateResource.Cache
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.dll
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.pdb
-C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.PrintSort.frmPrintSort.resources
-C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.csprojResolveAssemblyReference.cache
