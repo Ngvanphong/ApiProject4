@@ -27,6 +27,8 @@ namespace ApiProject4
             exportExcel.CreateExportExcel(a);
             PrinterSortButton printSort = new PrinterSortButton();
             printSort.PrintSort(a);
+            NewSheetsButton newSheetButton = new NewSheetsButton();
+            newSheetButton.NewSheet(a);
 
             return Result.Succeeded;
         }

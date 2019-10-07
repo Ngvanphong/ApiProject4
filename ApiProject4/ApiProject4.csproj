@@ -99,6 +99,7 @@
     <Compile Include="Button\AlignLeftButton.cs" />
     <Compile Include="Button\AllignRightButton.cs" />
     <Compile Include="Button\ExportExcelButton.cs" />
+    <Compile Include="Button\NewSheetsButton.cs" />
     <Compile Include="Button\PrinterSortButton.cs" />
     <Compile Include="Button\PurgeCadButton.cs" />
     <Compile Include="Button\ScopeBoxButton.cs" />
@@ -118,6 +119,15 @@
     <Compile Include="Helper\CheckAccess.cs" />
     <Compile Include="Helper\Extension.cs" />
     <Compile Include="Helper\ParameterRevit.cs" />
+    <Compile Include="NewSheets\AppPenalNewSheets.cs" />
+    <Compile Include="NewSheets\frmNewSheets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewSheets\frmNewSheets.Designer.cs">
+      <DependentUpon>frmNewSheets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewSheets\NewSheetsBinding.cs" />
+    <Compile Include="NewSheets\NewSheetsHandler.cs" />
     <Compile Include="PrintSort\AppPenalPrintSort.cs" />
     <Compile Include="PrintSort\ExportPrintHandler.cs" />
     <Compile Include="PrintSort\frmPrintSort.cs">
@@ -149,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApiProject4.addin" />
+    <None Include="Resources\icons8-create-document-32.png" />
     <None Include="Resources\dustbin.png" />
     <None Include="Resources\Print_icon.png" />
     <None Include="Resources\Excel_icon.png" />
@@ -164,6 +175,9 @@
   <ItemGroup>
     <EmbeddedResource Include="ExportExcel\frmExportExcel.resx">
       <DependentUpon>frmExportExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewSheets\frmNewSheets.resx">
+      <DependentUpon>frmNewSheets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintSort\frmPrintSort.resx">
       <DependentUpon>frmPrintSort.cs</DependentUpon>
