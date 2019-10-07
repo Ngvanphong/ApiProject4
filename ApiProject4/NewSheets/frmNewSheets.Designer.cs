@@ -35,7 +35,6 @@
             this.btnSheetNews = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxNumberStart = new System.Windows.Forms.TextBox();
-            this.checkBoxAddLegeneds = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -60,9 +59,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Sheet Name";
+            this.label2.Text = "Sheet Name:";
             // 
             // textBoxSheetName
             // 
@@ -97,24 +96,11 @@
             this.textBoxNumberStart.Size = new System.Drawing.Size(273, 20);
             this.textBoxNumberStart.TabIndex = 2;
             // 
-            // checkBoxAddLegeneds
-            // 
-            this.checkBoxAddLegeneds.AutoSize = true;
-            this.checkBoxAddLegeneds.Checked = true;
-            this.checkBoxAddLegeneds.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAddLegeneds.Location = new System.Drawing.Point(119, 97);
-            this.checkBoxAddLegeneds.Name = "checkBoxAddLegeneds";
-            this.checkBoxAddLegeneds.Size = new System.Drawing.Size(85, 17);
-            this.checkBoxAddLegeneds.TabIndex = 4;
-            this.checkBoxAddLegeneds.Text = "Add legends";
-            this.checkBoxAddLegeneds.UseVisualStyleBackColor = true;
-            // 
             // frmNewSheets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 121);
-            this.Controls.Add(this.checkBoxAddLegeneds);
+            this.ClientSize = new System.Drawing.Size(401, 102);
             this.Controls.Add(this.btnSheetNews);
             this.Controls.Add(this.textBoxNumberStart);
             this.Controls.Add(this.textBoxSheetName);
@@ -141,6 +127,5 @@
         public System.Windows.Forms.TextBox textBoxSheetName;
         public System.Windows.Forms.TextBox textBoxQuantitySheet;
         public System.Windows.Forms.Button btnSheetNews;
-        public System.Windows.Forms.CheckBox checkBoxAddLegeneds;
     }
 }

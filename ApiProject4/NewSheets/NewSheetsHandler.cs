@@ -17,7 +17,7 @@ namespace ApiProject4.NewSheets
             Document doc = app.ActiveUIDocument.Document;
             var listIds = app.ActiveUIDocument.Selection.GetElementIds();
             ViewSheet sheetChoice = null;
-            foreach(ElementId id in listIds)
+            foreach (ElementId id in listIds)
             {
                 ViewSheet sheet = doc.GetElement(id) as ViewSheet;
                 if (sheet != null)
@@ -26,19 +26,22 @@ namespace ApiProject4.NewSheets
                     break;
                 }
             }
-            if(sheetChoice==null)
+            if (sheetChoice == null)
             {
                 MessageBox.Show("You must choose a sheet");
                 return;
             }
             string nameSheet = AppPenalNewSheets.myFormNewShees.textBoxSheetName.Text;
             string numberStart = AppPenalNewSheets.myFormNewShees.textBoxNumberStart.Text;
-            string count = AppPenalNewSheets.myFormNewShees.textBoxQuantitySheet.Text;
-            bool addLegend = AppPenalNewSheets.myFormNewShees.checkBoxAddLegeneds.Checked;
-
+            int count = int.Parse(AppPenalNewSheets.myFormNewShees.textBoxQuantitySheet.Text);
+            bool begin = true;
+            for (int i = 1; i <= count; i++)
+            {
+                CreateSheets(doc, sheetChoice, nameSheet, numberStart, ref begin);
+            }
         }
 
-        public void CreateSheets(Document doc, ViewSheet sheet, string nameSheet, string numberStart, bool addLenged, ref bool begin)
+        public void CreateSheets(Document doc, ViewSheet sheet, string nameSheet, string numberStart, ref bool begin)
         {
             FamilyInstance titleblock = new FilteredElementCollector(doc).OfClass(typeof(FamilyInstance))
                     .OfCategory(BuiltInCategory.OST_TitleBlocks).Cast<FamilyInstance>().First(q => q.OwnerViewId == sheet.Id);
@@ -47,47 +50,32 @@ namespace ApiProject4.NewSheets
             {
                 newSheetNumber = sheet.SheetNumber;
             }
+            else
+            {
+                newSheetNumber = numberStart;
+            }
             ViewSheet newSheet = null;
             using (Transaction t = new Transaction(doc, "CreateSheetNew"))
             {
                 t.Start();
                 newSheet = ViewSheet.Create(doc, titleblock.GetTypeId());
+                newSheet.Name = nameSheet;
                 if (begin == true)
                 {
-                   
-                    if (newSheetNumber==numberStart)
+                    if (newSheetNumber != numberStart)
                     {
                         newSheet.SheetNumber = CreateNumberSheet(newSheetNumber);
-                    }else
+                        begin = false;
+                    }
+                    else
                     {
-                        newSheet.SheetNumber = numberStart;
+                        newSheet.SheetNumber = newSheetNumber;
+                        begin = false;
                     }
                 }
                 t.Commit();
             }
-            var viewPortIds = sheet.GetAllViewports();
-            foreach (var id in viewPortIds)
-            {
-                Viewport viewPort = doc.GetElement(id) as Viewport;
-                var ownId = viewPort.OwnerViewId;
-                Autodesk.Revit.DB.View view = doc.GetElement(ownId) as Autodesk.Revit.DB.View;
-                if (view.ViewType == ViewType.Legend)
-                {
-                    if (addLenged == true)
-                    {
-                        
-                    }
-                }else
-                {
-
-                }
-               
-            }
-
-           
-
         }
-
 
 
         public string CreateNumberSheet(string sheetNumber)
@@ -101,7 +89,6 @@ namespace ApiProject4.NewSheets
             sheetNumberResult = sheetNumber.Remove(lengthNumber - countEnd) + end.ToString();
             return sheetNumberResult;
         }
-
 
         public string GetName()
         {
