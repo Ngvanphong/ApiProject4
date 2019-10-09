@@ -38,7 +38,7 @@ namespace ApiProject4.Button
             {
                 panel = application.CreateRibbonPanel(ribbonTag, ribbonPanel);
             }
-            Image img = ApiProject4.Properties.Resources.dustbin;
+            Image img = ApiProject4.Properties.Resources.icons8_trash_can_16;
             ImageSource imgSrc = Helper.Extension.GetImageSource(img);
             PushButtonData btnData = new PushButtonData("PurgeCad", "PurgeCad",
                 Assembly.GetExecutingAssembly().Location, "ApiProject4.PurgeCad.PurgeCadBinding")
@@ -48,9 +48,29 @@ namespace ApiProject4.Button
                 Image = imgSrc,
                 LargeImage = imgSrc,
             };
-
-            PushButton button = panel.AddItem(btnData) as PushButton;
-            button.Enabled = true;
+            Image img2 = ApiProject4.Properties.Resources.icons8_box_16;
+            ImageSource imgSrc2 = Helper.Extension.GetImageSource(img2);
+            PushButtonData btnData2 = new PushButtonData("ScopeBox", "ScopeBox",
+                Assembly.GetExecutingAssembly().Location, "ApiProject4.ScopeBox.ScopeBoxBinding")
+            {
+                ToolTip = "Assign scope box for view",
+                LongDescription = "Assign scope box for view",
+                Image = imgSrc2,
+                LargeImage = imgSrc2,
+            };
+            Image img3 = ApiProject4.Properties.Resources.icons8_print_16;
+            ImageSource imgSrc3 = Helper.Extension.GetImageSource(img3);
+            PushButtonData btnData3 = new PushButtonData("PrintSort", "PrintSort",
+                Assembly.GetExecutingAssembly().Location, "ApiProject4.PrintSort.PrintSortBinding")
+            {
+                ToolTip = "Set print sort for sheets",
+                LongDescription = "Set print sort for sheets",
+                Image = imgSrc3,
+                LargeImage = imgSrc3,
+            };
+       
+            List<RibbonItem> projectButtons = new List<RibbonItem>();
+            projectButtons.AddRange(panel.AddStackedItems(btnData, btnData2,btnData3));
         }
     }
 }

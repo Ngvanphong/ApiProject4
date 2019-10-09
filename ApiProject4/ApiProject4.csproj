@@ -159,6 +159,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApiProject4.addin" />
+    <None Include="Resources\icons8-width-162222.png" />
+    <None Include="Resources\icons8-height-16.png" />
+    <None Include="Resources\icons8-multicast-16222.png" />
+    <None Include="Resources\icons8-multicast-16.png" />
+    <None Include="Resources\icons8-box-16.png" />
+    <None Include="Resources\icons8-print-16.png" />
+    <None Include="Resources\icons8-trash-can-16.png" />
     <None Include="Resources\icons8-create-document-32.png" />
     <None Include="Resources\dustbin.png" />
     <None Include="Resources\Print_icon.png" />

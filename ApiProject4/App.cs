@@ -16,8 +16,8 @@ namespace ApiProject4
         {
             PurgeCadButton purgeCadClass = new PurgeCadButton();
             purgeCadClass.PurgeCad(a);
-            ScopeBoxButton scopeBoxclass = new ScopeBoxButton();
-            scopeBoxclass.ScopeBox(a);
+            //ScopeBoxButton scopeBoxclass = new ScopeBoxButton();
+            //scopeBoxclass.ScopeBox(a);
 
             AlignLeftButton alignButtonClass = new AlignLeftButton();
             alignButtonClass.AlignLeft(a);
@@ -25,8 +25,8 @@ namespace ApiProject4
             alignRightClass.AlignRight(a);
             ExportExcelButton exportExcel = new ExportExcelButton();
             exportExcel.CreateExportExcel(a);
-            PrinterSortButton printSort = new PrinterSortButton();
-            printSort.PrintSort(a);
+            //PrinterSortButton printSort = new PrinterSortButton();
+            //printSort.PrintSort(a);
             NewSheetsButton newSheetButton = new NewSheetsButton();
             newSheetButton.NewSheet(a);
 
