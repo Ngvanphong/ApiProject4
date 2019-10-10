@@ -77,7 +77,7 @@
             this.btnSortColor.Name = "btnSortColor";
             this.btnSortColor.Size = new System.Drawing.Size(73, 30);
             this.btnSortColor.TabIndex = 1;
-            this.btnSortColor.Text = "Order Color";
+            this.btnSortColor.Text = "Order color";
             this.btnSortColor.UseVisualStyleBackColor = true;
             // 
             // btnDefaultColor
@@ -95,7 +95,7 @@
             this.buttonSchamaSave.Name = "buttonSchamaSave";
             this.buttonSchamaSave.Size = new System.Drawing.Size(90, 30);
             this.buttonSchamaSave.TabIndex = 1;
-            this.buttonSchamaSave.Text = "Save schama";
+            this.buttonSchamaSave.Text = "Save schema";
             this.buttonSchamaSave.UseVisualStyleBackColor = true;
             // 
             // btnClearSetColor
@@ -134,6 +134,7 @@
             this.listBoxCategory.Name = "listBoxCategory";
             this.listBoxCategory.Size = new System.Drawing.Size(236, 121);
             this.listBoxCategory.TabIndex = 0;
+            this.listBoxCategory.SelectedIndexChanged += new System.EventHandler(this.listBoxCategory_SelectedIndexChanged);
             // 
             // checkBoxAutoColor
             // 
@@ -153,6 +154,7 @@
             this.listBoxParameter.Name = "listBoxParameter";
             this.listBoxParameter.Size = new System.Drawing.Size(236, 277);
             this.listBoxParameter.TabIndex = 0;
+            this.listBoxParameter.SelectedIndexChanged += new System.EventHandler(this.listBoxParameter_SelectedIndexChanged);
             // 
             // label1
             // 

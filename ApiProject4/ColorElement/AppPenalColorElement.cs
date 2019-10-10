@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Autodesk.Revit.UI;
+using Autodesk.Revit.DB;
 namespace ApiProject4.ColorElement
 {
 
@@ -12,6 +13,7 @@ namespace ApiProject4.ColorElement
         public static frmColorElement myFormColorElement;
         public static bool CancelHandlerAuto = false;
         public static bool SetColor = true;
+        public static List<Element> listElementCate = new List<Element>();
         public static void ShowFormColor()
         {
             ColorElementHandler handlerColor = new ColorElementHandler();

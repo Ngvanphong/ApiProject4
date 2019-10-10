@@ -59,5 +59,15 @@ namespace ApiProject4.ColorElement
             AppPenalColorElement.SetColor = false;
             _eventColor.Raise();
         }
+
+        private void listBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _eventParameter.Raise();
+        }
+
+        private void listBoxParameter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _eventColor.Raise();
+        }
     }
 }
