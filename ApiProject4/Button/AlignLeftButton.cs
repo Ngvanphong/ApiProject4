@@ -72,7 +72,7 @@ namespace ApiProject4.Button
             List<RibbonItem> projectButtons = new List<RibbonItem>();
             projectButtons.AddRange(panel.AddStackedItems(btnData,btnData3, btnData2));
 
-           // button.Enabled = true;
+          
         }
 
     }

@@ -117,44 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="box_5_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\box_5_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="dustbin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dustbin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Excel_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Excel_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Print_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Print_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_create_document_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-create-document-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_box_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-box-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_print_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-print-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_trash_can_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-trash-can-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_height_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-height-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_multicast_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-multicast-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_multicast_16222" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-multicast-16222.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_width_162222" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-width-162222.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_color_wheel_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-color-wheel-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

@@ -18,7 +18,6 @@ namespace ApiProject4
             purgeCadClass.PurgeCad(a);
             //ScopeBoxButton scopeBoxclass = new ScopeBoxButton();
             //scopeBoxclass.ScopeBox(a);
-
             AlignLeftButton alignButtonClass = new AlignLeftButton();
             alignButtonClass.AlignLeft(a);
             AllignRightButton alignRightClass = new AllignRightButton();
@@ -29,6 +28,8 @@ namespace ApiProject4
             //printSort.PrintSort(a);
             NewSheetsButton newSheetButton = new NewSheetsButton();
             newSheetButton.NewSheet(a);
+            ColorElementButton colorElementButton = new ColorElementButton();
+            colorElementButton.ColorElement(a);
 
             return Result.Succeeded;
         }

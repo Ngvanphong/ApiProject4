@@ -103,6 +103,16 @@ namespace ApiProject4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_color_wheel_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_color_wheel_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_create_document_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_create_document_32", resourceCulture);

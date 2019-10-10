@@ -98,11 +98,23 @@
     <Compile Include="App.cs" />
     <Compile Include="Button\AlignLeftButton.cs" />
     <Compile Include="Button\AllignRightButton.cs" />
+    <Compile Include="Button\ColorElementButton.cs" />
     <Compile Include="Button\ExportExcelButton.cs" />
     <Compile Include="Button\NewSheetsButton.cs" />
     <Compile Include="Button\PrinterSortButton.cs" />
     <Compile Include="Button\PurgeCadButton.cs" />
     <Compile Include="Button\ScopeBoxButton.cs" />
+    <Compile Include="ColorElement\AppPenalColorElement.cs" />
+    <Compile Include="ColorElement\AutoApplyColorHandler.cs" />
+    <Compile Include="ColorElement\ColorElementBinding.cs" />
+    <Compile Include="ColorElement\ColorElementHandler.cs" />
+    <Compile Include="ColorElement\frmColorElement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColorElement\frmColorElement.Designer.cs">
+      <DependentUpon>frmColorElement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorElement\ParameterLoadHandler.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="ExportExcel\AppPenalExportExcel.cs" />
     <Compile Include="ExportExcel\Constants.cs" />
@@ -159,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApiProject4.addin" />
+    <None Include="Resources\icons8-color-wheel-32.png" />
     <None Include="Resources\icons8-width-162222.png" />
     <None Include="Resources\icons8-height-16.png" />
     <None Include="Resources\icons8-multicast-16222.png" />
@@ -180,6 +193,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ColorElement\frmColorElement.resx">
+      <DependentUpon>frmColorElement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExportExcel\frmExportExcel.resx">
       <DependentUpon>frmExportExcel.cs</DependentUpon>
     </EmbeddedResource>
