@@ -85,5 +85,17 @@ namespace ApiProject4.ColorElement
         {
             _eventValueParameter.Raise();
         }
+
+       
+        private void dataGridViewValueParameter_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int row=e.RowIndex;
+            ColorDialog dlg = new ColorDialog();
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                System.Drawing.Color color = dlg.Color;
+                AppPenalColorElement.myFormColorElement.dataGridViewValueParameter.Rows[row].DefaultCellStyle.BackColor = color;
+            }
+        }
     }
 }
