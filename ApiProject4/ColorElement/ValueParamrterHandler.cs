@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using ApiProject4.Helper;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace ApiProject4.ColorElement
 {
@@ -29,6 +31,17 @@ namespace ApiProject4.ColorElement
             ColorCreate colorCreateHas = new ColorCreate(listValue);
             List<ValueColor> listValueColor = colorCreateHas.GetColorValueDefault();
             AppPenalColorElement.ListValueColor = listValueColor;
+           
+            BindingSource bindingSource = new BindingSource();
+            foreach(var value in listValueColor)
+            {
+                bindingSource.Add(new { value.Value });
+            }
+            AppPenalColorElement.myFormColorElement.dataGridViewValueParameter.DataSource = bindingSource;
+            for(int i=0;i< AppPenalColorElement.myFormColorElement.dataGridViewValueParameter.Rows.Count; i++)
+            {
+                AppPenalColorElement.myFormColorElement.dataGridViewValueParameter.Rows[i].DefaultCellStyle.BackColor = listValueColor[i].ColorSystem;
+            }
         }
 
         public string GetName()
@@ -58,6 +71,7 @@ namespace ApiProject4.ColorElement
                 ValueColor valueColor = new ValueColor();
                 valueColor.Value = val;
                 System.Drawing.Color colorWin = colors[i];
+                valueColor.ColorSystem = colorWin;
                 valueColor.Color = new Autodesk.Revit.DB.Color(colorWin.R, colorWin.G, colorWin.B);
                 listValueColor.Add(valueColor);
                 if (i < 20)
@@ -101,5 +115,6 @@ namespace ApiProject4.ColorElement
     {
         public string Value { set; get; }
         public Autodesk.Revit.DB.Color Color { set; get; }
+        public System.Drawing.Color ColorSystem { set; get; }
     }
 }

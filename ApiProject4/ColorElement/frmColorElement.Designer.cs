@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listBoxParameter = new System.Windows.Forms.ListBox();
+            this.listBoxCategory = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnSortColor = new System.Windows.Forms.Button();
+            this.dataGridViewValueParameter = new System.Windows.Forms.DataGridView();
             this.btnDefaultColor = new System.Windows.Forms.Button();
             this.buttonSchamaSave = new System.Windows.Forms.Button();
             this.btnClearSetColor = new System.Windows.Forms.Button();
             this.btnLoadSchema = new System.Windows.Forms.Button();
             this.btnApplyColor = new System.Windows.Forms.Button();
-            this.listBoxCategory = new System.Windows.Forms.ListBox();
             this.checkBoxAutoColor = new System.Windows.Forms.CheckBox();
-            this.listBoxParameter = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dataGridViewValueParameter = new System.Windows.Forms.DataGridView();
             this.btnCloseAppColor = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -56,10 +56,46 @@
             this.groupBox1.Controls.Add(this.listBoxCategory);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(249, 459);
+            this.groupBox1.Size = new System.Drawing.Size(249, 436);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Elements";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Choose catelogies:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 160);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Parameters:";
+            // 
+            // listBoxParameter
+            // 
+            this.listBoxParameter.FormattingEnabled = true;
+            this.listBoxParameter.Location = new System.Drawing.Point(6, 177);
+            this.listBoxParameter.Name = "listBoxParameter";
+            this.listBoxParameter.Size = new System.Drawing.Size(236, 251);
+            this.listBoxParameter.TabIndex = 0;
+            this.listBoxParameter.SelectedIndexChanged += new System.EventHandler(this.listBoxParameter_SelectedIndexChanged);
+            // 
+            // listBoxCategory
+            // 
+            this.listBoxCategory.FormattingEnabled = true;
+            this.listBoxCategory.Location = new System.Drawing.Point(6, 37);
+            this.listBoxCategory.Name = "listBoxCategory";
+            this.listBoxCategory.Size = new System.Drawing.Size(236, 121);
+            this.listBoxCategory.TabIndex = 0;
+            this.listBoxCategory.SelectedIndexChanged += new System.EventHandler(this.listBoxCategory_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -71,14 +107,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Value";
             // 
-            // btnSortColor
+            // dataGridViewValueParameter
             // 
-            this.btnSortColor.Location = new System.Drawing.Point(363, 407);
-            this.btnSortColor.Name = "btnSortColor";
-            this.btnSortColor.Size = new System.Drawing.Size(73, 30);
-            this.btnSortColor.TabIndex = 1;
-            this.btnSortColor.Text = "Order color";
-            this.btnSortColor.UseVisualStyleBackColor = true;
+            this.dataGridViewValueParameter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewValueParameter.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewValueParameter.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewValueParameter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewValueParameter.Location = new System.Drawing.Point(6, 16);
+            this.dataGridViewValueParameter.Name = "dataGridViewValueParameter";
+            this.dataGridViewValueParameter.Size = new System.Drawing.Size(236, 367);
+            this.dataGridViewValueParameter.TabIndex = 0;
+            this.dataGridViewValueParameter.SelectionChanged += new System.EventHandler(this.dataGridViewValueParameter_SelectionChanged);
             // 
             // btnDefaultColor
             // 
@@ -88,6 +134,7 @@
             this.btnDefaultColor.TabIndex = 2;
             this.btnDefaultColor.Text = "Default";
             this.btnDefaultColor.UseVisualStyleBackColor = true;
+            this.btnDefaultColor.Click += new System.EventHandler(this.btnDefaultColor_Click);
             // 
             // buttonSchamaSave
             // 
@@ -100,7 +147,7 @@
             // 
             // btnClearSetColor
             // 
-            this.btnClearSetColor.Location = new System.Drawing.Point(444, 441);
+            this.btnClearSetColor.Location = new System.Drawing.Point(363, 441);
             this.btnClearSetColor.Name = "btnClearSetColor";
             this.btnClearSetColor.Size = new System.Drawing.Size(73, 30);
             this.btnClearSetColor.TabIndex = 1;
@@ -119,7 +166,7 @@
             // 
             // btnApplyColor
             // 
-            this.btnApplyColor.Location = new System.Drawing.Point(363, 441);
+            this.btnApplyColor.Location = new System.Drawing.Point(363, 407);
             this.btnApplyColor.Name = "btnApplyColor";
             this.btnApplyColor.Size = new System.Drawing.Size(73, 30);
             this.btnApplyColor.TabIndex = 1;
@@ -127,19 +174,10 @@
             this.btnApplyColor.UseVisualStyleBackColor = true;
             this.btnApplyColor.Click += new System.EventHandler(this.btnApplyColor_Click);
             // 
-            // listBoxCategory
-            // 
-            this.listBoxCategory.FormattingEnabled = true;
-            this.listBoxCategory.Location = new System.Drawing.Point(6, 37);
-            this.listBoxCategory.Name = "listBoxCategory";
-            this.listBoxCategory.Size = new System.Drawing.Size(236, 121);
-            this.listBoxCategory.TabIndex = 0;
-            this.listBoxCategory.SelectedIndexChanged += new System.EventHandler(this.listBoxCategory_SelectedIndexChanged);
-            // 
             // checkBoxAutoColor
             // 
             this.checkBoxAutoColor.AutoSize = true;
-            this.checkBoxAutoColor.Location = new System.Drawing.Point(18, 483);
+            this.checkBoxAutoColor.Location = new System.Drawing.Point(18, 454);
             this.checkBoxAutoColor.Name = "checkBoxAutoColor";
             this.checkBoxAutoColor.Size = new System.Drawing.Size(181, 17);
             this.checkBoxAutoColor.TabIndex = 3;
@@ -147,45 +185,9 @@
             this.checkBoxAutoColor.UseVisualStyleBackColor = true;
             this.checkBoxAutoColor.CheckedChanged += new System.EventHandler(this.checkBoxAutoColor_CheckedChanged);
             // 
-            // listBoxParameter
-            // 
-            this.listBoxParameter.FormattingEnabled = true;
-            this.listBoxParameter.Location = new System.Drawing.Point(6, 177);
-            this.listBoxParameter.Name = "listBoxParameter";
-            this.listBoxParameter.Size = new System.Drawing.Size(236, 277);
-            this.listBoxParameter.TabIndex = 0;
-            this.listBoxParameter.SelectedIndexChanged += new System.EventHandler(this.listBoxParameter_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 160);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Parameters:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Choose catelogies:";
-            // 
-            // dataGridViewValueParameter
-            // 
-            this.dataGridViewValueParameter.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridViewValueParameter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewValueParameter.Location = new System.Drawing.Point(6, 16);
-            this.dataGridViewValueParameter.Name = "dataGridViewValueParameter";
-            this.dataGridViewValueParameter.Size = new System.Drawing.Size(236, 367);
-            this.dataGridViewValueParameter.TabIndex = 0;
-            // 
             // btnCloseAppColor
             // 
-            this.btnCloseAppColor.Location = new System.Drawing.Point(444, 477);
+            this.btnCloseAppColor.Location = new System.Drawing.Point(443, 441);
             this.btnCloseAppColor.Name = "btnCloseAppColor";
             this.btnCloseAppColor.Size = new System.Drawing.Size(73, 30);
             this.btnCloseAppColor.TabIndex = 1;
@@ -197,7 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 512);
+            this.ClientSize = new System.Drawing.Size(526, 482);
             this.ControlBox = false;
             this.Controls.Add(this.checkBoxAutoColor);
             this.Controls.Add(this.btnDefaultColor);
@@ -206,7 +208,6 @@
             this.Controls.Add(this.btnCloseAppColor);
             this.Controls.Add(this.btnClearSetColor);
             this.Controls.Add(this.buttonSchamaSave);
-            this.Controls.Add(this.btnSortColor);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
@@ -235,7 +236,6 @@
         public System.Windows.Forms.DataGridView dataGridViewValueParameter;
         public System.Windows.Forms.Button buttonSchamaSave;
         public System.Windows.Forms.Button btnLoadSchema;
-        public System.Windows.Forms.Button btnSortColor;
         public System.Windows.Forms.Button btnDefaultColor;
         public System.Windows.Forms.Button btnApplyColor;
         public System.Windows.Forms.Button btnClearSetColor;

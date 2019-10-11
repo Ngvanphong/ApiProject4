@@ -108,16 +108,16 @@ namespace ApiProject4.Helper
                     val = dVal.ToString();
                     break;
                 case StorageType.Integer:
-                    int iVal = param.AsInteger();
-                    val = iVal.ToString();
+                    string iVal = param.AsValueString();
+                    val = iVal;
                     break;
                 case StorageType.String:
                     string sVal = param.AsString();
                     val = sVal;
                     break;
                 case StorageType.ElementId:
-                    ElementId idVal = param.AsElementId();
-                    val = idVal.IntegerValue.ToString();
+                    string idVal = param.AsValueString();
+                    val = idVal.ToString();
                     break;      
                 case StorageType.None:
                     break;

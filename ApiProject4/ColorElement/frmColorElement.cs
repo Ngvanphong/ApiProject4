@@ -75,5 +75,15 @@ namespace ApiProject4.ColorElement
         {
             _eventValueParameter.Raise();
         }
+
+        private void dataGridViewValueParameter_SelectionChanged(object sender, EventArgs e)
+        {
+            AppPenalColorElement.myFormColorElement.dataGridViewValueParameter.ClearSelection();
+        }
+
+        private void btnDefaultColor_Click(object sender, EventArgs e)
+        {
+            _eventValueParameter.Raise();
+        }
     }
 }
