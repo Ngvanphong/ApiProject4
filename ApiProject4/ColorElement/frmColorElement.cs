@@ -19,9 +19,12 @@ namespace ApiProject4.ColorElement
         private ExternalEvent _eventParameter;
         private AutoApplyColorHandler _handlerAutoApplyColor;
         private ExternalEvent _eventAutoApplyColor;
+        private ValueParamrterHandler _handlerValueParameter;
+        private ExternalEvent _eventValueParameter;
         public frmColorElement(ExternalEvent eventColor, ColorElementHandler handlerColor,
             ExternalEvent eventParameter, ParameterLoadHandler handlerParameterLoad,
-            ExternalEvent eventAutoApplyColor, AutoApplyColorHandler handlerAutoApplyColor)
+            ExternalEvent eventAutoApplyColor, AutoApplyColorHandler handlerAutoApplyColor,
+            ExternalEvent eventValueParameter, ValueParamrterHandler handlerValueParameter)
         {
             InitializeComponent();
             _eventColor = eventColor;
@@ -30,6 +33,9 @@ namespace ApiProject4.ColorElement
             _handlerParameterLoad = handlerParameterLoad;
             _eventAutoApplyColor = eventAutoApplyColor;
             _handlerAutoApplyColor = handlerAutoApplyColor;
+            _handlerValueParameter = handlerValueParameter;
+            _eventValueParameter = eventValueParameter;
+
         }
 
         private void frmColorElement_Load(object sender, EventArgs e)
@@ -67,7 +73,7 @@ namespace ApiProject4.ColorElement
 
         private void listBoxParameter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _eventColor.Raise();
+            _eventValueParameter.Raise();
         }
     }
 }

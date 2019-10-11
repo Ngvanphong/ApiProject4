@@ -14,6 +14,8 @@ namespace ApiProject4.ColorElement
         public static bool CancelHandlerAuto = false;
         public static bool SetColor = true;
         public static List<Element> listElementCate = new List<Element>();
+        public static List<ValueColor> ListValueColor = new List<ValueColor>();
+        public static List<ElementValue> ListElementValue = new List<ElementValue>(); 
         public static void ShowFormColor()
         {
             ColorElementHandler handlerColor = new ColorElementHandler();
@@ -22,7 +24,10 @@ namespace ApiProject4.ColorElement
             ExternalEvent eventParameter = ExternalEvent.Create(handlerParameter);
             AutoApplyColorHandler handlerAutoApply = new AutoApplyColorHandler();
             ExternalEvent eventAutoApply = ExternalEvent.Create(handlerAutoApply);
-            myFormColorElement = new frmColorElement(eventColor, handlerColor, eventParameter, handlerParameter, eventAutoApply, handlerAutoApply);
+            ValueParamrterHandler handlerValueParameter = new ValueParamrterHandler();
+            ExternalEvent eventValueParameter = ExternalEvent.Create(handlerValueParameter);
+            myFormColorElement = new frmColorElement(eventColor, handlerColor, eventParameter,
+                handlerParameter, eventAutoApply, handlerAutoApply, eventValueParameter, handlerValueParameter);
             myFormColorElement.Show();
         }
     }

@@ -108,6 +108,7 @@
     <Compile Include="ColorElement\AutoApplyColorHandler.cs" />
     <Compile Include="ColorElement\ColorElementBinding.cs" />
     <Compile Include="ColorElement\ColorElementHandler.cs" />
+    <Compile Include="ColorElement\ColorSystem.cs" />
     <Compile Include="ColorElement\frmColorElement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +116,7 @@
       <DependentUpon>frmColorElement.cs</DependentUpon>
     </Compile>
     <Compile Include="ColorElement\ParameterLoadHandler.cs" />
+    <Compile Include="ColorElement\ValueParamrterHandler.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="ExportExcel\AppPenalExportExcel.cs" />
     <Compile Include="ExportExcel\Constants.cs" />

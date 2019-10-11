@@ -16,20 +16,7 @@ namespace ApiProject4.ColorElement
         public void Execute(UIApplication app)
         {
             Document doc = app.ActiveUIDocument.Document;
-            ColorCreate colorCreateNot = new ColorCreate();
-            List<ElementValue> listElementColor = colorCreateNot.GetElementValue();
-            List<string> listValue = new List<string>();
-            foreach(var el in listElementColor)
-            {
-                if (!listValue.Exists(x => x == el.Value))
-                {
-                    listValue.Add(el.Value);
-                }
-            }
-            listValue.OrderBy(x => x);
-            ColorCreate colorCreateHas = new ColorCreate(listValue);
-            List<ValueColor> listValueColor = colorCreateHas.GetColorValueDefault();
-            foreach(var elclor in listElementColor)
+            foreach(var elval in AppPenalColorElement.ListElementValue)
             {
                 using (Transaction t = new Transaction(doc, "setColor"))
                 {
@@ -37,15 +24,15 @@ namespace ApiProject4.ColorElement
                     try
                     {
                         Autodesk.Revit.DB.Color color = null;
-                        foreach(var co in listValueColor)
+                        foreach(var co in AppPenalColorElement.ListValueColor)
                         {
-                            if (co.Value == elclor.Value)
+                            if (co.Value == elval.Value)
                             {
                                 color = co.Color;
                                 break;
                             }
                         }
-                        SetColor(color, doc, elclor.Element);
+                        SetColor(color, doc, elval.Element);
                         t.Commit();
                     }
                     catch { t.RollBack(); continue; }
@@ -74,73 +61,7 @@ namespace ApiProject4.ColorElement
             doc.ActiveView.SetElementOverrides(element.Id, setting);
         }
     }
-    public class ColorCreate
-    {
-        public List<string> ListValue { set; get; }
-        public ColorCreate()
-        {
-
-        }
-        public ColorCreate(List<string> listValue)
-        {
-            ListValue = listValue;
-        }
-       
-        public List<ValueColor> GetColorValueDefault()
-        {
-            List<System.Drawing.Color> colors = Enum.GetValues(typeof(KnownColor)).Cast<KnownColor>().Select(System.Drawing.Color
-            .FromKnownColor).ToList();
-            List<ValueColor> listValueColor = new List<ValueColor>();
-            int i = 0;
-            foreach (string val in ListValue)
-            {
-                ValueColor valueColor = new ValueColor();
-                valueColor.Value = val;
-                System.Drawing.Color colorWin = colors[i];
-                valueColor.Color = new Autodesk.Revit.DB.Color(colorWin.R, colorWin.G, colorWin.B);
-                listValueColor.Add(valueColor);
-                if (i < 254)
-                {
-                    i++;
-                }
-                else
-                {
-                    i--;
-                }
-            }
-            return listValueColor;
-        }
-
-        public List<ElementValue> GetElementValue()
-        {
-            List<ElementValue> listResult = new List<ElementValue>();
-            string nameParameter = AppPenalColorElement.myFormColorElement.listBoxParameter.SelectedItem.ToString();
-            foreach (Element el in AppPenalColorElement.listElementCate)
-            {
-                foreach (Parameter parae in el.Parameters)
-                {
-                    if (parae.Definition.Name == nameParameter)
-                    {
-                        ElementValue elementValue = new ElementValue();
-                        elementValue.Element = el;
-                        elementValue.Value = ParameterRevit.ParameterToString(parae);
-                        listResult.Add(elementValue);
-                    }
-                }
-            }
-            return listResult;
-        }
-    }
-    public class ElementValue
-    {
-        public Element Element { set; get; }
-        public string Value { set; get; }
-    }
-    public class ValueColor
-    {
-        public string Value { set; get; }
-        public Autodesk.Revit.DB.Color Color { set; get; }
-    }
+    
 }
 
 
