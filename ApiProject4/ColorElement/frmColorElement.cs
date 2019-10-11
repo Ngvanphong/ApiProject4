@@ -95,6 +95,15 @@ namespace ApiProject4.ColorElement
             {
                 System.Drawing.Color color = dlg.Color;
                 AppPenalColorElement.myFormColorElement.dataGridViewValueParameter.Rows[row].DefaultCellStyle.BackColor = color;
+                for(int i=0;i< AppPenalColorElement.ListValueColor.Count; i++)
+                {
+                    if (row == i)
+                    {
+                        AppPenalColorElement.ListValueColor[i].ColorSystem = color;
+                        AppPenalColorElement.ListValueColor[i].Color= new Autodesk.Revit.DB.Color(color.R, color.G, color.B);
+                    }
+                }
+                
             }
         }
     }

@@ -32,7 +32,7 @@ namespace ApiProject4.ColorElement
                                 break;
                             }
                         }
-                        SetColor(color, doc, elval.Element);
+                        SetColorElement.SetColor(color, doc, elval.Element);
                         t.Commit();
                     }
                     catch { t.RollBack(); continue; }
@@ -46,7 +46,11 @@ namespace ApiProject4.ColorElement
         {
             return "ColorElementHandlers";
         }
-        public void SetColor(Autodesk.Revit.DB.Color color, Document doc,Element element)
+       
+    }
+    public static class SetColorElement
+    {
+        public static void SetColor(Autodesk.Revit.DB.Color color, Document doc, Element element)
         {
             var pSolidFillPattern = new FilteredElementCollector(doc).OfClass((typeof(FillPatternElement)))
                    .OfType<FillPatternElement>().Where<FillPatternElement>(p => p.GetFillPattern().IsSolidFill).ToList().First();
