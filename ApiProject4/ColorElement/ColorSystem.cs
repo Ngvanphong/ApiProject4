@@ -29,6 +29,17 @@ namespace ApiProject4.ColorElement
         public static Color DeepSkyBlue { get { return Color.DeepSkyBlue; } }
         public static Color Purple { get { return Color.Purple; } }
         public static Color RosyBrown { get { return Color.RosyBrown; } }
+        public static Color PapayaWhip { get { return Color.PapayaWhip; } }
+        public static Color Peru { get { return Color.Peru; } }
+        public static Color SteelBlue { get { return Color.SteelBlue; } }
+        public static Color Teal { get { return Color.Teal; } }
+        public static Color Tomato { get { return Color.Tomato; } }
+        public static Color YellowGreen { get { return Color.YellowGreen; } }
+        public static Color MediumTurquoise { get { return Color.MediumTurquoise; } }
+        public static Color LightSteelBlue { get { return Color.LightSteelBlue; } }
+        public static Color Tan { get { return Color.Tan; } }
+        public static Color GreenYellow { get { return Color.GreenYellow; } }
+
         public  List<Color> ColorUser { set; get; }
         public ColorSystem()
         {
@@ -42,21 +53,33 @@ namespace ApiProject4.ColorElement
                 Chartreuse,
                 CornflowerBlue,
                 DarkOrange,
-                DeepPink, 
+                DeepPink,
+                Red,
                 DodgerBlue,
                 Gold,
                 DarkBlue,
                 LightPink,
-                Red,
                 Chocolate,
                 Lavender,
                 DeepSkyBlue,
                 Purple,
                 RosyBrown,
                 Aquamarine,
-            };
-        }
-        
-
-    }
-}
+                PapayaWhip,
+                Peru,
+                SteelBlue ,
+                Teal,
+                Tomato ,
+                YellowGreen,
+                MediumTurquoise,
+                LightSteelBlue ,
+                Tan,
+                GreenYellow,
+            }; 
+        }      
+               
+               
+    }          
+}              
+               
+               
