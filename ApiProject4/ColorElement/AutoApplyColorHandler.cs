@@ -9,6 +9,8 @@ using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.DB.Events;
 using Autodesk.Revit.UI.Selection;
 using ApiProject4.Helper;
+using System.Windows.Forms;
+using System.Data;
 
 namespace ApiProject4.ColorElement
 {
@@ -64,7 +66,7 @@ namespace ApiProject4.ColorElement
         public void Execute(UpdaterData data)
         {
             Document doc = data.GetDocument();
-            Application app = doc.Application;
+            Autodesk.Revit.ApplicationServices.Application app = doc.Application;
             var listElementIdAdd = data.GetAddedElementIds().ToList();
             var listElementModifile = data.GetModifiedElementIds().ToList();
             if (listElementIdAdd.Count == 1)
@@ -142,11 +144,14 @@ namespace ApiProject4.ColorElement
                             valueColor.ColorSystem = colorWin;
                             valueColor.Color = new Autodesk.Revit.DB.Color(colorWin.R, colorWin.G, colorWin.B);
                             AppPenalColorElement.ListValueColor.Add(valueColor);
-                            AppPenalColorElement.myFormColorElement.dataGridViewValueParameter.Rows.Add(valueColor.Value);
+                            var bindingSource = (BindingSource)AppPenalColorElement.myFormColorElement.dataGridViewValueParameter.DataSource;
+                            bindingSource.Add(new { valueColor.Value });
+                            AppPenalColorElement.myFormColorElement.dataGridViewValueParameter.DataSource = bindingSource;
                             AppPenalColorElement.myFormColorElement.dataGridViewValueParameter.Rows[index].DefaultCellStyle.BackColor = colorWin;
-                        }else
+                        }
+                        else
                         {
-                            for(int i =0;i< AppPenalColorElement.ListValueColor.Count; i++)
+                            for (int i = 0; i < AppPenalColorElement.ListValueColor.Count; i++)
                             {
                                 if (AppPenalColorElement.ListValueColor[i].Value == value)
                                 {
