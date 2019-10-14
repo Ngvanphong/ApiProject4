@@ -74,7 +74,7 @@ namespace ApiProject4.ColorElement
                 valueColor.ColorSystem = colorWin;
                 valueColor.Color = new Autodesk.Revit.DB.Color(colorWin.R, colorWin.G, colorWin.B);
                 listValueColor.Add(valueColor);
-                if (i < 30)
+                if (i < 29)
                 {
                     i++;
                 }
