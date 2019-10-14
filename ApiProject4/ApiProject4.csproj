@@ -116,6 +116,7 @@
       <DependentUpon>frmColorElement.cs</DependentUpon>
     </Compile>
     <Compile Include="ColorElement\ParameterLoadHandler.cs" />
+    <Compile Include="ColorElement\UpdateAllHandler.cs" />
     <Compile Include="ColorElement\ValueParamrterHandler.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="ExportExcel\AppPenalExportExcel.cs" />

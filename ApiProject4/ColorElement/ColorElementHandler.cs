@@ -16,30 +16,48 @@ namespace ApiProject4.ColorElement
         public void Execute(UIApplication app)
         {
             Document doc = app.ActiveUIDocument.Document;
-            foreach(var elval in AppPenalColorElement.ListElementValue)
+            if (AppPenalColorElement.SetColor == true)
             {
-                using (Transaction t = new Transaction(doc, "setColor"))
+                foreach (var elval in AppPenalColorElement.ListElementValue)
                 {
-                    t.Start();
-                    try
+                    using (Transaction t = new Transaction(doc, "setColor"))
                     {
-                        Autodesk.Revit.DB.Color color = null;
-                        foreach(var co in AppPenalColorElement.ListValueColor)
+                        t.Start();
+                        try
                         {
-                            if (co.Value == elval.Value)
+                            Autodesk.Revit.DB.Color color = null;
+                            foreach (var co in AppPenalColorElement.ListValueColor)
                             {
-                                color = co.Color;
-                                break;
+                                if (co.Value == elval.Value)
+                                {
+                                    color = co.Color;
+                                    break;
+                                }
                             }
+                            SetColorElement.SetColor(color, doc, elval.Element);
+                            t.Commit();
                         }
-                        SetColorElement.SetColor(color, doc, elval.Element);
-                        t.Commit();
+                        catch { t.RollBack(); continue; }
+
                     }
-                    catch { t.RollBack(); continue; }
-                    
                 }
-            }
- 
+            } else if(AppPenalColorElement.SetColor == false)
+            {
+                OverrideGraphicSettings orGsty = new OverrideGraphicSettings();  
+                foreach (var elval in AppPenalColorElement.ListElementValue)
+                {
+                    using (Transaction t2 = new Transaction(doc, "ResetColor"))
+                    {
+                        t2.Start();
+                        try
+                        {
+                            doc.ActiveView.SetElementOverrides(elval.Element.Id, orGsty);
+                            t2.Commit();
+                        }
+                        catch { t2.RollBack(); continue; }
+                    }
+                }
+            }            
         }
 
         public string GetName()

@@ -21,10 +21,13 @@ namespace ApiProject4.ColorElement
         private ExternalEvent _eventAutoApplyColor;
         private ValueParamrterHandler _handlerValueParameter;
         private ExternalEvent _eventValueParameter;
+        private UpdateAllHandler _handlerUpdate;
+        private ExternalEvent _eventUpdalte;
         public frmColorElement(ExternalEvent eventColor, ColorElementHandler handlerColor,
             ExternalEvent eventParameter, ParameterLoadHandler handlerParameterLoad,
             ExternalEvent eventAutoApplyColor, AutoApplyColorHandler handlerAutoApplyColor,
-            ExternalEvent eventValueParameter, ValueParamrterHandler handlerValueParameter)
+            ExternalEvent eventValueParameter, ValueParamrterHandler handlerValueParameter,
+            ExternalEvent eventUpdalte, UpdateAllHandler handlerUpdate)
         {
             InitializeComponent();
             _eventColor = eventColor;
@@ -35,6 +38,8 @@ namespace ApiProject4.ColorElement
             _handlerAutoApplyColor = handlerAutoApplyColor;
             _handlerValueParameter = handlerValueParameter;
             _eventValueParameter = eventValueParameter;
+            _eventUpdalte = eventUpdalte;
+            _handlerUpdate = handlerUpdate;
 
         }
 
@@ -51,13 +56,24 @@ namespace ApiProject4.ColorElement
 
         private void checkBoxAutoColor_CheckedChanged(object sender, EventArgs e)
         {
+            if (AppPenalColorElement.CancelAutoHandler == false)
+            {
+                AppPenalColorElement.CancelAutoHandler = true;
+            }else
+            {
+                AppPenalColorElement.CancelAutoHandler = false;
+            }
             _eventAutoApplyColor.Raise();
         }
 
         private void btnCloseAppColor_Click(object sender, EventArgs e)
         {
-            AppPenalColorElement.CancelHandlerAuto = true;
-            _eventAutoApplyColor.Raise();
+           if( AppPenalColorElement.CancelAutoHandler == true)
+            {
+                AppPenalColorElement.CancelAutoHandler = false;
+                  _eventAutoApplyColor.Raise();         
+            }
+            AppPenalColorElement.myFormColorElement.Hide();           
         }
 
         private void btnClearSetColor_Click(object sender, EventArgs e)
@@ -83,10 +99,9 @@ namespace ApiProject4.ColorElement
 
         private void btnDefaultColor_Click(object sender, EventArgs e)
         {
-            _eventValueParameter.Raise();
+            _eventUpdalte.Raise();
         }
 
-       
         private void dataGridViewValueParameter_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int row=e.RowIndex;
@@ -102,8 +117,7 @@ namespace ApiProject4.ColorElement
                         AppPenalColorElement.ListValueColor[i].ColorSystem = color;
                         AppPenalColorElement.ListValueColor[i].Color= new Autodesk.Revit.DB.Color(color.R, color.G, color.B);
                     }
-                }
-                
+                }  
             }
         }
     }

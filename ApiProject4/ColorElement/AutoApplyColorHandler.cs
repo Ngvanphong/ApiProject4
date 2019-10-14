@@ -19,37 +19,46 @@ namespace ApiProject4.ColorElement
         public void Execute(UIApplication app)
         {
             Document doc = app.ActiveUIDocument.Document;
-            AppPenalColorElement._updater = new ElevationWatcherUpdater(app.ActiveAddInId);
-            UpdaterRegistry.RegisterUpdater(AppPenalColorElement._updater);
-            var listCategory = new List<BuiltInCategory>()
+            if (AppPenalColorElement.CancelAutoHandler == true)
             {
-                BuiltInCategory.OST_FloorsStructure,
-                BuiltInCategory.OST_RoofsStructure,
-                BuiltInCategory.OST_StructuralFraming,
-                BuiltInCategory.OST_StructuralColumns,
-                BuiltInCategory.OST_DuctCurves,
-                BuiltInCategory.OST_DuctSystem,
-                BuiltInCategory.OST_PipeCurves,
-                BuiltInCategory.OST_Wire,
-                BuiltInCategory.OST_WallsStructure,
-                BuiltInCategory.OST_Walls,
-                BuiltInCategory.OST_StructuralFoundation,
-                BuiltInCategory.OST_Stairs,
-                BuiltInCategory.OST_Doors,
-                BuiltInCategory.OST_Windows,
-                BuiltInCategory.OST_Rebar,
-            };
-            var f = new ElementMulticategoryFilter(listCategory);
-            UpdaterRegistry.AddTrigger(AppPenalColorElement._updater.GetUpdaterId(), f, Element.GetChangeTypeElementAddition());
-            UpdaterRegistry.AddTrigger(AppPenalColorElement._updater.GetUpdaterId(), f, Element.GetChangeTypeAny());
-
+                AppPenalColorElement._updater = new ElevationWatcherUpdater(app.ActiveAddInId);
+                UpdaterRegistry.RegisterUpdater(AppPenalColorElement._updater);
+                var listCategory = new List<BuiltInCategory>()
+                    {
+                        BuiltInCategory.OST_FloorsStructure,
+                        BuiltInCategory.OST_RoofsStructure,
+                        BuiltInCategory.OST_StructuralFraming,
+                        BuiltInCategory.OST_StructuralColumns,
+                        BuiltInCategory.OST_DuctCurves,
+                        BuiltInCategory.OST_DuctSystem,
+                        BuiltInCategory.OST_PipeCurves,
+                        BuiltInCategory.OST_Wire,
+                        BuiltInCategory.OST_WallsStructure,
+                        BuiltInCategory.OST_Walls,
+                        BuiltInCategory.OST_StructuralFoundation,
+                        BuiltInCategory.OST_Stairs,
+                        BuiltInCategory.OST_Doors,
+                        BuiltInCategory.OST_Windows,
+                        BuiltInCategory.OST_Rebar,
+                    };
+                var f = new ElementMulticategoryFilter(listCategory);
+                UpdaterRegistry.AddTrigger(AppPenalColorElement._updater.GetUpdaterId(), f, Element.GetChangeTypeElementAddition());
+                UpdaterRegistry.AddTrigger(AppPenalColorElement._updater.GetUpdaterId(), f, Element.GetChangeTypeAny());              
+            }
+            else if (AppPenalColorElement.CancelAutoHandler == false)
+            {
+                try
+                {
+                    UpdaterRegistry.UnregisterUpdater(AppPenalColorElement._updater.GetUpdaterId());
+                    AppPenalColorElement._updater = null;
+                }
+                catch { AppPenalColorElement._updater = null; }
+            }
         }
         public string GetName()
         {
             return "AutoApplyColorHandler";
         }
-
-
     }
     public class ElevationWatcherUpdater : IUpdater
     {
@@ -60,7 +69,6 @@ namespace ApiProject4.ColorElement
             _appId = id;
             _updaterId = new UpdaterId(_appId, new Guid("8a5b141a-cd9e-4c12-9f99-168c3ddb1de2"));
         }
-
 
         public static bool breakEvent = false;
         public void Execute(UpdaterData data)
@@ -166,11 +174,8 @@ namespace ApiProject4.ColorElement
                     }
                 }
             }
-
         }
-
     }
-
 }
 
 
