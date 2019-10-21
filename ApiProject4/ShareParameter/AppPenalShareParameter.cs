@@ -10,13 +10,20 @@ namespace ApiProject4.ShareParameter
    public static class AppPenalShareParameter
     {
         public static frmShareParameter myFormShareParameter;
-
+        public static frmAddGroup myFormAddgroup;
         public static void ShowFormShareParameter()
         {
             ShareParameterHandler handlerShareParameter = new ShareParameterHandler();
             ExternalEvent eventShareParameter = ExternalEvent.Create(handlerShareParameter);
             myFormShareParameter = new frmShareParameter(eventShareParameter, handlerShareParameter);
             myFormShareParameter.Show();
+        }
+
+        public static void ShowFormAddGroup()
+        {
+            myFormAddgroup = new frmAddGroup();
+            myFormAddgroup.Show();
+
         }
 
     }

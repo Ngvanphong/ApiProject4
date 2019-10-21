@@ -39,8 +39,8 @@
             this.checkBoxShowOnly = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.txtMasterPathShareParameterFilr = new System.Windows.Forms.TextBox();
+            this.treeViewMasterParameter = new System.Windows.Forms.TreeView();
+            this.txtMasterPathShareParameterFile = new System.Windows.Forms.TextBox();
             this.btnNewFileParamter = new System.Windows.Forms.Button();
             this.btnFindMasterFile = new System.Windows.Forms.Button();
             this.btnSaveParameterFile = new System.Windows.Forms.Button();
@@ -56,7 +56,7 @@
             this.btnFindSourceParameterFile = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dropGroupBy = new System.Windows.Forms.ComboBox();
-            this.treeView2 = new System.Windows.Forms.TreeView();
+            this.treeViewSourceParameter = new System.Windows.Forms.TreeView();
             this.tabControl1.SuspendLayout();
             this.TagShareParameterFile.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -161,8 +161,8 @@
             this.groupBox1.Controls.Add(this.btnSaveParameterFile);
             this.groupBox1.Controls.Add(this.btnFindMasterFile);
             this.groupBox1.Controls.Add(this.btnNewFileParamter);
-            this.groupBox1.Controls.Add(this.txtMasterPathShareParameterFilr);
-            this.groupBox1.Controls.Add(this.treeView1);
+            this.groupBox1.Controls.Add(this.txtMasterPathShareParameterFile);
+            this.groupBox1.Controls.Add(this.treeViewMasterParameter);
             this.groupBox1.Location = new System.Drawing.Point(7, 43);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(457, 444);
@@ -172,7 +172,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.treeView2);
+            this.groupBox2.Controls.Add(this.treeViewSourceParameter);
             this.groupBox2.Controls.Add(this.dropGroupBy);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtPathSourceSharedPamameter);
@@ -184,19 +184,19 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Source Shared Parameter File";
             // 
-            // treeView1
+            // treeViewMasterParameter
             // 
-            this.treeView1.Location = new System.Drawing.Point(7, 79);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(329, 359);
-            this.treeView1.TabIndex = 0;
+            this.treeViewMasterParameter.Location = new System.Drawing.Point(7, 79);
+            this.treeViewMasterParameter.Name = "treeViewMasterParameter";
+            this.treeViewMasterParameter.Size = new System.Drawing.Size(329, 359);
+            this.treeViewMasterParameter.TabIndex = 0;
             // 
-            // txtMasterPathShareParameterFilr
+            // txtMasterPathShareParameterFile
             // 
-            this.txtMasterPathShareParameterFilr.Location = new System.Drawing.Point(7, 21);
-            this.txtMasterPathShareParameterFilr.Name = "txtMasterPathShareParameterFilr";
-            this.txtMasterPathShareParameterFilr.Size = new System.Drawing.Size(202, 20);
-            this.txtMasterPathShareParameterFilr.TabIndex = 1;
+            this.txtMasterPathShareParameterFile.Location = new System.Drawing.Point(7, 21);
+            this.txtMasterPathShareParameterFile.Name = "txtMasterPathShareParameterFile";
+            this.txtMasterPathShareParameterFile.Size = new System.Drawing.Size(202, 20);
+            this.txtMasterPathShareParameterFile.TabIndex = 1;
             // 
             // btnNewFileParamter
             // 
@@ -206,6 +206,7 @@
             this.btnNewFileParamter.TabIndex = 2;
             this.btnNewFileParamter.Text = "New";
             this.btnNewFileParamter.UseVisualStyleBackColor = true;
+            this.btnNewFileParamter.Click += new System.EventHandler(this.btnNewFileParamter_Click);
             // 
             // btnFindMasterFile
             // 
@@ -215,6 +216,7 @@
             this.btnFindMasterFile.TabIndex = 3;
             this.btnFindMasterFile.Text = "Browse...";
             this.btnFindMasterFile.UseVisualStyleBackColor = true;
+            this.btnFindMasterFile.Click += new System.EventHandler(this.btnFindMasterFile_Click);
             // 
             // btnSaveParameterFile
             // 
@@ -245,6 +247,7 @@
             this.btnAddGroup.TabIndex = 0;
             this.btnAddGroup.Text = "Add";
             this.btnAddGroup.UseVisualStyleBackColor = true;
+            this.btnAddGroup.Click += new System.EventHandler(this.btnAddGroup_Click);
             // 
             // btnRenameGroup
             // 
@@ -318,6 +321,7 @@
             this.btnFindSourceParameterFile.TabIndex = 2;
             this.btnFindSourceParameterFile.Text = "Browse...";
             this.btnFindSourceParameterFile.UseVisualStyleBackColor = true;
+            this.btnFindSourceParameterFile.Click += new System.EventHandler(this.btnFindSourceParameterFile_Click);
             // 
             // label2
             // 
@@ -336,12 +340,12 @@
             this.dropGroupBy.Size = new System.Drawing.Size(198, 21);
             this.dropGroupBy.TabIndex = 4;
             // 
-            // treeView2
+            // treeViewSourceParameter
             // 
-            this.treeView2.Location = new System.Drawing.Point(7, 78);
-            this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(338, 359);
-            this.treeView2.TabIndex = 5;
+            this.treeViewSourceParameter.Location = new System.Drawing.Point(7, 78);
+            this.treeViewSourceParameter.Name = "treeViewSourceParameter";
+            this.treeViewSourceParameter.Size = new System.Drawing.Size(338, 359);
+            this.treeViewSourceParameter.TabIndex = 5;
             // 
             // frmShareParameter
             // 
@@ -372,12 +376,10 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TreeView treeView2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TabPage TagShareParameterFile;
         public System.Windows.Forms.TabPage tagLoadParameterFile;
@@ -386,7 +388,7 @@
         public System.Windows.Forms.Button btnClearValueParameter;
         public System.Windows.Forms.ComboBox dropFilterParameterSource;
         public System.Windows.Forms.CheckBox checkBoxShowOnly;
-        public System.Windows.Forms.TextBox txtMasterPathShareParameterFilr;
+        public System.Windows.Forms.TextBox txtMasterPathShareParameterFile;
         public System.Windows.Forms.Button btnNewFileParamter;
         public System.Windows.Forms.Button btnFindMasterFile;
         public System.Windows.Forms.Button btnSaveParameterFile;
@@ -399,5 +401,7 @@
         public System.Windows.Forms.TextBox txtPathSourceSharedPamameter;
         public System.Windows.Forms.Button btnFindSourceParameterFile;
         public System.Windows.Forms.ComboBox dropGroupBy;
+        public System.Windows.Forms.TreeView treeViewMasterParameter;
+        public System.Windows.Forms.TreeView treeViewSourceParameter;
     }
 }

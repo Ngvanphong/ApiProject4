@@ -15,3 +15,4 @@ C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiPro
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.ColorElement.frmColorElement.resources
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.csprojResolveAssemblyReference.cache
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.ShareParameter.frmShareParameter.resources
+C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.ShareParameter.frmAddGroup.resources
