@@ -30,7 +30,8 @@ namespace ApiProject4
             newSheetButton.NewSheet(a);
             ColorElementButton colorElementButton = new ColorElementButton();
             colorElementButton.ColorElement(a);
-
+            ShareParameterButton shareParaButton = new ShareParameterButton();
+            shareParaButton.ShareParameter(a);
             return Result.Succeeded;
         }
 

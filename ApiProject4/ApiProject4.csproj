@@ -104,6 +104,7 @@
     <Compile Include="Button\PrinterSortButton.cs" />
     <Compile Include="Button\PurgeCadButton.cs" />
     <Compile Include="Button\ScopeBoxButton.cs" />
+    <Compile Include="Button\ShareParameterButton.cs" />
     <Compile Include="ColorElement\AppPenalColorElement.cs" />
     <Compile Include="ColorElement\AutoApplyColorHandler.cs" />
     <Compile Include="ColorElement\ColorElementBinding.cs" />
@@ -171,9 +172,19 @@
     </Compile>
     <Compile Include="ScopeBox\ScopeBoxBinding.cs" />
     <Compile Include="ScopeBox\ScopeBoxHandler.cs" />
+    <Compile Include="ShareParameter\AppPenalShareParameter.cs" />
+    <Compile Include="ShareParameter\frmShareParameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareParameter\frmShareParameter.Designer.cs">
+      <DependentUpon>frmShareParameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShareParameter\ShareParameterBinding.cs" />
+    <Compile Include="ShareParameter\ShareParameterHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApiProject4.addin" />
+    <None Include="Resources\icons8-sales-performance-32.png" />
     <None Include="Resources\icons8-color-wheel-32.png" />
     <None Include="Resources\icons8-width-162222.png" />
     <None Include="Resources\icons8-height-16.png" />
@@ -214,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScopeBox\frmScopeBox.resx">
       <DependentUpon>frmScopeBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareParameter\frmShareParameter.resx">
+      <DependentUpon>frmShareParameter.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
