@@ -172,8 +172,15 @@
     </Compile>
     <Compile Include="ScopeBox\ScopeBoxBinding.cs" />
     <Compile Include="ScopeBox\ScopeBoxHandler.cs" />
+    <Compile Include="ShareParameter\AddParameterHandler.cs" />
     <Compile Include="ShareParameter\AppPenalShareParameter.cs" />
     <Compile Include="ShareParameter\ExtensionMethod.cs" />
+    <Compile Include="ShareParameter\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareParameter\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShareParameter\frmAddGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScopeBox\frmScopeBox.resx">
       <DependentUpon>frmScopeBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareParameter\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShareParameter\frmAddGroup.resx">
       <DependentUpon>frmAddGroup.cs</DependentUpon>

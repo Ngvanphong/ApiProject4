@@ -203,6 +203,7 @@
             this.btnAddParameter.TabIndex = 0;
             this.btnAddParameter.Text = "Add";
             this.btnAddParameter.UseVisualStyleBackColor = true;
+            this.btnAddParameter.Click += new System.EventHandler(this.btnAddParameter_Click);
             // 
             // groupBox3
             // 

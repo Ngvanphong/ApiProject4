@@ -17,11 +17,16 @@ namespace ApiProject4.ShareParameter
     {
         private ShareParameterHandler _handlerShareParameter;
         private ExternalEvent _eventShareParameter;
-        public frmShareParameter(ExternalEvent eventShareParameter, ShareParameterHandler handlerShareParameter)
+        private AddParameterHandler _handlerAddParameter;
+        private ExternalEvent _eventAddParameter;
+        public frmShareParameter(ExternalEvent eventShareParameter,
+            ShareParameterHandler handlerShareParameter, ExternalEvent eventAddParameter, AddParameterHandler handlerAddParameter)
         {
             InitializeComponent();
             _eventShareParameter = eventShareParameter;
             _handlerShareParameter = handlerShareParameter;
+            _handlerAddParameter = handlerAddParameter;
+            _eventAddParameter = eventAddParameter;
         }
 
         private void btnNewFileParamter_Click(object sender, EventArgs e)
@@ -102,6 +107,12 @@ namespace ApiProject4.ShareParameter
         private void btnModifyParamter_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAddParameter_Click(object sender, EventArgs e)
+        {
+            AppPenalShareParameter.ShowFormAddParameter();
+            _eventAddParameter.Raise();
         }
     }
 }

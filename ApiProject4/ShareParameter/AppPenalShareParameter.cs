@@ -12,11 +12,15 @@ namespace ApiProject4.ShareParameter
         public static frmShareParameter myFormShareParameter;
         public static frmAddGroup myFormAddgroup;
         public static frmRenameGroup myFormRenameGroup;
+        public static frmAddSharedParameter myFormAddShareParameter;
+
         public static void ShowFormShareParameter()
         {
             ShareParameterHandler handlerShareParameter = new ShareParameterHandler();
             ExternalEvent eventShareParameter = ExternalEvent.Create(handlerShareParameter);
-            myFormShareParameter = new frmShareParameter(eventShareParameter, handlerShareParameter);
+            AddParameterHandler handlerAddParameter = new AddParameterHandler();
+            ExternalEvent eventAddParameter = ExternalEvent.Create(handlerAddParameter);
+            myFormShareParameter = new frmShareParameter(eventShareParameter, handlerShareParameter, eventAddParameter, handlerAddParameter);
             myFormShareParameter.Show();
         }
 
@@ -30,6 +34,12 @@ namespace ApiProject4.ShareParameter
         {
             myFormRenameGroup = new frmRenameGroup();
             myFormRenameGroup.Show();
+        }
+
+        public static void ShowFormAddParameter()
+        {
+            myFormAddShareParameter = new frmAddSharedParameter();
+            myFormAddShareParameter.Show();
         }
 
     }
