@@ -37,6 +37,7 @@
             this.dataGridViewCreateParameter = new System.Windows.Forms.DataGridView();
             this.btnCreateParameter = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCreateParameter)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,6 +97,8 @@
             this.dataGridViewCreateParameter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewCreateParameter.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridViewCreateParameter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCreateParameter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1});
             this.dataGridViewCreateParameter.Location = new System.Drawing.Point(115, 94);
             this.dataGridViewCreateParameter.Name = "dataGridViewCreateParameter";
             this.dataGridViewCreateParameter.RowHeadersVisible = false;
@@ -110,15 +113,21 @@
             this.btnCreateParameter.TabIndex = 3;
             this.btnCreateParameter.Text = "Create";
             this.btnCreateParameter.UseVisualStyleBackColor = true;
+            this.btnCreateParameter.Click += new System.EventHandler(this.btnCreateParameter_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(12, 94);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 65);
+            this.label5.Size = new System.Drawing.Size(85, 52);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Parameter Names:\r\n\r\nEnter each new\r\nparameter name\r\non seperate line.";
+            this.label5.Text = "\r\nEnter each new\r\nparameter name\r\non seperate line.";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Name Parameter";
+            this.Column1.Name = "Column1";
             // 
             // frmAddSharedParameter
             // 
@@ -157,5 +166,6 @@
         public System.Windows.Forms.ComboBox dropDiscipline;
         public System.Windows.Forms.ComboBox dropParameterType;
         public System.Windows.Forms.DataGridView dataGridViewCreateParameter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }
