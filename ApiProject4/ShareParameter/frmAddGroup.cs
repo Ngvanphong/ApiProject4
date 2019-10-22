@@ -50,6 +50,21 @@ namespace ApiProject4.ShareParameter
 
             List<ListViewItem> listNameGruop = new List<ListViewItem>();
             var nRow = AppPenalShareParameter.myFormAddgroup.dataGridViewAddGroup.RowCount;
+            List<string> listNameAdd = new List<string>();
+            if (nRow > 1)
+            {
+                for (int k = 0; k < nRow - 1; k++)
+                {
+                    string name = AppPenalShareParameter.myFormAddgroup.dataGridViewAddGroup.Rows[k].Cells[0].Value.ToString();
+                    listNameAdd.Add(name);
+                }  
+            }
+            bool exist = CheckExistAddGroup(listNameAdd);
+            if (exist == true)
+            {
+                MessageBox.Show("Error: Name of group is existed");
+                return;
+            }
             int idInput = idGroup + 1;
             if (nRow > 1)
             {
@@ -57,6 +72,7 @@ namespace ApiProject4.ShareParameter
                 for (int i = 0; i < nRow - 1; i++)
                 {
                     string name = AppPenalShareParameter.myFormAddgroup.dataGridViewAddGroup.Rows[i].Cells[0].Value.ToString();
+                    AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes.Add(name);
                     lineAdd = lineAdd + "GROUP\t" + idInput + "\t" + name;
                     if (i < nRow - 2)
                     {
@@ -73,7 +89,26 @@ namespace ApiProject4.ShareParameter
                         sw.WriteLine(lines[j]);
                 }
 
-            }
+            } 
+            AppPenalShareParameter.myFormAddgroup.Hide();
         }
+        private bool CheckExistAddGroup(List<string> listName)
+        {
+            bool result = false;
+            var listOtherName = listName.Distinct().ToList();
+            var itemGroups = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
+            foreach(TreeNode group in itemGroups)
+            {
+                if (listOtherName.Exists(x => x == group.Text))
+                {
+                    result = true;
+                    return result;
+                }
+            }
+            return result;
+        }
+
+       
+
     }
 }
