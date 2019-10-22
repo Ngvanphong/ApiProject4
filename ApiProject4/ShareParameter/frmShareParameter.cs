@@ -78,43 +78,30 @@ namespace ApiProject4.ShareParameter
 
         private void btnAddGroup_Click(object sender, EventArgs e)
         {
-            string path = AppPenalShareParameter.myFormShareParameter.txtMasterPathShareParameterFile.Text;
-            string[] lines = System.IO.File.ReadAllLines(path);
-            int rowEnd = 0;
-            int idGroup = 0;
-            string lineAdd = "GROUP\t3\tDoor3";
-            foreach (string line in lines)
-            {
-                if (line.StartsWith(@"*PARAM") == false)
-                {
-                    rowEnd += 1;
-                }else
-                {
-                    break;
-                }
-            }
-            foreach(string group in lines)
-            {
-                if (group.StartsWith("GROUP") == true)
-                {
-                    string id = Regex.Split(group, @"\t")[1];
-                    if(idGroup> int.Parse(id))
-                    {
-                        idGroup = int.Parse(id);
-                    }
-                }
-            }
-            //AddGroup
             AppPenalShareParameter.ShowFormAddGroup();
+        }
 
-            using (StreamWriter sw = File.CreateText(path))
-            {
-                for (int i = 0; i < rowEnd; i++)
-                    sw.WriteLine(lines[i]);
-                sw.WriteLine(lineAdd);
-                for (int i = rowEnd; i < lines.Length; i++)
-                    sw.WriteLine(lines[i]);
-            }
+        private void btnRenameGroup_Click(object sender, EventArgs e)
+        {
+            AppPenalShareParameter.ShowFormRenameGroup();
+            var select = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Text;
+            OldNewGroup item = new OldNewGroup();
+            item.OldName = select;
+            BindingSource bindingSource = new BindingSource();
+            BindingList<OldNewGroup> oldNewBinding = new BindingList<OldNewGroup>();
+            oldNewBinding.Add(item);
+            bindingSource.DataSource = oldNewBinding;     
+            AppPenalShareParameter.myFormRenameGroup.dataGridViewRenameGroup.DataSource = bindingSource;
+        }
+
+        private void btnDeleteGroup_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnModifyParamter_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

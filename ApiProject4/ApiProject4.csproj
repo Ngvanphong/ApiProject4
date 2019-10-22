@@ -180,6 +180,12 @@
     <Compile Include="ShareParameter\frmAddGroup.Designer.cs">
       <DependentUpon>frmAddGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShareParameter\frmRenameGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareParameter\frmRenameGroup.Designer.cs">
+      <DependentUpon>frmRenameGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShareParameter\frmShareParameter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ShareParameter\frmAddGroup.resx">
       <DependentUpon>frmAddGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareParameter\frmRenameGroup.resx">
+      <DependentUpon>frmRenameGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShareParameter\frmShareParameter.resx">
       <DependentUpon>frmShareParameter.cs</DependentUpon>

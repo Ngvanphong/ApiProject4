@@ -22,4 +22,9 @@ namespace ApiProject4.ShareParameter
             NameParameter = new List<string>();
         }
     }
+    public class OldNewGroup
+    {
+        public string OldName { set; get; }
+        public string NewName { set; get; }
+    }
 }

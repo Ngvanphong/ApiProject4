@@ -43,6 +43,7 @@
             this.btnCreateGroup.TabIndex = 1;
             this.btnCreateGroup.Text = "OK";
             this.btnCreateGroup.UseVisualStyleBackColor = true;
+            this.btnCreateGroup.Click += new System.EventHandler(this.btnCreateGroup_Click);
             // 
             // label2
             // 
