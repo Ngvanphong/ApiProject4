@@ -106,13 +106,80 @@ namespace ApiProject4.ShareParameter
 
         private void btnModifyParamter_Click(object sender, EventArgs e)
         {
-
+            AppPenalShareParameter.ShowFormModify();
+            UpdateFormModifyPara();
         }
 
         private void btnAddParameter_Click(object sender, EventArgs e)
         {
             AppPenalShareParameter.ShowFormAddParameter();
             _eventAddParameter.Raise();
+        }
+        private void UpdateFormModifyPara()
+        {
+            string path = AppPenalShareParameter.myFormShareParameter.txtMasterPathShareParameterFile.Text;
+            var lines = System.IO.File.ReadAllLines(path);
+            var lineGroups = lines.Where(x => x.StartsWith("GROUP"));
+            string groupNameOld = string.Empty;
+            string namePara = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Text;
+            AppPenalShareParameter.nameParameterModify = namePara;
+            string typeOld = string.Empty;
+            int visible = 0;
+            foreach (string line in lines)
+            {
+                if (line.StartsWith("PARAM"))
+                {
+                    string nameOld= Regex.Split(line, @"\t")[2];
+                    if (nameOld == namePara)
+                    {
+                        string groupId = Regex.Split(line, @"\t")[5];
+                        typeOld = Regex.Split(line, @"\t")[3];
+                        visible = int.Parse(Regex.Split(line, @"\t")[6]);
+                        foreach (string groupLine in lineGroups)
+                        {
+                            if (Regex.Split(groupLine, @"\t")[1] == groupId)
+                            {
+                                groupNameOld = Regex.Split(groupLine, @"\t")[2];
+                            }
+                        }
+                    } 
+                }
+            }
+            AppPenalShareParameter.myFormModifyParameter.txtNameParaModify.Text = namePara;
+            AppPenalShareParameter.myFormModifyParameter.dropTypeParaModify.Items.AddRange(GetTypeParameter.GetAllType());
+            foreach(var item in AppPenalShareParameter.myFormModifyParameter.dropTypeParaModify.Items)
+            {
+                string typeOldUpper = Regex.Replace(typeOld, "([A-Z])_([A-Z])", "$1$2").TrimStart();
+                if (item.ToString().ToUpper() == typeOldUpper)
+                {
+                    AppPenalShareParameter.myFormModifyParameter.dropTypeParaModify.SelectedItem = item.ToString();
+                }
+            }
+            var countGroup = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes.Count;
+            string[] listGroups = new string[countGroup];
+            for(int i = 0; i < countGroup; i++)
+            {
+                listGroups[i] = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes[i].Text;
+            }
+            AppPenalShareParameter.myFormModifyParameter.dropGroupParaModify.Items.AddRange(listGroups);
+            for(int i = 0; i < countGroup; i++)
+            {
+                string nameGr = AppPenalShareParameter.myFormModifyParameter.dropGroupParaModify.Items[i].ToString();
+                if(nameGr== groupNameOld)
+                {
+                    AppPenalShareParameter.myFormModifyParameter.dropGroupParaModify.SelectedItem = nameGr;
+                }
+            }
+            if (visible == 1)
+            {
+                AppPenalShareParameter.myFormModifyParameter.checkBoxVisibleParameter.Checked = true;
+            }
+            else
+            {
+                AppPenalShareParameter.myFormModifyParameter.checkBoxVisibleParameter.Checked = false;
+            }
+
+
         }
     }
 }
