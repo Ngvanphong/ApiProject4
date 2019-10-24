@@ -90,7 +90,7 @@ namespace ApiProject4.ShareParameter
                 }
 
             } 
-            AppPenalShareParameter.myFormAddgroup.Hide();
+            AppPenalShareParameter.myFormAddgroup.Close();
         }
         private bool CheckExistAddGroup(List<string> listName)
         {
@@ -108,7 +108,14 @@ namespace ApiProject4.ShareParameter
             return result;
         }
 
-       
+        private void frmAddGroup_Load(object sender, EventArgs e)
+        {
+            this.Owner.Enabled = false;
+        }
 
+        private void frmAddGroup_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Owner.Enabled = true;
+        }
     }
 }

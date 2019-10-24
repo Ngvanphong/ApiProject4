@@ -77,7 +77,7 @@ namespace ApiProject4.ColorElement
                 AppPenalColorElement.CancelAutoHandler = false;
                 _eventAutoApplyColor.Raise();
             }
-            AppPenalColorElement.myFormColorElement.Hide();
+            AppPenalColorElement.myFormColorElement.Close();
         }
 
         private void btnClearSetColor_Click(object sender, EventArgs e)

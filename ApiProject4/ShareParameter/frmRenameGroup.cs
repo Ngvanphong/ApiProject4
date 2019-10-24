@@ -32,7 +32,7 @@ namespace ApiProject4.ShareParameter
             ChangeName(path, oldName, newName);
             TreeNode nodeSelect = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode;
             nodeSelect.Text = newName;
-            AppPenalShareParameter.myFormRenameGroup.Hide();
+            AppPenalShareParameter.myFormRenameGroup.Close();
         }
         private void ChangeName(string path, string oldName, string newName)
         {

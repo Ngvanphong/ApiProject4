@@ -29,6 +29,7 @@ namespace ApiProject4.ShareParameter
         public static void ShowFormAddGroup()
         {
             myFormAddgroup = new frmAddGroup();
+            myFormAddgroup.Owner = myFormShareParameter;
             myFormAddgroup.Show();
         }
 

@@ -44,7 +44,7 @@ namespace ApiProject4.PrintSort
              Thread.Sleep(300);
             }
             printManager.Dispose();
-            AppPenalPrintSort.myFormPrintSort.Hide(); 
+            AppPenalPrintSort.myFormPrintSort.Close(); 
         }
 
         public string GetName()

@@ -90,6 +90,7 @@
             this.btnModifyParameter.TabIndex = 3;
             this.btnModifyParameter.Text = "OK";
             this.btnModifyParameter.UseVisualStyleBackColor = true;
+            this.btnModifyParameter.Click += new System.EventHandler(this.btnModifyParameter_Click);
             // 
             // dropGroupParaModify
             // 
