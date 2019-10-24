@@ -15,6 +15,7 @@ namespace ApiProject4.ShareParameter
         public static frmAddSharedParameter myFormAddShareParameter;
         public static frmModifyParameter myFormModifyParameter;
         public static string nameParameterModify;
+        public static frmDeleteGroup myFormDeleteGroup;
         public static void ShowFormShareParameter()
         {
             nameParameterModify = string.Empty;
@@ -51,6 +52,13 @@ namespace ApiProject4.ShareParameter
             myFormModifyParameter = new frmModifyParameter();
             myFormModifyParameter.Owner = myFormShareParameter;
             myFormModifyParameter.Show();
+        }
+
+        public static void ShowDeleteGroup()
+        {
+            myFormDeleteGroup = new frmDeleteGroup();
+            myFormDeleteGroup.Owner = myFormShareParameter;
+            myFormDeleteGroup.Show();
         }
 
     }

@@ -184,6 +184,7 @@
             this.btnDeleteParameter.TabIndex = 0;
             this.btnDeleteParameter.Text = "Delete";
             this.btnDeleteParameter.UseVisualStyleBackColor = true;
+            this.btnDeleteParameter.Click += new System.EventHandler(this.btnDeleteParameter_Click);
             // 
             // btnModifyParamter
             // 
@@ -289,6 +290,8 @@
             this.treeViewMasterParameter.Name = "treeViewMasterParameter";
             this.treeViewMasterParameter.Size = new System.Drawing.Size(329, 359);
             this.treeViewMasterParameter.TabIndex = 0;
+            this.treeViewMasterParameter.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMasterParameter_AfterCheck);
+            this.treeViewMasterParameter.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMasterParameter_AfterSelect);
             // 
             // checkBoxShowOnly
             // 
@@ -363,6 +366,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmShareParameter";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.frmShareParameter_Load);
             this.tabControl1.ResumeLayout(false);
             this.TagShareParameterFile.ResumeLayout(false);
             this.TagShareParameterFile.PerformLayout();

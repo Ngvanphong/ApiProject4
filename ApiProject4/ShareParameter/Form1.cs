@@ -53,12 +53,13 @@ namespace ApiProject4.ShareParameter
                 }
                 string parameterType = AppPenalShareParameter.myFormAddShareParameter.dropParameterType.SelectedItem.ToString();
                 string path = AppPenalShareParameter.myFormShareParameter.txtMasterPathShareParameterFile.Text;
-                if (string.IsNullOrEmpty(parameterGroup) || parameterGroup == "" || string.IsNullOrEmpty(parameterType) || parameterType == "")
+                if (string.IsNullOrEmpty(parameterGroup) || parameterGroup == "" || string.IsNullOrEmpty(parameterType) || parameterType == ""||listName.Count()==0)
                 {
                     MessageBox.Show("You must input information");
                     return;
                 }
                 UpdateFileParameter(path, listName, parameterGroup, parameterType);
+                AppPenalShareParameter.myFormAddShareParameter.Close();
             }
 
         }

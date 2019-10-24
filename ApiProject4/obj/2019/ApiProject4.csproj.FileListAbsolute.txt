@@ -19,3 +19,4 @@ C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiPro
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.ShareParameter.frmAddSharedParameter.resources
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.csprojResolveAssemblyReference.cache
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.ShareParameter.frmModifyParameter.resources
+C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.ShareParameter.frmDeleteGroup.resources

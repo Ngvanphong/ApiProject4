@@ -76,7 +76,7 @@ namespace ApiProject4.ShareParameter
             {
                 AppPenalShareParameter.myFormShareParameter.txtPathSourceSharedPamameter.Text = file.FileName;
                 var listGroup = ExtensionMethod.LoadParameterByTxt(file.FileName);
-                AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes.Clear();
+                AppPenalShareParameter.myFormShareParameter.treeViewSourceParameter.Nodes.Clear();
                 ExtensionMethod.LoadTreeView(AppPenalShareParameter.myFormShareParameter.treeViewSourceParameter, listGroup);
             }
         }
@@ -101,7 +101,16 @@ namespace ApiProject4.ShareParameter
 
         private void btnDeleteGroup_Click(object sender, EventArgs e)
         {
-
+            AppPenalShareParameter.ShowDeleteGroup();
+            var nodeTree = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
+            AppPenalShareParameter.myFormDeleteGroup.dropGroupChooesDelete.Items.Add(string.Empty);
+            foreach (TreeNode group in nodeTree)
+            {
+                if(group.Text!= AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Text)
+                {
+                    AppPenalShareParameter.myFormDeleteGroup.dropGroupChooesDelete.Items.Add(group.Text);
+                }  
+            }
         }
 
         private void btnModifyParamter_Click(object sender, EventArgs e)
@@ -179,6 +188,98 @@ namespace ApiProject4.ShareParameter
                 AppPenalShareParameter.myFormModifyParameter.checkBoxVisibleParameter.Checked = false;
             }
 
+
+        }
+
+        private void btnDeleteParameter_Click(object sender, EventArgs e)
+        {
+            string warning = "WARNING: Are you sure to delete selected share parameter? Any families, tags, and schedules that include a deleted parameter will continue to function, but it will be imposisble to use the parameter with anything new.";
+            DialogResult result = MessageBox.Show(warning, "Delete Parameter", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+            var paraSelect = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Text;
+            var path = AppPenalShareParameter.myFormShareParameter.txtMasterPathShareParameterFile.Text;
+            var lines = System.IO.File.ReadAllLines(path);
+            int rowEnd = lines.Length;
+            using (StreamWriter sw = File.CreateText(path))
+            {
+                for (int j = 0; j < rowEnd; j++)
+                {
+                    if (lines[j].StartsWith("PARAM"))
+                    {
+                        string nameParaDelete = Regex.Split(lines[j], @"\t")[2];
+                        if (nameParaDelete != paraSelect)
+                        {
+                            sw.WriteLine(lines[j]);
+                        }
+                    }else
+                    {
+                        sw.WriteLine(lines[j]);
+                    }
+                }
+            }
+            AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Remove();
+        }
+
+        private void frmShareParameter_Load(object sender, EventArgs e)
+        {
+            this.btnDeleteParameter.Enabled = false;
+            this.btnModifyParamter.Enabled = false;
+            this.btnRenameGroup.Enabled = false;
+            this.btnDeleteGroup.Enabled = false;
+        }
+
+        private void treeViewMasterParameter_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+           
+        }
+
+        private void treeViewMasterParameter_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            var selectGroup = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
+            bool isCheckGroup = false;
+            bool isCheckPara = false;
+            foreach (TreeNode tree in selectGroup)
+            {
+                if (tree.IsSelected)
+                {
+                    isCheckGroup = true;
+                    break;
+                }
+                else
+                {
+                    foreach(TreeNode treeP in tree.Nodes)
+                    {
+                        if (treeP.IsSelected)
+                        {
+                            isCheckPara = true;
+                            break;
+                        }
+                    }
+                    if (isCheckPara == true) break;
+                }    
+            }
+            if (isCheckGroup)
+            {
+                AppPenalShareParameter.myFormShareParameter.btnDeleteGroup.Enabled = true;
+                AppPenalShareParameter.myFormShareParameter.btnRenameGroup.Enabled = true;
+            }
+            else
+            {
+                AppPenalShareParameter.myFormShareParameter.btnDeleteGroup.Enabled = false;
+                AppPenalShareParameter.myFormShareParameter.btnRenameGroup.Enabled = false;              
+            }
+            if (isCheckPara)
+            {
+                AppPenalShareParameter.myFormShareParameter.btnDeleteParameter.Enabled = true;
+                AppPenalShareParameter.myFormShareParameter.btnModifyParamter.Enabled = true;
+            }else
+            {
+                AppPenalShareParameter.myFormShareParameter.btnDeleteParameter.Enabled = false;
+                AppPenalShareParameter.myFormShareParameter.btnModifyParamter.Enabled = false;
+            }
 
         }
     }
