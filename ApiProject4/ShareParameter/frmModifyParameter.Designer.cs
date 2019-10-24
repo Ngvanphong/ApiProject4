@@ -126,6 +126,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmModifyParameter";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmModifyParameter_FormClosed);
+            this.Load += new System.EventHandler(this.frmModifyParameter_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

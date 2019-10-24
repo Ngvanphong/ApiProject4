@@ -127,6 +127,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddParameters";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddSharedParameter_FormClosed);
             this.Load += new System.EventHandler(this.frmAddSharedParameter_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCreateParameter)).EndInit();
             this.ResumeLayout(false);

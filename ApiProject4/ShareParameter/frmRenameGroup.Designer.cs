@@ -68,6 +68,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmRenameGroup";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmRenameGroup_FormClosed);
+            this.Load += new System.EventHandler(this.frmRenameGroup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRenameGroup)).EndInit();
             this.ResumeLayout(false);
 

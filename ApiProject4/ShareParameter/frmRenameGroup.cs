@@ -91,5 +91,15 @@ namespace ApiProject4.ShareParameter
             }
             return result;
         }
+
+        private void frmRenameGroup_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Owner.Enabled = true;
+        }
+
+        private void frmRenameGroup_Load(object sender, EventArgs e)
+        {
+            this.Owner.Enabled = false;
+        }
     }
 }

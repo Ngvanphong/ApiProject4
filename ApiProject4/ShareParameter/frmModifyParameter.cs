@@ -65,8 +65,21 @@ namespace ApiProject4.ShareParameter
             }
             string newLine = string.Empty;
             int rowEnd = lines.Length;
+            bool checkNameExist = checkExistModifedName(oldPara, nameNew);
+            if (checkNameExist == true)
+            {
+                MessageBox.Show("Error: Name of parameter is existed.");
+                return;
+            }
+            string warning ="WARNING: You cannot restore changed parameter by reverting to the original settings. The changed will be incompatible with old uses of the parameter, and Revit will treat them as two separate for the purposes of scheduling and tagging";
+            DialogResult result = MessageBox.Show(warning, "Modify Parameter",MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+
             int indexModify = 0;
-            for(int j = 0; j < lines.Length; j++)
+            for (int j = 0; j < lines.Length; j++)
             {
                 string line = lines[j];
                 if (line.StartsWith("PARAM"))
@@ -94,6 +107,55 @@ namespace ApiProject4.ShareParameter
                     }    
                 }
             }
+            string nodeTreeOld = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Text;
+            string groupTreeOld = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Parent.Text;
+            if (nodeTreeOld != nameNew&&groupNew==groupTreeOld)
+            {
+                AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Text = nameNew;
+            }
+            else if(groupNew != groupTreeOld)
+            {
+                AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Remove();
+                var nodeGs = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
+                foreach(TreeNode treeG in nodeGs)
+                {
+                    if (treeG.Text == groupNew)
+                    {
+                        treeG.Nodes.Add(nameNew);
+                    }
+                }
+            }
+            AppPenalShareParameter.myFormModifyParameter.Close();
+        }
+
+        private void frmModifyParameter_Load(object sender, EventArgs e)
+        {
+            this.Owner.Enabled = false;
+        }
+
+        private void frmModifyParameter_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Owner.Enabled = true;
+        }
+        private bool checkExistModifedName(string oldName,string newName)
+        {
+            bool result = false;
+            var nodeGs = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
+            foreach(TreeNode nodeG in nodeGs)
+            {
+                foreach(TreeNode nodeP in nodeG.Nodes)
+                {
+                    if (nodeP.Text != oldName)
+                    {
+                        if (nodeP.Text == newName)
+                        {
+                            result = true;
+                            return result;
+                        }
+                    }
+                }
+            }
+            return result;
         }
     }
 }

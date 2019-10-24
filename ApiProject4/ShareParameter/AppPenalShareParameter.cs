@@ -36,17 +36,20 @@ namespace ApiProject4.ShareParameter
         public static void ShowFormRenameGroup()
         {
             myFormRenameGroup = new frmRenameGroup();
+            myFormRenameGroup.Owner = myFormShareParameter;
             myFormRenameGroup.Show();
         }
 
         public static void ShowFormAddParameter()
         {
             myFormAddShareParameter = new frmAddSharedParameter();
+            myFormAddShareParameter.Owner = myFormShareParameter;
             myFormAddShareParameter.Show();
         }
         public static void ShowFormModify()
         {
             myFormModifyParameter = new frmModifyParameter();
+            myFormModifyParameter.Owner = myFormShareParameter;
             myFormModifyParameter.Show();
         }
 

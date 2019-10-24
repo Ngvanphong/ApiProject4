@@ -30,7 +30,7 @@ namespace ApiProject4.ShareParameter
 
         private void frmAddSharedParameter_Load(object sender, EventArgs e)
         {
-
+            this.Owner.Enabled = false;
         }
 
         private void btnCreateParameter_Click(object sender, EventArgs e)
@@ -150,6 +150,9 @@ namespace ApiProject4.ShareParameter
             }
         }
 
-
+        private void frmAddSharedParameter_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Owner.Enabled = true;
+        }
     }
 }
