@@ -25,6 +25,11 @@ namespace ApiProject4.ShareParameter
             string nameNew = AppPenalShareParameter.myFormModifyParameter.txtNameParaModify.Text;
             string groupNew = AppPenalShareParameter.myFormModifyParameter.dropGroupParaModify.SelectedItem.ToString();
             string typeNew = AppPenalShareParameter.myFormModifyParameter.dropTypeParaModify.SelectedItem.ToString();
+            if (string.IsNullOrEmpty(typeNew)||typeNew=="")
+            {
+                MessageBox.Show("Error: You must choose type of parameter");
+                return;
+            }
             string visible = "1";
             string idGroup = string.Empty;
             if (AppPenalShareParameter.myFormModifyParameter.checkBoxVisibleParameter.Checked == false)
@@ -37,10 +42,10 @@ namespace ApiProject4.ShareParameter
             {
                 if (line.StartsWith("GROUP"))
                 {
-                    string nameG= Regex.Split(line, @"\t")[2];
+                    string nameG = Regex.Split(line, @"\t")[2];
                     if (nameG == groupNew)
                     {
-                        idGroup= Regex.Split(line, @"\t")[1];
+                        idGroup = Regex.Split(line, @"\t")[1];
                     }
                 }
             }
@@ -71,8 +76,8 @@ namespace ApiProject4.ShareParameter
                 MessageBox.Show("Error: Name of parameter is existed.");
                 return;
             }
-            string warning ="WARNING: You cannot restore changed parameter by reverting to the original settings. The changed will be incompatible with old uses of the parameter, and Revit will treat them as two separate for the purposes of scheduling and tagging";
-            DialogResult result = MessageBox.Show(warning, "Modify Parameter",MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            string warning = "WARNING: You cannot restore changed parameter by reverting to the original settings. The changed will be incompatible with old uses of the parameter, and Revit will treat them as two separate for the purposes of scheduling and tagging";
+            DialogResult result = MessageBox.Show(warning, "Modify Parameter", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (result == DialogResult.Cancel)
             {
                 return;
@@ -89,7 +94,8 @@ namespace ApiProject4.ShareParameter
                     {
                         indexModify = j;
                         string id = Regex.Split(line, @"\t")[1];
-                        newLine = "PARAM\t" + id + "\t" + nameNew + "\t" + dataInput + "\t\t" + idGroup + "\t" + visible + "\t\t" + "1";   
+                        string category = Regex.Split(line, @"\t")[4];
+                        newLine = "PARAM\t" + id + "\t" + nameNew + "\t" + dataInput + "\t" + category + "\t" + idGroup + "\t" + visible + "\t\t" + "1";
                     }
                 }
             }
@@ -104,20 +110,20 @@ namespace ApiProject4.ShareParameter
                     else
                     {
                         sw.WriteLine(lines[j]);
-                    }    
+                    }
                 }
             }
             string nodeTreeOld = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Text;
             string groupTreeOld = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Parent.Text;
-            if (nodeTreeOld != nameNew&&groupNew==groupTreeOld)
+            if (nodeTreeOld != nameNew && groupNew == groupTreeOld)
             {
                 AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Text = nameNew;
             }
-            else if(groupNew != groupTreeOld)
+            else if (groupNew != groupTreeOld)
             {
                 AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Remove();
                 var nodeGs = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
-                foreach(TreeNode treeG in nodeGs)
+                foreach (TreeNode treeG in nodeGs)
                 {
                     if (treeG.Text == groupNew)
                     {
@@ -137,13 +143,13 @@ namespace ApiProject4.ShareParameter
         {
             this.Owner.Enabled = true;
         }
-        private bool checkExistModifedName(string oldName,string newName)
+        private bool checkExistModifedName(string oldName, string newName)
         {
             bool result = false;
             var nodeGs = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
-            foreach(TreeNode nodeG in nodeGs)
+            foreach (TreeNode nodeG in nodeGs)
             {
-                foreach(TreeNode nodeP in nodeG.Nodes)
+                foreach (TreeNode nodeP in nodeG.Nodes)
                 {
                     if (nodeP.Text != oldName)
                     {

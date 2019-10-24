@@ -60,6 +60,11 @@ namespace ApiProject4.ShareParameter
                 {
                     listNameParameterTypes[i] = "LOADCLASSIFICATION";
                 }
+                else if (listNameParameterTypes[i] == "FamilyType")
+                {
+                    listNameParameterTypes[i] = "string.Empty";
+                }
+               
 
             }
             return listNameParameterTypes;

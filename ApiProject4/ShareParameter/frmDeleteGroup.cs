@@ -43,14 +43,14 @@ namespace ApiProject4.ShareParameter
                 groupMoveTo = AppPenalShareParameter.myFormDeleteGroup.dropGroupChooesDelete.SelectedItem.ToString();
             }
             catch { }
-            
+
             string groupOld = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Text;
             string path = AppPenalShareParameter.myFormShareParameter.txtMasterPathShareParameterFile.Text;
             var lines = System.IO.File.ReadAllLines(path);
             int rowEnd = lines.Length;
             string idOldGroup = "0";
-            string  idNewGroup = "0";
-           foreach(string line in lines)
+            string idNewGroup = "0";
+            foreach (string line in lines)
             {
                 if (line.StartsWith("GROUP"))
                 {
@@ -58,9 +58,10 @@ namespace ApiProject4.ShareParameter
                     if (nameG == groupOld)
                     {
                         idOldGroup = Regex.Split(line, @"\t")[1];
-                    }else if (nameG == groupMoveTo)
+                    }
+                    else if (nameG == groupMoveTo)
                     {
-                        idNewGroup= Regex.Split(line, @"\t")[1];
+                        idNewGroup = Regex.Split(line, @"\t")[1];
                     }
                 }
             }
@@ -77,20 +78,22 @@ namespace ApiProject4.ShareParameter
                             if (idGroup == idOldGroup)
                             {
                                 string id = Regex.Split(lines[j], @"\t")[1];
-                                string name= Regex.Split(lines[j], @"\t")[2];
+                                string name = Regex.Split(lines[j], @"\t")[2];
                                 string dataType = Regex.Split(lines[j], @"\t")[3];
                                 string visible = Regex.Split(lines[j], @"\t")[6];
-                                string lineNew = "PARAM\t" + id + "\t" + name + "\t" + dataType + "\t\t" + idNewGroup + "\t"+ visible + "\t\t" + "1";
+                                string category = Regex.Split(lines[j], @"\t")[4];
+                                string lineNew = "PARAM\t" + id + "\t" + name + "\t" + dataType + "\t" + category + "\t" + idNewGroup + "\t" + visible + "\t\t" + "1";
                                 sw.WriteLine(lineNew);
                             }
                             else
                             {
                                 sw.WriteLine(lines[j]);
                             }
-                            
-                        }else if (lines[j].StartsWith("GROUP"))
+
+                        }
+                        else if (lines[j].StartsWith("GROUP"))
                         {
-                            string nameG= Regex.Split(lines[j], @"\t")[2];
+                            string nameG = Regex.Split(lines[j], @"\t")[2];
                             if (nameG != groupOld)
                             {
                                 sw.WriteLine(lines[j]);
@@ -106,11 +109,11 @@ namespace ApiProject4.ShareParameter
                 var nodeChoose = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode;
                 var nodeParaChoose = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Nodes;
                 var allTreeGr = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
-                foreach(TreeNode node in allTreeGr)
+                foreach (TreeNode node in allTreeGr)
                 {
                     if (node.Text == groupMoveTo)
                     {
-                        foreach(TreeNode nodePa in nodeParaChoose)
+                        foreach (TreeNode nodePa in nodeParaChoose)
                         {
                             node.Nodes.Add(nodePa.Text);
                         }
