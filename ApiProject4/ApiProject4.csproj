@@ -194,6 +194,12 @@
     <Compile Include="ShareParameter\frmDeleteGroup.Designer.cs">
       <DependentUpon>frmDeleteGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShareParameter\frmMergeGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareParameter\frmMergeGroup.Designer.cs">
+      <DependentUpon>frmMergeGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShareParameter\frmModifyParameter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -268,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ShareParameter\frmDeleteGroup.resx">
       <DependentUpon>frmDeleteGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareParameter\frmMergeGroup.resx">
+      <DependentUpon>frmMergeGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShareParameter\frmModifyParameter.resx">
       <DependentUpon>frmModifyParameter.cs</DependentUpon>

@@ -290,5 +290,167 @@ namespace ApiProject4.ShareParameter
             }
 
         }
+
+        private void dropFilterParameterSource_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var filterName = string.Empty;
+            FilterParameter filterClass = new FilterParameter();
+            try
+            {
+                filterName = AppPenalShareParameter.myFormShareParameter.dropFilterParameterSource.SelectedItem.ToString();
+            }
+            catch { };
+            if (filterName == filterClass.Unique)
+            {
+                FilterUnique();
+            }else if (filterName == filterClass.Duplicate)
+            {
+                FilterDuplicate();
+            }else if (filterName == filterClass.None)
+            {
+                NoneFilter();
+            }
+
+        }
+
+        private void FilterUnique()
+        {
+            var treeSource = AppPenalShareParameter.myFormShareParameter.treeViewSourceParameter.Nodes;
+            var treeMaster = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
+            List<TreeNode> childSource = new List<TreeNode>();
+            List<TreeNode> childMaster = new List<TreeNode>();
+            foreach(TreeNode nodeSource in treeSource)
+            {
+                nodeSource.Checked = false;
+                foreach(TreeNode nodePa in nodeSource.Nodes)
+                {
+                    childSource.Add(nodePa);
+                }
+            }
+            foreach (TreeNode nodeMaster in treeMaster)
+            {
+                foreach (TreeNode nodePa in nodeMaster.Nodes)
+                {
+                    childMaster.Add(nodePa);
+                }
+                nodeMaster.ExpandAll();
+            }
+            List<TreeNode> listOther = childSource.Where(x => childMaster.Exists(y => y.Text == x.Text)==false).ToList();
+            List<TreeNode> listSample = childSource.Where(x => childMaster.Exists(y => y.Text == x.Text) == true).ToList();
+            foreach (TreeNode node in listOther)
+            {
+                if (node.Parent.IsExpanded == false)
+                {
+                    node.Parent.Expand();
+                }
+                node.BackColor = Color.Aquamarine;
+                node.Checked = true;
+            }
+            foreach(TreeNode nodeHind in listSample)
+            {
+                nodeHind.Checked = false;
+                nodeHind.BackColor = Color.White;
+            }
+        }
+        
+        private void FilterDuplicate()
+        {
+            var treeSource = AppPenalShareParameter.myFormShareParameter.treeViewSourceParameter.Nodes;
+            var treeMaster = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
+            List<TreeNode> childSource = new List<TreeNode>();
+            List<TreeNode> childMaster = new List<TreeNode>();
+            foreach (TreeNode nodeSource in treeSource)
+            {
+                nodeSource.Checked = false;
+                foreach (TreeNode nodePa in nodeSource.Nodes)
+                {
+                    childSource.Add(nodePa);
+                }
+            }
+            foreach (TreeNode nodeMaster in treeMaster)
+            {
+                foreach (TreeNode nodePa in nodeMaster.Nodes)
+                {
+                    childMaster.Add(nodePa);
+                }
+                nodeMaster.ExpandAll();
+            }
+            List<TreeNode> listOther = childSource.Where(x => childMaster.Exists(y => y.Text == x.Text) == false).ToList();
+            List<TreeNode> listSample = childSource.Where(x => childMaster.Exists(y => y.Text == x.Text) == true).ToList();
+            foreach (TreeNode node in listSample)
+            {
+                if (node.Parent.IsExpanded == false)
+                {
+                    node.Parent.Expand();
+                }
+                node.BackColor = Color.Yellow;
+                node.Checked = false;
+            }
+            foreach (TreeNode nodeHind in listOther)
+            {
+                nodeHind.Checked = false;
+                nodeHind.BackColor = Color.White;
+            }
+        }
+
+        private void NoneFilter()
+        {
+            var treeSource = AppPenalShareParameter.myFormShareParameter.treeViewSourceParameter.Nodes; 
+            foreach (TreeNode nodeSource in treeSource)
+            {
+                nodeSource.Checked = false;
+                foreach (TreeNode nodePa in nodeSource.Nodes)
+                {
+                    nodePa.Checked = false;
+                    nodePa.BackColor = Color.White;
+                }
+            }
+        }
+
+        private void treeViewSourceParameter_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            if (e.Action != TreeViewAction.Unknown)
+            {
+                if (e.Node.Nodes.Count > 0)
+                {
+                    /* Calls the CheckAllChildNodes method, passing in the current 
+                    Checked value of the TreeNode whose checked state changed. */
+                    this.CheckAllChildNodes(e.Node, e.Node.Checked);
+                }
+            }
+
+        }
+
+        private void CheckAllChildNodes(TreeNode treeNode, bool nodeChecked)
+        {
+            foreach (TreeNode node in treeNode.Nodes)
+            {
+                node.Checked = nodeChecked;
+                if (node.Nodes.Count > 0)
+                {
+                    // If the current node has child nodes, call the CheckAllChildsNodes method recursively.
+                    this.CheckAllChildNodes(node, nodeChecked);
+                }
+            }
+        }
+
+        private void btnAssignSourceToMaster_Click(object sender, EventArgs e)
+        {
+            AppPenalShareParameter.ShowMergeParameter();
+            GetInforForMergroup();
+        }
+
+        private void GetInforForMergroup()
+        {
+            var treeMaster = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
+            AppPenalShareParameter.myFormMergeParameter.dropGroupMerge.Items.Clear();
+            AppPenalShareParameter.myFormMergeParameter.dropGroupMerge.Items.Add(string.Empty);
+            foreach (TreeNode group in treeMaster)
+            {
+                AppPenalShareParameter.myFormMergeParameter.dropGroupMerge.Items.Add(group.Text);
+            }
+        }
     }
+
+   
 }

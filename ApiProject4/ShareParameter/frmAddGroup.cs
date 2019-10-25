@@ -24,7 +24,7 @@ namespace ApiProject4.ShareParameter
             string path = AppPenalShareParameter.myFormShareParameter.txtMasterPathShareParameterFile.Text;
             string[] lines = System.IO.File.ReadAllLines(path);
             int rowEnd = 0;
-            int idGroup = 0;
+            int idGroup = 1;
             foreach (string line in lines)
             {
                 if (line.StartsWith(@"*PARAM") == false)

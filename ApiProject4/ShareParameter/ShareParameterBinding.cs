@@ -22,9 +22,36 @@ namespace ApiProject4.ShareParameter
             if (CheckAccess.CheckLicense() == true)
             {
                 AppPenalShareParameter.ShowFormShareParameter();
+                GetInforDrop();
             }
             return Result.Succeeded;
         }
+
+        private void GetInforDrop()
+        {
+            FilterParameter filter = new FilterParameter();
+            SearchParameter search = new SearchParameter();
+            string[] searchText = { search.ParameterName, search.GroupName };
+            string[] filterText = { filter.None, filter.Unique, filter.Duplicate };
+            AppPenalShareParameter.myFormShareParameter.dropSearchParameters.Items.AddRange(searchText);
+            AppPenalShareParameter.myFormShareParameter.dropFilterParameterSource.Items.AddRange(filterText);
+        }
+    }
+    public class FilterParameter
+    {
+        public string None { get { return "None"; } }
+
+        public string Unique { get { return "Unique"; } }
+
+        public string Duplicate { get { return "Duplicate"; } }
+
+    }
+
+    public class SearchParameter
+    {
+        public string ParameterName { get { return "Parameter Name"; } }
+
+        public string GroupName { get { return "Group Name"; } }
     }
 
 }
