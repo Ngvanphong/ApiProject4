@@ -164,6 +164,14 @@ namespace ApiProject4.ShareParameter
                     AppPenalShareParameter.myFormModifyParameter.dropTypeParaModify.SelectedItem = item.ToString();
                 }
             }
+            if (AppPenalShareParameter.myFormModifyParameter.dropTypeParaModify.SelectedItem.ToString()== "FAMILYTYPE")
+            {
+                AppPenalShareParameter.myFormModifyParameter.dropTypeParaModify.Enabled = false;
+            }else
+            {
+                AppPenalShareParameter.myFormModifyParameter.dropTypeParaModify.Enabled = true;
+            }
+
             var countGroup = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes.Count;
             string[] listGroups = new string[countGroup];
             for(int i = 0; i < countGroup; i++)

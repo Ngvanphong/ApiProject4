@@ -16,7 +16,13 @@ namespace ApiProject4.ShareParameter
             Document doc = app.ActiveUIDocument.Document;
             var listNameParameterTypes = GetTypeParameter.GetAllType();
             AppPenalShareParameter.myFormAddShareParameter.dropParameterType.Items.Clear();
-            AppPenalShareParameter.myFormAddShareParameter.dropParameterType.Items.AddRange(listNameParameterTypes);
+            for(int i = 0; i < listNameParameterTypes.Length; i++)
+            {
+                if(listNameParameterTypes[i]!= "FAMILYTYPE")
+                {
+                    AppPenalShareParameter.myFormAddShareParameter.dropParameterType.Items.Add(listNameParameterTypes[i]);
+                }
+            }
             AppPenalShareParameter.myFormAddShareParameter.dropParameterGroup.Items.Clear();
             var listItemGroup = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
             foreach(TreeNode node in listItemGroup)
@@ -62,9 +68,8 @@ namespace ApiProject4.ShareParameter
                 }
                 else if (listNameParameterTypes[i] == "FamilyType")
                 {
-                    listNameParameterTypes[i] = "string.Empty";
+                    listNameParameterTypes[i] = "FAMILYTYPE";
                 }
-               
 
             }
             return listNameParameterTypes;
