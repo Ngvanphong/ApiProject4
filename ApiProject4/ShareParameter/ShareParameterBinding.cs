@@ -34,6 +34,7 @@ namespace ApiProject4.ShareParameter
             string[] searchText = { search.ParameterName, search.GroupName };
             string[] filterText = { filter.None, filter.Unique, filter.Duplicate };
             AppPenalShareParameter.myFormShareParameter.dropSearchParameters.Items.AddRange(searchText);
+            AppPenalShareParameter.myFormShareParameter.dropSearchParameters.SelectedIndex = 0;
             AppPenalShareParameter.myFormShareParameter.dropFilterParameterSource.Items.AddRange(filterText);
         }
     }

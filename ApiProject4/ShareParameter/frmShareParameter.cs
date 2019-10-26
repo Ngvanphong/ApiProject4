@@ -237,12 +237,9 @@ namespace ApiProject4.ShareParameter
             this.btnModifyParamter.Enabled = false;
             this.btnRenameGroup.Enabled = false;
             this.btnDeleteGroup.Enabled = false;
-        }
-
-        private void treeViewMasterParameter_AfterCheck(object sender, TreeViewEventArgs e)
-        {
            
         }
+
 
         private void treeViewMasterParameter_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -481,6 +478,73 @@ namespace ApiProject4.ShareParameter
             MergeParaFileBinding.MerSampleGroup(listParaMerger, listParamterMaster);
 
         }
+
+        private void btnSearchValueParameter_Click(object sender, EventArgs e)
+        {
+            string value = AppPenalShareParameter.myFormShareParameter.txtValueSearchPamater.Text;
+            SearchParameter searchType = new SearchParameter();
+            string type = searchType.GroupName;
+            try
+            {
+                type = AppPenalShareParameter.myFormShareParameter.dropSearchParameters.SelectedItem.ToString();
+            }
+            catch { }
+            var groupMasters = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
+            var groupSources = AppPenalShareParameter.myFormShareParameter.treeViewSourceParameter.Nodes;
+            if (type == searchType.GroupName)
+            {
+                foreach (TreeNode nodeGroup in groupMasters)
+                {
+                    if (nodeGroup.Text.Contains(value))
+                    {
+                        AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.CollapseAll();
+                        nodeGroup.Expand();
+                        break;
+                    }
+                }
+                foreach (TreeNode nodeGroupSour in groupSources)
+                {
+                    if (nodeGroupSour.Text.Contains(value))
+                    {
+                        AppPenalShareParameter.myFormShareParameter.treeViewSourceParameter.CollapseAll();
+                        nodeGroupSour.Expand();
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                foreach (TreeNode nodeGroup in groupMasters)
+                {
+                    foreach(TreeNode nodePa in nodeGroup.Nodes)
+                    {
+                        if (nodePa.Text.Contains(value))
+                        {
+                            AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.CollapseAll();
+                            nodeGroup.Expand();
+                            AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode = nodePa;
+                            break;
+                        }
+                    }
+                    
+                }
+                foreach (TreeNode nodeGroupSour in groupSources)
+                {
+                    foreach (TreeNode nodePa in nodeGroupSour.Nodes)
+                    {
+                        if (nodePa.Text.Contains(value))
+                        {
+                            AppPenalShareParameter.myFormShareParameter.treeViewSourceParameter.CollapseAll();
+                            nodeGroupSour.Expand();
+                            AppPenalShareParameter.myFormShareParameter.treeViewSourceParameter.SelectedNode = nodePa;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+       
     }
 
    

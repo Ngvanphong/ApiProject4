@@ -55,7 +55,7 @@
             this.treeViewMasterParameter = new System.Windows.Forms.TreeView();
             this.dropFilterParameterSource = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnClearValueParameter = new System.Windows.Forms.Button();
+            this.btnSearchValueParameter = new System.Windows.Forms.Button();
             this.txtValueSearchPamater = new System.Windows.Forms.TextBox();
             this.dropSearchParameters = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
@@ -82,7 +82,7 @@
             this.TagShareParameterFile.Controls.Add(this.groupBox1);
             this.TagShareParameterFile.Controls.Add(this.dropFilterParameterSource);
             this.TagShareParameterFile.Controls.Add(this.label1);
-            this.TagShareParameterFile.Controls.Add(this.btnClearValueParameter);
+            this.TagShareParameterFile.Controls.Add(this.btnSearchValueParameter);
             this.TagShareParameterFile.Controls.Add(this.txtValueSearchPamater);
             this.TagShareParameterFile.Controls.Add(this.dropSearchParameters);
             this.TagShareParameterFile.Location = new System.Drawing.Point(4, 22);
@@ -340,7 +340,6 @@
             this.treeViewMasterParameter.Name = "treeViewMasterParameter";
             this.treeViewMasterParameter.Size = new System.Drawing.Size(323, 359);
             this.treeViewMasterParameter.TabIndex = 0;
-            this.treeViewMasterParameter.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMasterParameter_AfterCheck);
             this.treeViewMasterParameter.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMasterParameter_AfterSelect);
             // 
             // dropFilterParameterSource
@@ -361,14 +360,15 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Filter:";
             // 
-            // btnClearValueParameter
+            // btnSearchValueParameter
             // 
-            this.btnClearValueParameter.Location = new System.Drawing.Point(494, 14);
-            this.btnClearValueParameter.Name = "btnClearValueParameter";
-            this.btnClearValueParameter.Size = new System.Drawing.Size(75, 23);
-            this.btnClearValueParameter.TabIndex = 2;
-            this.btnClearValueParameter.Text = "Clear";
-            this.btnClearValueParameter.UseVisualStyleBackColor = true;
+            this.btnSearchValueParameter.Location = new System.Drawing.Point(494, 14);
+            this.btnSearchValueParameter.Name = "btnSearchValueParameter";
+            this.btnSearchValueParameter.Size = new System.Drawing.Size(75, 23);
+            this.btnSearchValueParameter.TabIndex = 2;
+            this.btnSearchValueParameter.Text = "Search";
+            this.btnSearchValueParameter.UseVisualStyleBackColor = true;
+            this.btnSearchValueParameter.Click += new System.EventHandler(this.btnSearchValueParameter_Click);
             // 
             // txtValueSearchPamater
             // 
@@ -422,7 +422,7 @@
         public System.Windows.Forms.TabPage TagShareParameterFile;
         public System.Windows.Forms.ComboBox dropSearchParameters;
         public System.Windows.Forms.TextBox txtValueSearchPamater;
-        public System.Windows.Forms.Button btnClearValueParameter;
+        public System.Windows.Forms.Button btnSearchValueParameter;
         public System.Windows.Forms.ComboBox dropFilterParameterSource;
         public System.Windows.Forms.TextBox txtMasterPathShareParameterFile;
         public System.Windows.Forms.Button btnNewFileParamter;
