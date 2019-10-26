@@ -130,6 +130,7 @@
             this.btnHideSource.TabIndex = 7;
             this.btnHideSource.Text = "Hide";
             this.btnHideSource.UseVisualStyleBackColor = false;
+            this.btnHideSource.Click += new System.EventHandler(this.btnHideSource_Click);
             // 
             // btnAutoMergePara
             // 
@@ -141,6 +142,7 @@
             this.btnAutoMergePara.TabIndex = 7;
             this.btnAutoMergePara.Text = "Auto Merge";
             this.btnAutoMergePara.UseVisualStyleBackColor = false;
+            this.btnAutoMergePara.Click += new System.EventHandler(this.btnAutoMergePara_Click);
             // 
             // btnShowSource
             // 
@@ -152,6 +154,7 @@
             this.btnShowSource.TabIndex = 7;
             this.btnShowSource.Text = "Show";
             this.btnShowSource.UseVisualStyleBackColor = false;
+            this.btnShowSource.Click += new System.EventHandler(this.btnShowSource_Click);
             // 
             // treeViewSourceParameter
             // 
@@ -206,6 +209,7 @@
             this.btnHideMaster.TabIndex = 7;
             this.btnHideMaster.Text = "Hide";
             this.btnHideMaster.UseVisualStyleBackColor = false;
+            this.btnHideMaster.Click += new System.EventHandler(this.btnHideMaster_Click);
             // 
             // btnShowMaster
             // 
@@ -217,6 +221,7 @@
             this.btnShowMaster.TabIndex = 7;
             this.btnShowMaster.Text = "Show";
             this.btnShowMaster.UseVisualStyleBackColor = false;
+            this.btnShowMaster.Click += new System.EventHandler(this.btnShowMaster_Click);
             // 
             // groupBox4
             // 

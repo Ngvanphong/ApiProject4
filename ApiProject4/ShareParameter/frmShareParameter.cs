@@ -450,6 +450,37 @@ namespace ApiProject4.ShareParameter
                 AppPenalShareParameter.myFormMergeParameter.dropGroupMerge.Items.Add(group.Text);
             }
         }
+
+        private void btnHideMaster_Click(object sender, EventArgs e)
+        {
+            AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.CollapseAll();
+        }
+
+        private void btnShowMaster_Click(object sender, EventArgs e)
+        {
+            AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.ExpandAll();
+        }
+
+        private void btnHideSource_Click(object sender, EventArgs e)
+        {
+            AppPenalShareParameter.myFormShareParameter.treeViewSourceParameter.CollapseAll();
+        }
+
+        private void btnShowSource_Click(object sender, EventArgs e)
+        {
+            AppPenalShareParameter.myFormShareParameter.treeViewSourceParameter.ExpandAll();
+        }
+
+        private void btnAutoMergePara_Click(object sender, EventArgs e)
+        {
+            FilterUnique();
+            List<GroupParameter> listParameterChecked = new List<GroupParameter>();
+            List<GroupParameter> listParamterMaster = new List<GroupParameter>();
+            List<GroupParameter> listParaMerger = new List<GroupParameter>();
+            listParaMerger = MergeParaFileBinding.GetListInNeed(out listParamterMaster, out listParameterChecked);
+            MergeParaFileBinding.MerSampleGroup(listParaMerger, listParamterMaster);
+
+        }
     }
 
    

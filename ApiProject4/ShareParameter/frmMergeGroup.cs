@@ -39,6 +39,33 @@ namespace ApiProject4.ShareParameter
             List<GroupParameter> listParameterChecked = new List<GroupParameter>();
             List<GroupParameter> listParamterMaster = new List<GroupParameter>();
             List<GroupParameter> listParaMerger = new List<GroupParameter>();
+            listParaMerger = MergeParaFileBinding.GetListInNeed(out listParamterMaster,out listParameterChecked);
+            string groupSelect = string.Empty;
+            try
+            {
+                groupSelect = AppPenalShareParameter.myFormMergeParameter.dropGroupMerge.SelectedItem.ToString();
+            }
+            catch { }
+            if (string.IsNullOrEmpty(groupSelect) || groupSelect == "")
+            {
+                MergeParaFileBinding.MerSampleGroup(listParaMerger, listParamterMaster);
+                AppPenalShareParameter.myFormMergeParameter.Close();
+            }
+            else
+            {
+                MergeParaFileBinding.MergeNewGroup(listParaMerger, listParamterMaster, groupSelect);
+                AppPenalShareParameter.myFormMergeParameter.Close();
+            }
+
+        }
+    }
+    public static class MergeParaFileBinding
+    {
+        public static List<GroupParameter> GetListInNeed(out List<GroupParameter> listMaster, out List<GroupParameter> listSourceCheck)
+        {
+            List<GroupParameter> listParameterChecked = new List<GroupParameter>();
+            List<GroupParameter> listParamterMaster = new List<GroupParameter>();
+            List<GroupParameter> listParaMerger = new List<GroupParameter>();
             var nodeGroups = AppPenalShareParameter.myFormShareParameter.treeViewSourceParameter.Nodes;
             foreach (TreeNode group in nodeGroups)
             {
@@ -57,6 +84,10 @@ namespace ApiProject4.ShareParameter
             var nodeGroupMaster = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
             foreach (TreeNode groupMaster in nodeGroupMaster)
             {
+                GroupParameter groupPaSourceOrigin = new GroupParameter();
+                groupPaSourceOrigin.GroupName = groupMaster.Text;
+                groupPaSourceOrigin.GroupName = string.Empty;
+                listParamterMaster.Add(groupPaSourceOrigin);
                 foreach (TreeNode paraMas in groupMaster.Nodes)
                 {
                     GroupParameter groupPaSource = new GroupParameter();
@@ -66,26 +97,11 @@ namespace ApiProject4.ShareParameter
                 }
             }
             listParaMerger = listParameterChecked.Where(x => listParamterMaster.Exists(y => y.ParameterName == x.ParameterName) == false).ToList();
-            string groupSelect = string.Empty;
-            try
-            {
-                groupSelect = AppPenalShareParameter.myFormMergeParameter.dropGroupMerge.SelectedItem.ToString();
-            }
-            catch{}
-            if (string.IsNullOrEmpty(groupSelect) || groupSelect == "")
-            {
-                MergeParaFileBinding.MerSampleGroup(listParaMerger, listParamterMaster);
-                AppPenalShareParameter.myFormMergeParameter.Close();
-            }
-            else
-            {
-
-            }
-
+            listMaster = listParamterMaster;
+            listSourceCheck = listParameterChecked;
+            return listParaMerger;
         }
-    }
-    public static class MergeParaFileBinding
-    {
+
         public static void MerSampleGroup(List<GroupParameter> paraMerge, List<GroupParameter> paraMaster)
         {
             string path = AppPenalShareParameter.myFormShareParameter.txtMasterPathShareParameterFile.Text;
@@ -105,15 +121,17 @@ namespace ApiProject4.ShareParameter
                 string id = Regex.Split(lineSource, @"\t")[1];
                 string category = Regex.Split(lineSource, @"\t")[4];
                 string type = Regex.Split(lineSource, @"\t")[3];
-                string visible= Regex.Split(lineSource, @"\t")[6];
-                string idGroupOld= Regex.Split(lineSource, @"\t")[5];
+                string visible = Regex.Split(lineSource, @"\t")[6];
+                string idGroupOld = Regex.Split(lineSource, @"\t")[5];
+                string description = Regex.Split(lineSource, @"\t")[7];
+                string userModify = Regex.Split(lineSource, @"\t")[8];
                 if (paraMaster.Exists(x => x.GroupName == groupNow) == false)
                 {
                     if (listGroupNew.Exists(x => x.GroupName == groupNow) == false)
                     {
                         if (newLineGroup == string.Empty)
                         {
-                            newLineGroup ="GROUP\t" + idGroup.ToString() + "\t" + groupNow;
+                            newLineGroup = "GROUP\t" + idGroup.ToString() + "\t" + groupNow;
                         }
                         else
                         {
@@ -121,12 +139,13 @@ namespace ApiProject4.ShareParameter
                         }
                         if (newLine == string.Empty)
                         {
-                            newLine = "PARAM\t" + id + "\t" + paraNow + "\t" + type + "\t" + category + "\t" + idGroup + "\t" + visible + "\t\t" + "1";
-                        }else
-                        {
-                            newLine = newLine + "\n" + "PARAM\t" + id + "\t" + paraNow + "\t" + type + "\t" + category + "\t" + idGroup + "\t" + visible + "\t\t" + "1";
+                            newLine = "PARAM\t" + id + "\t" + paraNow + "\t" + type + "\t" + category + "\t" + idGroup + "\t" + visible + "\t" + description + "\t" + userModify;
                         }
-                        
+                        else
+                        {
+                            newLine = newLine + "\n" + "PARAM\t" + id + "\t" + paraNow + "\t" + type + "\t" + category + "\t" + idGroup + "\t" + visible + "\t" + description + "\t" + userModify;
+                        }
+
                         GroupIndentity groupIden = new GroupIndentity();
                         groupIden.GroupName = groupNow;
                         groupIden.GroupId = idGroup.ToString();
@@ -135,45 +154,46 @@ namespace ApiProject4.ShareParameter
                     }
                     else
                     {
-                        foreach(var groupNew in listGroupNew)
+                        foreach (var groupNew in listGroupNew)
                         {
                             if (groupNew.GroupName == groupNow)
                             {
                                 if (newLine == string.Empty)
                                 {
-                                    newLine = "PARAM\t" + id + "\t" + paraNow + "\t" + type + "\t" + category + "\t" + groupNew.GroupId + "\t" + visible + "\t\t" + "1";
+                                    newLine = "PARAM\t" + id + "\t" + paraNow + "\t" + type + "\t" + category + "\t" + groupNew.GroupId + "\t" + visible + "\t" + description + "\t" + userModify;
                                 }
                                 else
                                 {
-                                    newLine = newLine + "\n" + "PARAM\t" + id + "\t" + paraNow + "\t" + type + "\t" + category + "\t" + groupNew.GroupId + "\t" + visible + "\t\t" + "1";
+                                    newLine = newLine + "\n" + "PARAM\t" + id + "\t" + paraNow + "\t" + type + "\t" + category + "\t" + groupNew.GroupId + "\t" + visible + "\t" + description + "\t" + userModify;
                                 }
                                 break;
                             }
                         }
-                       
-                    }  
+
+                    }
                 }
                 else
                 {
                     string idGroupOldMaster = findIdExistGroup(lines, groupNow);
                     if (newLine == string.Empty)
                     {
-                        newLine = "PARAM\t" + id + "\t" + paraNow + "\t" + type + "\t" + category + "\t" + idGroupOldMaster + "\t" + visible + "\t\t" + "1";
+                        newLine = "PARAM\t" + id + "\t" + paraNow + "\t" + type + "\t" + category + "\t" + idGroupOldMaster + "\t" + visible + "\t" + description + "\t" + userModify;
                     }
                     else
                     {
-                        newLine = newLine + "\n" + "PARAM\t" + id + "\t" + paraNow + "\t" + type + "\t" + category + "\t" + idGroupOldMaster + "\t" + visible + "\t\t" + "1";
+                        newLine = newLine + "\n" + "PARAM\t" + id + "\t" + paraNow + "\t" + type + "\t" + category + "\t" + idGroupOldMaster + "\t" + visible + "\t" + description + "\t" + userModify;
                     }
                 }
             }
-           int endGroup = 0;
-           for(int k = 0; k < lines.Length; k++)
+            int endGroup = 0;
+            for (int k = 0; k < lines.Length; k++)
             {
-                if (lines[k].StartsWith("*PARAM")==false)
+                if (lines[k].StartsWith("*PARAM") == false)
                 {
                     endGroup += 1;
 
-                }else
+                }
+                else
                 {
                     break;
                 }
@@ -189,7 +209,7 @@ namespace ApiProject4.ShareParameter
                 {
                     sw.WriteLine(newLineGroup);
                 }
-                for (int j= endGroup;j < rowEnd; j++)
+                for (int j = endGroup; j < rowEnd; j++)
                 {
                     sw.WriteLine(lines[j]);
                 }
@@ -198,15 +218,15 @@ namespace ApiProject4.ShareParameter
                     sw.WriteLine(newLine);
                 }
             }
-            foreach(var nodeNewG in listGroupNew)
+            foreach (var nodeNewG in listGroupNew)
             {
-                TreeNode treeNode=AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes.Add(nodeNewG.GroupName);
-               treeNode.BackColor = Color.HotPink;
+                TreeNode treeNode = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes.Add(nodeNewG.GroupName);
+                treeNode.BackColor = Color.HotPink;
             }
-            foreach(var paraName in paraMerge)
+            foreach (var paraName in paraMerge)
             {
                 var nodeAllGroup = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
-                foreach(TreeNode allG in nodeAllGroup)
+                foreach (TreeNode allG in nodeAllGroup)
                 {
                     if (allG.Text == paraName.GroupName)
                     {
@@ -214,7 +234,7 @@ namespace ApiProject4.ShareParameter
                         {
                             allG.Expand();
                         }
-                        TreeNode nodePar= allG.Nodes.Add(paraName.ParameterName);
+                        TreeNode nodePar = allG.Nodes.Add(paraName.ParameterName);
                         nodePar.BackColor = Color.GreenYellow;
                     }
                 }
@@ -222,12 +242,65 @@ namespace ApiProject4.ShareParameter
 
         }
 
-        public static void MergeNewGroup(List<GroupParameter> paraMerge, List<GroupParameter> paraMaster,string newGroup)
+        public static void MergeNewGroup(List<GroupParameter> paraMerge, List<GroupParameter> paraMaster, string newGroup)
         {
+            string path = AppPenalShareParameter.myFormShareParameter.txtMasterPathShareParameterFile.Text;
+            var lines = File.ReadAllLines(path);
+            string pathSource = AppPenalShareParameter.myFormShareParameter.txtPathSourceSharedPamameter.Text;
+            var lineSources = System.IO.File.ReadAllLines(pathSource);
+            string idGroupNow = findIdExistGroup(lines, newGroup);
+            string newLine = string.Empty;
+            for (int i = 0; i < paraMerge.Count(); i++)
+            {
+                string paraNow = paraMerge[i].ParameterName;
+                string lineSource = findLineInSource(lineSources, paraNow);
+                string id = Regex.Split(lineSource, @"\t")[1];
+                string category = Regex.Split(lineSource, @"\t")[4];
+                string type = Regex.Split(lineSource, @"\t")[3];
+                string visible = Regex.Split(lineSource, @"\t")[6];
+                string description = Regex.Split(lineSource, @"\t")[7];
+                string userModify= Regex.Split(lineSource, @"\t")[8];
+                if (newLine == string.Empty)
+                {
+                    newLine = "PARAM\t" + id + "\t" + paraNow + "\t" + type + "\t" + category + "\t" + idGroupNow + "\t" + visible + "\t"+description+"\t" + userModify;
+                }
+                else
+                {
+                    newLine = newLine + "\n" + "PARAM\t" + id + "\t" + paraNow + "\t" + type + "\t" + category + "\t" + idGroupNow + "\t" + visible + "\t"+description+"\t" + userModify;
+                }
+            }
+            int rowEnd = lines.Length;
+            using (StreamWriter sw = File.CreateText(path))
+            {
+                for (int j = 0; j < rowEnd; j++)
+                {
+                    sw.WriteLine(lines[j]);
+                }
+                if (newLine != string.Empty)
+                {
+                    sw.WriteLine(newLine);
+                }
+            }
+            foreach (var paraName in paraMerge)
+            {
+                var nodeAllGroup = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
+                foreach (TreeNode allG in nodeAllGroup)
+                {
+                    if (allG.Text == newGroup)
+                    {
+                        if (allG.IsExpanded == false)
+                        {
+                            allG.Expand();
+                        }
+                        TreeNode nodePar = allG.Nodes.Add(paraName.ParameterName);
+                        nodePar.BackColor = Color.GreenYellow;
+                    }
+                }
+            }
 
         }
 
-        private static int findIdNewGroup(string[]lines)
+        private static int findIdNewGroup(string[] lines)
         {
             int result = 1;
             foreach (string group in lines)
@@ -235,16 +308,16 @@ namespace ApiProject4.ShareParameter
                 if (group.StartsWith("GROUP") == true)
                 {
                     string id = Regex.Split(group, @"\t")[1];
-                    if (result< int.Parse(id))
+                    if (result < int.Parse(id))
                     {
                         result = int.Parse(id);
                     }
                 }
             }
-            return result+1;
+            return result + 1;
         }
 
-        public static string findIdExistGroup(string[] lines,string groupName)
+        public static string findIdExistGroup(string[] lines, string groupName)
         {
             string result = string.Empty;
             foreach (string group in lines)
@@ -252,7 +325,7 @@ namespace ApiProject4.ShareParameter
                 if (group.StartsWith("GROUP") == true)
                 {
                     string name = Regex.Split(group, @"\t")[2];
-                    if (name==groupName)
+                    if (name == groupName)
                     {
                         result = Regex.Split(group, @"\t")[1];
                         return result;
@@ -262,10 +335,10 @@ namespace ApiProject4.ShareParameter
             return result;
         }
 
-        private static string findLineInSource(string[]lineSources,string paraName)
+        private static string findLineInSource(string[] lineSources, string paraName)
         {
             string result = string.Empty;
-            foreach(string line in lineSources)
+            foreach (string line in lineSources)
             {
                 if (line.StartsWith("PARAM"))
                 {
@@ -275,8 +348,7 @@ namespace ApiProject4.ShareParameter
                         result = line;
                         return result;
                     }
-                }    
-               
+                }
             }
             return result;
         }
@@ -290,7 +362,7 @@ namespace ApiProject4.ShareParameter
 
     public class GroupIndentity
     {
-        public string  GroupName { get; set; }
+        public string GroupName { get; set; }
         public string GroupId { set; get; }
     }
 }

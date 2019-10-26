@@ -95,7 +95,9 @@ namespace ApiProject4.ShareParameter
                         indexModify = j;
                         string id = Regex.Split(line, @"\t")[1];
                         string category = Regex.Split(line, @"\t")[4];
-                        newLine = "PARAM\t" + id + "\t" + nameNew + "\t" + dataInput + "\t" + category + "\t" + idGroup + "\t" + visible + "\t\t" + "1";
+                        string description= Regex.Split(line, @"\t")[7];
+                        string userModify= Regex.Split(line, @"\t")[8];
+                        newLine = "PARAM\t" + id + "\t" + nameNew + "\t" + dataInput + "\t" + category + "\t" + idGroup + "\t" + visible + "\t" + description + "\t" + userModify;
                     }
                 }
             }

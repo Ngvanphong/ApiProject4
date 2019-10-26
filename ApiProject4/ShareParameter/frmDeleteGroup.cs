@@ -82,7 +82,9 @@ namespace ApiProject4.ShareParameter
                                 string dataType = Regex.Split(lines[j], @"\t")[3];
                                 string visible = Regex.Split(lines[j], @"\t")[6];
                                 string category = Regex.Split(lines[j], @"\t")[4];
-                                string lineNew = "PARAM\t" + id + "\t" + name + "\t" + dataType + "\t" + category + "\t" + idNewGroup + "\t" + visible + "\t\t" + "1";
+                                string description = Regex.Split(lines[j], @"\t")[7];
+                                string userModify= Regex.Split(lines[j], @"\t")[8];
+                                string lineNew = "PARAM\t" + id + "\t" + name + "\t" + dataType + "\t" + category + "\t" + idNewGroup + "\t" + visible + "\t" + description + "\t" + userModify;
                                 sw.WriteLine(lineNew);
                             }
                             else
