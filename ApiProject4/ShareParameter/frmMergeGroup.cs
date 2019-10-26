@@ -198,6 +198,28 @@ namespace ApiProject4.ShareParameter
                     sw.WriteLine(newLine);
                 }
             }
+            foreach(var nodeNewG in listGroupNew)
+            {
+                TreeNode treeNode=AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes.Add(nodeNewG.GroupName);
+               treeNode.BackColor = Color.HotPink;
+            }
+            foreach(var paraName in paraMerge)
+            {
+                var nodeAllGroup = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
+                foreach(TreeNode allG in nodeAllGroup)
+                {
+                    if (allG.Text == paraName.GroupName)
+                    {
+                        if (allG.IsExpanded == false)
+                        {
+                            allG.Expand();
+                        }
+                        TreeNode nodePar= allG.Nodes.Add(paraName.ParameterName);
+                        nodePar.BackColor = Color.GreenYellow;
+                    }
+                }
+            }
+
         }
 
         public static void MergeNewGroup(List<GroupParameter> paraMerge, List<GroupParameter> paraMaster,string newGroup)
