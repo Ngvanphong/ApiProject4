@@ -68,6 +68,8 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.tabControl1.Controls.Add(this.TagShareParameterFile);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
@@ -107,6 +109,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.Controls.Add(this.btnHideSource);
             this.groupBox2.Controls.Add(this.btnAutoMergePara);
             this.groupBox2.Controls.Add(this.btnShowSource);
@@ -158,6 +162,8 @@
             // 
             // treeViewSourceParameter
             // 
+            this.treeViewSourceParameter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.treeViewSourceParameter.CheckBoxes = true;
             this.treeViewSourceParameter.Location = new System.Drawing.Point(7, 78);
             this.treeViewSourceParameter.Name = "treeViewSourceParameter";
@@ -184,6 +190,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.btnHideMaster);
             this.groupBox1.Controls.Add(this.btnShowMaster);
             this.groupBox1.Controls.Add(this.groupBox4);
@@ -336,6 +344,8 @@
             // 
             // treeViewMasterParameter
             // 
+            this.treeViewMasterParameter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.treeViewMasterParameter.Location = new System.Drawing.Point(7, 79);
             this.treeViewMasterParameter.Name = "treeViewMasterParameter";
             this.treeViewMasterParameter.Size = new System.Drawing.Size(323, 359);
@@ -391,7 +401,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 539);
             this.Controls.Add(this.tabControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmShareParameter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

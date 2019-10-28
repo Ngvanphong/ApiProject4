@@ -180,15 +180,11 @@ namespace ApiProject4.ShareParameter
                 case "AreaForcePerLength":
                     typeWirte = "AREA_SPRING_COEFFICIENT";
                     break;
-                //////
-                case "SurfaceArea":
-
-                    break;
                 case "ForceLengthPerAngle":
-
+                    typeWirte = "ROTATIONAL_POINT_SPRING_COEFFICIENT";
                     break;
                 case "LinearForceLengthPerAngle":
-
+                    typeWirte = "ROTATIONAL_LINEAR_SPRING_COEFFICIENT";
                     break;
             }
             return typeWirte;
@@ -228,15 +224,11 @@ namespace ApiProject4.ShareParameter
                 case "AREA_SPRING_COEFFICIENT":
                     typeWirte = "AreaForcePerLength";
                     break;
-                //////
-                case "SurfaceArea":
-
+                case "ROTATIONAL_POINT_SPRING_COEFFICIENT":
+                    typeWirte = "ForceLengthPerAngle";
                     break;
-                case "ForceLengthPerAngle":
-
-                    break;
-                case "LinearForceLengthPerAngle":
-
+                case "ROTATIONAL_LINEAR_SPRING_COEFFICIENT":
+                    typeWirte = "LinearForceLengthPerAngle";
                     break;
             }
             return typeWirte;
