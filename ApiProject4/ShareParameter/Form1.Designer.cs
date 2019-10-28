@@ -36,6 +36,8 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCreateParameter = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxDisciiplinePara = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCreateParameter)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +61,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 43);
+            this.label3.Location = new System.Drawing.Point(12, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 13);
             this.label3.TabIndex = 0;
@@ -68,7 +70,7 @@
             // dropParameterType
             // 
             this.dropParameterType.FormattingEnabled = true;
-            this.dropParameterType.Location = new System.Drawing.Point(115, 40);
+            this.dropParameterType.Location = new System.Drawing.Point(115, 72);
             this.dropParameterType.Name = "dropParameterType";
             this.dropParameterType.Size = new System.Drawing.Size(311, 21);
             this.dropParameterType.TabIndex = 1;
@@ -80,10 +82,10 @@
             this.dataGridViewCreateParameter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCreateParameter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
-            this.dataGridViewCreateParameter.Location = new System.Drawing.Point(115, 67);
+            this.dataGridViewCreateParameter.Location = new System.Drawing.Point(115, 104);
             this.dataGridViewCreateParameter.Name = "dataGridViewCreateParameter";
             this.dataGridViewCreateParameter.RowHeadersVisible = false;
-            this.dataGridViewCreateParameter.Size = new System.Drawing.Size(311, 153);
+            this.dataGridViewCreateParameter.Size = new System.Drawing.Size(311, 116);
             this.dataGridViewCreateParameter.TabIndex = 2;
             // 
             // Column1
@@ -104,11 +106,29 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 67);
+            this.label5.Location = new System.Drawing.Point(12, 104);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 52);
             this.label5.TabIndex = 0;
             this.label5.Text = "\r\nEnter each new\r\nparameter name\r\non seperate line.";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Discipline:";
+            // 
+            // comboBoxDisciiplinePara
+            // 
+            this.comboBoxDisciiplinePara.FormattingEnabled = true;
+            this.comboBoxDisciiplinePara.Location = new System.Drawing.Point(115, 42);
+            this.comboBoxDisciiplinePara.Name = "comboBoxDisciiplinePara";
+            this.comboBoxDisciiplinePara.Size = new System.Drawing.Size(311, 21);
+            this.comboBoxDisciiplinePara.TabIndex = 1;
+            this.comboBoxDisciiplinePara.SelectedIndexChanged += new System.EventHandler(this.comboBoxDisciiplinePara_SelectedIndexChanged);
             // 
             // frmAddSharedParameter
             // 
@@ -118,6 +138,8 @@
             this.Controls.Add(this.btnCreateParameter);
             this.Controls.Add(this.dataGridViewCreateParameter);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.comboBoxDisciiplinePara);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.dropParameterType);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dropParameterGroup);
@@ -145,5 +167,7 @@
         public System.Windows.Forms.ComboBox dropParameterType;
         public System.Windows.Forms.DataGridView dataGridViewCreateParameter;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.ComboBox comboBoxDisciiplinePara;
     }
 }

@@ -22,14 +22,14 @@ namespace ApiProject4.ShareParameter
         private void btnModifyParameter_Click(object sender, EventArgs e)
         {
             string path = AppPenalShareParameter.myFormShareParameter.txtMasterPathShareParameterFile.Text;
-            string nameNew = AppPenalShareParameter.myFormModifyParameter.txtNameParaModify.Text;
+            //string nameNew = AppPenalShareParameter.myFormModifyParameter.txtNameParaModify.Text;
             string groupNew = AppPenalShareParameter.myFormModifyParameter.dropGroupParaModify.SelectedItem.ToString();
-            string typeNew = AppPenalShareParameter.myFormModifyParameter.dropTypeParaModify.SelectedItem.ToString();
-            if (string.IsNullOrEmpty(typeNew)||typeNew=="")
-            {
-                MessageBox.Show("Error: You must choose type of parameter");
-                return;
-            }
+            //string typeNew = AppPenalShareParameter.myFormModifyParameter.dropTypeParaModify.SelectedItem.ToString();
+            //if (string.IsNullOrEmpty(typeNew)||typeNew=="")
+            //{
+            //    MessageBox.Show("Error: You must choose type of parameter");
+            //    return;
+            //}
             string visible = "1";
             string idGroup = string.Empty;
             if (AppPenalShareParameter.myFormModifyParameter.checkBoxVisibleParameter.Checked == false)
@@ -49,41 +49,41 @@ namespace ApiProject4.ShareParameter
                     }
                 }
             }
-            string dataTypeUpper = typeNew.ToUpper();
-            string dataInput = string.Empty;
-            string disciplineText = string.Empty;
-            if (dataTypeUpper.StartsWith(DisciplineConstant.HVAC))
-            {
-                disciplineText = DisciplineConstant.HVAC;
-            }
-            switch (disciplineText)
-            {
-                case DisciplineConstant.HVAC:
-                    string inputEndText = Regex.Split(typeNew, DisciplineConstant.HVAC)[1];
-                    string nameParaCut = Regex.Replace(inputEndText, "([a-z])([A-Z])", "$1_$2").TrimStart().ToUpper();
-                    dataInput = DisciplineConstant.HVAC + "_" + nameParaCut;
-                    break;
-                default:
-                    string nameParaCut4 = Regex.Replace(typeNew, "([a-z])([A-Z])", "$1_$2").TrimStart().ToUpper();
-                    dataInput = nameParaCut4;
-                    break;
-            }
+            //string dataTypeUpper = typeNew.ToUpper();
+            //string dataInput = string.Empty;
+            //string disciplineText = string.Empty;
+            //if (dataTypeUpper.StartsWith(DisciplineConstant.HVAC))
+            //{
+            //    disciplineText = DisciplineConstant.HVAC;
+            //}
+            //switch (disciplineText)
+            //{
+            //    case DisciplineConstant.HVAC:
+            //        string inputEndText = Regex.Split(typeNew, DisciplineConstant.HVAC)[1];
+            //        string nameParaCut = Regex.Replace(inputEndText, "([a-z])([A-Z])", "$1_$2").TrimStart().ToUpper();
+            //        dataInput = DisciplineConstant.HVAC + "_" + nameParaCut;
+            //        break;
+            //    default:
+            //        string nameParaCut4 = Regex.Replace(typeNew, "([a-z])([A-Z])", "$1_$2").TrimStart().ToUpper();
+            //        dataInput = nameParaCut4;
+            //        break;
+            //}
             string newLine = string.Empty;
             int rowEnd = lines.Length;
-            bool checkNameExist = checkExistModifedName(oldPara, nameNew);
-            if (checkNameExist == true)
-            {
-                MessageBox.Show("Error: Name of parameter is existed.");
-                return;
-            }
-            string warning = "WARNING: You cannot restore changed parameter by reverting to the original settings. The changed will be incompatible with old uses of the parameter, and Revit will treat them as two separate for the purposes of scheduling and tagging";
-            DialogResult result = MessageBox.Show(warning, "Modify Parameter", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            if (result == DialogResult.Cancel)
-            {
-                return;
-            }
-
+            //bool checkNameExist = checkExistModifedName(oldPara, nameNew);
+            //if (checkNameExist == true)
+            //{
+            //    MessageBox.Show("Error: Name of parameter is existed.");
+            //    return;
+            //}
+            //string warning = "WARNING: You cannot restore changed parameter by reverting to the original settings. The changed will be incompatible with old uses of the parameter, and Revit will treat them as two separate for the purposes of scheduling and tagging";
+            //DialogResult result = MessageBox.Show(warning, "Modify Parameter", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            //if (result == DialogResult.Cancel)
+            //{
+            //    return;
+            //}
             int indexModify = 0;
+            string nameOldPara = string.Empty;
             for (int j = 0; j < lines.Length; j++)
             {
                 string line = lines[j];
@@ -95,9 +95,11 @@ namespace ApiProject4.ShareParameter
                         indexModify = j;
                         string id = Regex.Split(line, @"\t")[1];
                         string category = Regex.Split(line, @"\t")[4];
-                        string description= Regex.Split(line, @"\t")[7];
-                        string userModify= Regex.Split(line, @"\t")[8];
-                        newLine = "PARAM\t" + id + "\t" + nameNew + "\t" + dataInput + "\t" + category + "\t" + idGroup + "\t" + visible + "\t" + description + "\t" + userModify;
+                        string description = Regex.Split(line, @"\t")[7];
+                        string userModify = Regex.Split(line, @"\t")[8];
+                        nameOldPara = Regex.Split(line, @"\t")[2];
+                        string type = Regex.Split(line, @"\t")[3];
+                        newLine = "PARAM\t" + id + "\t" + nameOldPara + "\t" + type + "\t" + category + "\t" + idGroup + "\t" + visible + "\t" + description + "\t" + userModify;
                     }
                 }
             }
@@ -117,11 +119,11 @@ namespace ApiProject4.ShareParameter
             }
             string nodeTreeOld = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Text;
             string groupTreeOld = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Parent.Text;
-            if (nodeTreeOld != nameNew && groupNew == groupTreeOld)
-            {
-                AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Text = nameNew;
-            }
-            else if (groupNew != groupTreeOld)
+            //if (nodeTreeOld != nameNew && groupNew == groupTreeOld)
+            //{
+            //    AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Text = nameNew;
+            //}
+            if (groupNew != groupTreeOld)
             {
                 AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.SelectedNode.Remove();
                 var nodeGs = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes;
@@ -129,7 +131,7 @@ namespace ApiProject4.ShareParameter
                 {
                     if (treeG.Text == groupNew)
                     {
-                        treeG.Nodes.Add(nameNew);
+                        treeG.Nodes.Add(nameOldPara);
                     }
                 }
             }

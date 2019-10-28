@@ -155,23 +155,11 @@ namespace ApiProject4.ShareParameter
                 }
             }
             AppPenalShareParameter.myFormModifyParameter.txtNameParaModify.Text = namePara;
-            AppPenalShareParameter.myFormModifyParameter.dropTypeParaModify.Items.AddRange(GetTypeParameter.GetAllType());
-            foreach(var item in AppPenalShareParameter.myFormModifyParameter.dropTypeParaModify.Items)
-            {
-                string typeOldUpper = Regex.Replace(typeOld, "([A-Z])_([A-Z])", "$1$2").TrimStart();
-                if (item.ToString().ToUpper() == typeOldUpper)
-                {
-                    AppPenalShareParameter.myFormModifyParameter.dropTypeParaModify.SelectedItem = item.ToString();
-                }
-            }
-            if (AppPenalShareParameter.myFormModifyParameter.dropTypeParaModify.SelectedItem.ToString()== "FAMILYTYPE")
-            {
-                AppPenalShareParameter.myFormModifyParameter.dropTypeParaModify.Enabled = false;
-            }else
-            {
-                AppPenalShareParameter.myFormModifyParameter.dropTypeParaModify.Enabled = true;
-            }
-
+            
+            string disciplineOld = string.Empty;
+            string nameOfpara = GetTypeParameter.ConvertFileToNamPara(AppPenalShareParameter.listDisciplineParas, typeOld, out disciplineOld);
+            AppPenalShareParameter.myFormModifyParameter.textBoxDisciplineModify.Text = disciplineOld;
+            AppPenalShareParameter.myFormModifyParameter.textBoxTypeParaModify.Text = nameOfpara;
             var countGroup = AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes.Count;
             string[] listGroups = new string[countGroup];
             for(int i = 0; i < countGroup; i++)

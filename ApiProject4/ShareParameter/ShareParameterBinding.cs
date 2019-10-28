@@ -19,10 +19,22 @@ namespace ApiProject4.ShareParameter
         {
             UIApplication uiApp = commandData.Application;
             Document doc = uiApp.ActiveUIDocument.Document;
+           
             if (CheckAccess.CheckLicense() == true)
             {
                 AppPenalShareParameter.ShowFormShareParameter();
                 GetInforDrop();
+                try
+                {
+                    AppPenalShareParameter.listDisciplineParas = GetTypeParameter.GetAllTypeAndDiscipline(uiApp);
+                    string pathPara = uiApp.Application.SharedParametersFilename;
+                    AppPenalShareParameter.myFormShareParameter.txtMasterPathShareParameterFile.Text = pathPara;
+                    var listGroup = ExtensionMethod.LoadParameterByTxt(pathPara);
+                    AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter.Nodes.Clear();
+                    ExtensionMethod.LoadTreeView(AppPenalShareParameter.myFormShareParameter.treeViewMasterParameter, listGroup);
+                }
+                catch { }
+               
             }
             return Result.Succeeded;
         }

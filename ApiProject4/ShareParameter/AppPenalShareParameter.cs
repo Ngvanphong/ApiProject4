@@ -1,4 +1,5 @@
-﻿using Autodesk.Revit.UI;
+﻿using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace ApiProject4.ShareParameter
         public static string nameParameterModify;
         public static frmDeleteGroup myFormDeleteGroup;
         public static frmMergeGroup myFormMergeParameter;
+        public static Dictionary<string, List<ParameterType>> listDisciplineParas = new Dictionary<string, List<ParameterType>>();
         public static void ShowFormShareParameter()
         {
             nameParameterModify = string.Empty;

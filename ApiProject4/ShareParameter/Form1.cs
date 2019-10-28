@@ -51,7 +51,9 @@ namespace ApiProject4.ShareParameter
                     MessageBox.Show("Error: Name of parameter is existed");
                     return;
                 }
-                string parameterType = AppPenalShareParameter.myFormAddShareParameter.dropParameterType.SelectedItem.ToString();
+                string parameterTypeSelected = AppPenalShareParameter.myFormAddShareParameter.dropParameterType.SelectedItem.ToString();
+                string discipline= AppPenalShareParameter.myFormAddShareParameter.comboBoxDisciiplinePara.SelectedItem.ToString();
+                string parameterType = GetTypeParameter.GetParameteType(AppPenalShareParameter.listDisciplineParas, discipline, parameterTypeSelected);
                 string path = AppPenalShareParameter.myFormShareParameter.txtMasterPathShareParameterFile.Text;
                 if (string.IsNullOrEmpty(parameterGroup) || parameterGroup == "" || string.IsNullOrEmpty(parameterType) || parameterType == ""||listName.Count()==0)
                 {
@@ -154,6 +156,23 @@ namespace ApiProject4.ShareParameter
         private void frmAddSharedParameter_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Owner.Enabled = true;
+        }
+
+        private void comboBoxDisciiplinePara_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string discipline = string.Empty;
+            try
+            {
+                discipline= AppPenalShareParameter.myFormAddShareParameter.comboBoxDisciiplinePara.SelectedItem.ToString();
+            }
+            catch{}
+            if (discipline != string.Empty)
+            {
+                AppPenalShareParameter.myFormAddShareParameter.dropParameterType.Items.Clear();
+                var disciplineParas = GetTypeParameter.GetAllType(AppPenalShareParameter.listDisciplineParas, discipline);
+                AppPenalShareParameter.myFormAddShareParameter.dropParameterType.Items.AddRange(disciplineParas);
+            }
+            
         }
     }
 }
