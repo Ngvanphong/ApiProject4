@@ -31,7 +31,7 @@ namespace ApiProject4.ShareParameter
 
         private void btnDeleteGoupOrMove_Click(object sender, EventArgs e)
         {
-            string warning = "WARNING: Do you want delete group?";
+            string warning = "WARNING: Do you want to delete group?";
             DialogResult result = MessageBox.Show(warning, "Delete Group", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (result == DialogResult.Cancel)
             {

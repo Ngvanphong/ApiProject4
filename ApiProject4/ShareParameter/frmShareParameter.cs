@@ -458,6 +458,12 @@ namespace ApiProject4.ShareParameter
 
         private void btnAutoMergePara_Click(object sender, EventArgs e)
         {
+            string warning = "WARNING: Do you auto merge share parameter?";
+            DialogResult result = MessageBox.Show(warning, "Auto Merge", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (result == DialogResult.Cancel)
+            {
+                return;
+            }
             FilterUnique();
             List<GroupParameter> listParameterChecked = new List<GroupParameter>();
             List<GroupParameter> listParamterMaster = new List<GroupParameter>();
