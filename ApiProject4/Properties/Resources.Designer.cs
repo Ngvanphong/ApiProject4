@@ -93,6 +93,26 @@ namespace ApiProject4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_25 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-add-25", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_tag_25 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-add-tag-25", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_box_16 {
             get {
                 object obj = ResourceManager.GetObject("icons8_box_16", resourceCulture);
@@ -116,6 +136,26 @@ namespace ApiProject4.Properties {
         internal static System.Drawing.Bitmap icons8_create_document_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_create_document_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_delete_25 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-delete-25", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_edit_property_25 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-edit-property-25", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -166,6 +206,36 @@ namespace ApiProject4.Properties {
         internal static System.Drawing.Bitmap icons8_sales_performance_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_sales_performance_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_save_as_25 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-save-as-25", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_speaker_notes_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_speaker_notes_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_transfer_25 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-transfer-25", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

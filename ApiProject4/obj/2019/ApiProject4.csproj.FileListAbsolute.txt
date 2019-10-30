@@ -20,3 +20,7 @@ C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiPro
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.ShareParameter.frmModifyParameter.resources
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.ShareParameter.frmDeleteGroup.resources
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.ShareParameter.frmMergeGroup.resources
+C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.csprojResolveAssemblyReference.cache
+C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.KeynoteManager.frmKeynoteManager.resources
+C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\bin\Debug\DataGridViewGrouper.dll
+C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\bin\Debug\DataGridViewGrouper.pdb

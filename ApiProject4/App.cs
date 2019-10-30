@@ -32,6 +32,8 @@ namespace ApiProject4
             colorElementButton.ColorElement(a);
             ShareParameterButton shareParaButton = new ShareParameterButton();
             shareParaButton.ShareParameter(a);
+            KeynoteManagerButton keynoteButton = new KeynoteManagerButton();
+            keynoteButton.KeynoteManager(a);
             return Result.Succeeded;
         }
 

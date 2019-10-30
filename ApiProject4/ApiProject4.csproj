@@ -100,6 +100,7 @@
     <Compile Include="Button\AllignRightButton.cs" />
     <Compile Include="Button\ColorElementButton.cs" />
     <Compile Include="Button\ExportExcelButton.cs" />
+    <Compile Include="Button\KeynoteManagerButton.cs" />
     <Compile Include="Button\NewSheetsButton.cs" />
     <Compile Include="Button\PrinterSortButton.cs" />
     <Compile Include="Button\PurgeCadButton.cs" />
@@ -135,6 +136,15 @@
     <Compile Include="Helper\CheckAccess.cs" />
     <Compile Include="Helper\Extension.cs" />
     <Compile Include="Helper\ParameterRevit.cs" />
+    <Compile Include="KeynoteManager\AppPenalKeynoteManager.cs" />
+    <Compile Include="KeynoteManager\frmKeynoteManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeynoteManager\frmKeynoteManager.Designer.cs">
+      <DependentUpon>frmKeynoteManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KeynoteManager\KeynoteManagerBinding.cs" />
+    <Compile Include="KeynoteManager\KeynoteManagerHandler.cs" />
     <Compile Include="NewSheets\AppPenalNewSheets.cs" />
     <Compile Include="NewSheets\frmNewSheets.cs">
       <SubType>Form</SubType>
@@ -224,6 +234,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApiProject4.addin" />
+    <None Include="Resources\icons8-save-as-25.png" />
+    <None Include="Resources\icons8-add-tag-25.png" />
+    <None Include="Resources\icons8-delete-25.png" />
+    <None Include="Resources\icons8-transfer-25.png" />
+    <None Include="Resources\icons8-edit-property-25.png" />
+    <None Include="Resources\icons8-add-25.png" />
+    <None Include="Resources\icons8-speaker-notes-32.png" />
     <None Include="Resources\icons8-sales-performance-32.png" />
     <None Include="Resources\icons8-color-wheel-32.png" />
     <None Include="Resources\icons8-width-162222.png" />
@@ -242,7 +259,9 @@
     <None Include="Resources\Excel-icon.png" />
     <None Include="Resources\box-5-16.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="KeynoteManager\DataGridCustomer\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
@@ -252,6 +271,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExportExcel\frmExportExcel.resx">
       <DependentUpon>frmExportExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeynoteManager\frmKeynoteManager.resx">
+      <DependentUpon>frmKeynoteManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewSheets\frmNewSheets.resx">
       <DependentUpon>frmNewSheets.cs</DependentUpon>
@@ -287,6 +309,12 @@
     <EmbeddedResource Include="ShareParameter\frmShareParameter.resx">
       <DependentUpon>frmShareParameter.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Downloads\DataGridViewGrouper\DataGridViewGrouper\DataGridViewGrouper\DataGridViewGrouper.csproj">
+      <Project>{785a6fbb-2ba0-42be-84c4-1703bcad15d2}</Project>
+      <Name>DataGridViewGrouper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
