@@ -76,7 +76,9 @@ namespace ApiProject4.KeynoteManager
             AppPenalKeynoteManager.myFormAddKeynote.Close();
         }
 
-        private void frmAddKeyNote_Load(object sender, EventArgs e)
+     
+
+        private void frmAddKeyNote_Load_1(object sender, EventArgs e)
         {
             this.Owner.Enabled = false;
         }

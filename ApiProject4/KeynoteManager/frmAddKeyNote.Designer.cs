@@ -95,6 +95,7 @@
             this.Text = "frmAddKeyNote";
             this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddKeyNote_FormClosed);
+            this.Load += new System.EventHandler(this.frmAddKeyNote_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddKeynote)).EndInit();
             this.ResumeLayout(false);
 
