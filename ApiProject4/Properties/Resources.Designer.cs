@@ -123,6 +123,16 @@ namespace ApiProject4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_collapse_25 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-collapse-25", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_color_wheel_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_color_wheel_32", resourceCulture);
@@ -156,6 +166,16 @@ namespace ApiProject4.Properties {
         internal static System.Drawing.Bitmap icons8_edit_property_25 {
             get {
                 object obj = ResourceManager.GetObject("icons8-edit-property-25", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_expand_25 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-expand-25", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -246,6 +266,16 @@ namespace ApiProject4.Properties {
         internal static System.Drawing.Bitmap icons8_trash_can_16 {
             get {
                 object obj = ResourceManager.GetObject("icons8_trash_can_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_tree_structure_25 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-tree-structure-25", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

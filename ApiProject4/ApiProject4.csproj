@@ -137,6 +137,12 @@
     <Compile Include="Helper\Extension.cs" />
     <Compile Include="Helper\ParameterRevit.cs" />
     <Compile Include="KeynoteManager\AppPenalKeynoteManager.cs" />
+    <Compile Include="KeynoteManager\frmAddKeyNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeynoteManager\frmAddKeyNote.Designer.cs">
+      <DependentUpon>frmAddKeyNote.cs</DependentUpon>
+    </Compile>
     <Compile Include="KeynoteManager\frmKeynoteManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,8 @@
     </Compile>
     <Compile Include="KeynoteManager\KeynoteManagerBinding.cs" />
     <Compile Include="KeynoteManager\KeynoteManagerHandler.cs" />
+    <Compile Include="KeynoteManager\KeynoteReloadHandler.cs" />
+    <Compile Include="KeynoteManager\MethodExtend.cs" />
     <Compile Include="NewSheets\AppPenalNewSheets.cs" />
     <Compile Include="NewSheets\frmNewSheets.cs">
       <SubType>Form</SubType>
@@ -234,6 +242,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApiProject4.addin" />
+    <None Include="Resources\icons8-expand-25.png" />
+    <None Include="Resources\icons8-collapse-25.png" />
+    <None Include="Resources\icons8-tree-structure-25.png" />
     <None Include="Resources\icons8-save-as-25.png" />
     <None Include="Resources\icons8-add-tag-25.png" />
     <None Include="Resources\icons8-delete-25.png" />
@@ -271,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExportExcel\frmExportExcel.resx">
       <DependentUpon>frmExportExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeynoteManager\frmAddKeyNote.resx">
+      <DependentUpon>frmAddKeyNote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KeynoteManager\frmKeynoteManager.resx">
       <DependentUpon>frmKeynoteManager.cs</DependentUpon>
