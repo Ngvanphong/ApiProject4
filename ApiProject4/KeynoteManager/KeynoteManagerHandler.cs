@@ -61,17 +61,16 @@ namespace ApiProject4.KeynoteManager
             //    return;
             //}
             Autodesk.Revit.DB.View view = doc.ActiveView;
-            using (Transaction t = new Transaction(doc, "Create WorkPlane"))
-            {
-                t.Start();
-                Plane plane = Plane.CreateByNormalAndOrigin(doc.ActiveView.ViewDirection, doc.ActiveView.Origin);
-                SketchPlane sp = SketchPlane.Create(doc, plane);
-                doc.ActiveView.SketchPlane = sp;
-                t.Commit();
+            //using (Transaction t = new Transaction(doc, "Create WorkPlane"))
+            //{
+            //    t.Start();
+            //    Plane plane = Plane.CreateByNormalAndOrigin(doc.ActiveView.ViewDirection, doc.ActiveView.Origin);
+            //    SketchPlane sp = SketchPlane.Create(doc, plane);
+            //    doc.ActiveView.SketchPlane = sp;
+            //    t.Commit();
 
-            }
+            //}
 
-            TagOrientation tagorn = TagOrientation.Horizontal;
             using(Transaction t2= new Transaction(doc, "createKeynote"))
             {
                 t2.Start();
@@ -83,9 +82,9 @@ namespace ApiProject4.KeynoteManager
 
                 }
                 catch(Exception ex) { }
-               
                 t2.Commit();
             }
+            
         }
 
         public string GetName()

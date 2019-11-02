@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.dataGridViewAddKeynote = new System.Windows.Forms.DataGridView();
-            this.btnAddKeynote = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAddKeynote = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddKeynote)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,17 +53,6 @@
             this.dataGridViewAddKeynote.Size = new System.Drawing.Size(768, 206);
             this.dataGridViewAddKeynote.TabIndex = 0;
             // 
-            // btnAddKeynote
-            // 
-            this.btnAddKeynote.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddKeynote.Location = new System.Drawing.Point(705, 226);
-            this.btnAddKeynote.Name = "btnAddKeynote";
-            this.btnAddKeynote.Size = new System.Drawing.Size(75, 34);
-            this.btnAddKeynote.TabIndex = 1;
-            this.btnAddKeynote.Text = "OK";
-            this.btnAddKeynote.UseVisualStyleBackColor = true;
-            this.btnAddKeynote.Click += new System.EventHandler(this.btnAddKeynote_Click);
-            // 
             // Column1
             // 
             this.Column1.HeaderText = "ParentId";
@@ -82,6 +71,17 @@
             this.Column3.HeaderText = "Discription";
             this.Column3.Name = "Column3";
             // 
+            // btnAddKeynote
+            // 
+            this.btnAddKeynote.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddKeynote.Location = new System.Drawing.Point(705, 226);
+            this.btnAddKeynote.Name = "btnAddKeynote";
+            this.btnAddKeynote.Size = new System.Drawing.Size(75, 34);
+            this.btnAddKeynote.TabIndex = 1;
+            this.btnAddKeynote.Text = "OK";
+            this.btnAddKeynote.UseVisualStyleBackColor = true;
+            this.btnAddKeynote.Click += new System.EventHandler(this.btnAddKeynote_Click);
+            // 
             // frmAddKeyNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -91,7 +91,7 @@
             this.Controls.Add(this.dataGridViewAddKeynote);
             this.MinimizeBox = false;
             this.Name = "frmAddKeyNote";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmAddKeyNote";
             this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddKeyNote_FormClosed);
