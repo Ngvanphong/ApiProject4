@@ -22,7 +22,7 @@ namespace ApiProject4.KeynoteManager
         private KeynoteReloadHandler _handlerKeynoteReload;
         private ExternalEvent _eventKeynoteReload;
         public frmKeynoteManager(ExternalEvent eventKeynote, KeynoteManagerHandler handlerKeynote,
-            ExternalEvent eventKeynoteReload,KeynoteReloadHandler handlerKeynoteReload)
+            ExternalEvent eventKeynoteReload, KeynoteReloadHandler handlerKeynoteReload)
         {
             InitializeComponent();
             _handlerKeynote = handlerKeynote;
@@ -101,14 +101,55 @@ namespace ApiProject4.KeynoteManager
 
         private void btnSearchKeynote_Click(object sender, EventArgs e)
         {
-            //AppPenalKeynoteManager.isSearchKeynote = true;
-            _eventKeynote.Raise();
+            string value = string.Empty;
+            value = AppPenalKeynoteManager.myFormKeynoteManager.textBoxSearchKeynote.Text;
+            string type = AppPenalKeynoteManager.myFormKeynoteManager.comboBoxSearchKeynote.SelectedItem.ToString();
+            SearchItem itemSearch = new SearchItem();
+            int count = AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.RowCount;
+
+            if (itemSearch.ParentId == type)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    try
+                    {
+                        string parentId = AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.Rows[i].Cells[0].Value.ToString();
+                        if (parentId == value)
+                        {
+                            AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.FirstDisplayedScrollingRowIndex = i;
+                            AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.Rows[i].Selected = true;
+                            break;
+                        }
+                    }
+                    catch { continue; }
+
+                }
+            }
+            else if (itemSearch.Id == type)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    try
+                    {
+                        string Id = AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.Rows[i].Cells[1].Value.ToString();
+                        if (Id == value)
+                        {
+                            AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.FirstDisplayedScrollingRowIndex = i;
+                            AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.Rows[i].Selected = true;
+                            break;
+                        }
+                    }
+                    catch { continue; }
+
+                }
+
+            }
 
         }
 
         private void btnDefaultKeynote_Click(object sender, EventArgs e)
         {
-           // AppPenalKeynoteManager.isSearchKeynote = false;
+            // AppPenalKeynoteManager.isSearchKeynote = false;
             _eventKeynote.Raise();
         }
 
@@ -132,7 +173,12 @@ namespace ApiProject4.KeynoteManager
         private void btnEdit_Click(object sender, EventArgs e)
         {
             _eventKeynoteReload.Raise();
-           
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            _eventKeynote.Raise();
         }
     }
     public class TestData : INotifyPropertyChanged
@@ -152,5 +198,5 @@ namespace ApiProject4.KeynoteManager
         public event PropertyChangedEventHandler PropertyChanged;
     }
 
-    
+
 }
