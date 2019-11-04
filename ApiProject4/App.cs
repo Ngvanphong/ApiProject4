@@ -34,6 +34,7 @@ namespace ApiProject4
             shareParaButton.ShareParameter(a);
             KeynoteManagerButton keynoteButton = new KeynoteManagerButton();
             keynoteButton.KeynoteManager(a);
+
             return Result.Succeeded;
         }
 

@@ -12,85 +12,61 @@ using System.Collections.ObjectModel;
 
 namespace ApiProject4.KeynoteManager
 {
-    public class KeynoteManagerHandler : IExternalEventHandler
+    public class KeynoteManagerHandler : DefaultValueKeynote
     {
-        public void Execute(UIApplication app)
+
+    }
+    public class ElevationWatcherUpdaterKeynote : IUpdater
+    {
+        static AddInId _appId;
+        static UpdaterId _updaterId;
+        public ElevationWatcherUpdaterKeynote(AddInId id)
         {
-            Document doc = app.ActiveUIDocument.Document;
+            _appId = id;
+            _updaterId = new UpdaterId(_appId, new Guid("8a5b141a-cd9e-4c12-9f99-168c3ddb1de9"));
+        }
+
+        public static bool breakEvent = false;
+        public void Execute(UpdaterData data)
+        {
+            Document doc = data.GetDocument();
+            Autodesk.Revit.ApplicationServices.Application app = doc.Application;
+            UIApplication uiAppp = new UIApplication(app);
+            var listElementIdAdd = data.GetAddedElementIds().ToList();
+            if (listElementIdAdd.Count == 1)
+            {
+                CreateKeynote(doc, listElementIdAdd.First());
+            }
+          
+        }
+
+        public string GetAdditionalInformation()
+        {
+            return "ngvanphong2012@gmail.com";
+        }
+
+        public UpdaterId GetUpdaterId()
+        {
+            return _updaterId;
+        }
+
+        public string GetUpdaterName()
+        {
+            return "KeynoteManager";
+        }
+
+        public ChangePriority GetChangePriority()
+        {
+            return ChangePriority.Annotations;
+        }
+
+        void CreateKeynote(Document doc, ElementId elementId)
+        {
             int row = AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.CurrentRow.Index;
             string id = AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.Rows[row].Cells[1].Value.ToString();
-            //Element elementTag = null;
-            //Reference refTag = null;
-            var collectSymbol = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_KeynoteTags).ToElements();
-            ICollection<ElementId> collectionSet = new Collection<ElementId>();
-            KeynoteEntry entry = null;
-            foreach(var item in AppPenalKeynoteManager.entryTableKeynote)
-            {
-                if (item.Key == id)
-                {
-                    entry = item;
-                    break;
-                }
-            }
-            if (collectSymbol.Count == 0)
-            {
-                MessageBox.Show("You must load family of keynote.");
-                return;
-            }
-            FamilySymbol symbol = collectSymbol.First() as FamilySymbol;
-            //XYZ point = null;
-            //try
-            //{
-            //    refTag = app.ActiveUIDocument.Selection.PickObject(ObjectType.Element);
-            //    elementTag = doc.GetElement(refTag);
-            //}
-            //catch { }
-            //if (elementTag == null)
-            //{
-            //    MessageBox.Show("You must chosse element to assgin keynote");
-            //    return;
-            //}
-            //try
-            //{
-            //    point = app.ActiveUIDocument.Selection.PickPoint();
-            //}
-            //catch { }
-            //if (point == null)
-            //{
-            //    MessageBox.Show("You must chosse point on view");
-            //    return;
-            //}
-            Autodesk.Revit.DB.View view = doc.ActiveView;
-            //using (Transaction t = new Transaction(doc, "Create WorkPlane"))
-            //{
-            //    t.Start();
-            //    Plane plane = Plane.CreateByNormalAndOrigin(doc.ActiveView.ViewDirection, doc.ActiveView.Origin);
-            //    SketchPlane sp = SketchPlane.Create(doc, plane);
-            //    doc.ActiveView.SketchPlane = sp;
-            //    t.Commit();
-
-            //}
-
-            using(Transaction t2= new Transaction(doc, "createKeynote"))
-            {
-                t2.Start();
-                try
-                {
-                    RevitCommandId id_built_in;
-                    id_built_in = RevitCommandId.LookupPostableCommandId(PostableCommand.UserKeynote);
-                    app.PostCommand(id_built_in);
-
-                }
-                catch(Exception ex) { }
-                t2.Commit();
-            }
-            
+            Element el = doc.GetElement(elementId);
+            Parameter para = el.LookupParameter("Key Value");
+            para.Set(id);
         }
-
-        public string GetName()
-        {
-            return "KeynoteManagerHandlers";
-        }
-
     }
 }

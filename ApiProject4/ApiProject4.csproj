@@ -137,6 +137,9 @@
     <Compile Include="Helper\Extension.cs" />
     <Compile Include="Helper\ParameterRevit.cs" />
     <Compile Include="KeynoteManager\AppPenalKeynoteManager.cs" />
+    <Compile Include="KeynoteManager\CancelHandler.cs" />
+    <Compile Include="KeynoteManager\DefaultValueKeynote.cs" />
+    <Compile Include="KeynoteManager\EditKeynoteHandler.cs" />
     <Compile Include="KeynoteManager\frmAddKeyNote.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -21,14 +21,24 @@ namespace ApiProject4.KeynoteManager
         private ExternalEvent _eventKeynote;
         private KeynoteReloadHandler _handlerKeynoteReload;
         private ExternalEvent _eventKeynoteReload;
+        private CancelHandler _handlerCancel;
+        private ExternalEvent _eventCancel;
+        private EditKeynoteHandler _handlerEditKeynote;
+        private ExternalEvent _eventEditKeynote;
+
         public frmKeynoteManager(ExternalEvent eventKeynote, KeynoteManagerHandler handlerKeynote,
-            ExternalEvent eventKeynoteReload, KeynoteReloadHandler handlerKeynoteReload)
+            ExternalEvent eventKeynoteReload, KeynoteReloadHandler handlerKeynoteReload, ExternalEvent eventCancel, CancelHandler handlerCancel,
+            ExternalEvent eventEditKeynote, EditKeynoteHandler handlerEditKeynote)
         {
             InitializeComponent();
             _handlerKeynote = handlerKeynote;
             _eventKeynote = eventKeynote;
             _handlerKeynoteReload = handlerKeynoteReload;
             _eventKeynoteReload = eventKeynoteReload;
+            _handlerCancel = handlerCancel;
+            _eventCancel = eventCancel;
+            _eventEditKeynote = eventEditKeynote;
+            _handlerEditKeynote = handlerEditKeynote;
             dataGridViewKeynote.DataSource = createtestdata();
             //the component can be added in designer, or as done here on the fly
             AppPenalKeynoteManager.groupKeyNoteTree = new Subro.Controls.DataGridViewGrouper(dataGridViewKeynote);
@@ -43,7 +53,7 @@ namespace ApiProject4.KeynoteManager
 
         private void frmKeynoteManager_Load(object sender, EventArgs e)
         {
-
+          
         }
 
 
@@ -149,7 +159,6 @@ namespace ApiProject4.KeynoteManager
 
         private void btnDefaultKeynote_Click(object sender, EventArgs e)
         {
-            // AppPenalKeynoteManager.isSearchKeynote = false;
             _eventKeynote.Raise();
         }
 
@@ -179,6 +188,16 @@ namespace ApiProject4.KeynoteManager
         private void button5_Click(object sender, EventArgs e)
         {
             _eventKeynote.Raise();
+        }
+
+        private void frmKeynoteManager_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _eventCancel.Raise();
+        }
+
+        private void bttEditKeynote_Click(object sender, EventArgs e)
+        {
+            _eventEditKeynote.Raise();
         }
     }
     public class TestData : INotifyPropertyChanged

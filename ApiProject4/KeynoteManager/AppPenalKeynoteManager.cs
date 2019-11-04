@@ -17,13 +17,20 @@ namespace ApiProject4.KeynoteManager
         public static frmAddKeyNote myFormAddKeynote;
         public static int indexRowCurrent = 1;
         public static string pathTextNoteFile = string.Empty;
+        public static ElevationWatcherUpdaterKeynote _updater = null;
+       
         public static void ShowKeynoteManager()
         {
             KeynoteManagerHandler handlerKeynote = new KeynoteManagerHandler();
             ExternalEvent eventKeynote = ExternalEvent.Create(handlerKeynote);
             KeynoteReloadHandler handlerReloadKeynote = new KeynoteReloadHandler();
             ExternalEvent eventKeynoteReload = ExternalEvent.Create(handlerReloadKeynote);
-            myFormKeynoteManager = new frmKeynoteManager(eventKeynote, handlerKeynote,eventKeynoteReload,handlerReloadKeynote);
+            CancelHandler handlerCancelKeynote = new CancelHandler();
+            ExternalEvent eventCancelKetnote = ExternalEvent.Create(handlerCancelKeynote);
+            EditKeynoteHandler handlerEditKeynote = new EditKeynoteHandler();
+            ExternalEvent eventEditKeynote = ExternalEvent.Create(handlerEditKeynote);
+            myFormKeynoteManager = new frmKeynoteManager(eventKeynote, handlerKeynote,eventKeynoteReload,handlerReloadKeynote,
+                 eventCancelKetnote, handlerCancelKeynote,eventEditKeynote,handlerEditKeynote);
             myFormKeynoteManager.Show();
         }
         public static void ShowAddKeynote()

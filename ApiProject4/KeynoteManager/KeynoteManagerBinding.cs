@@ -52,11 +52,21 @@ namespace ApiProject4.KeynoteManager
             string[] sources = { item.ParentId, item.Id };
             AppPenalKeynoteManager.myFormKeynoteManager.comboBoxSearchKeynote.Items.AddRange(sources);
             AppPenalKeynoteManager.myFormKeynoteManager.comboBoxSearchKeynote.SelectedItem = item.ParentId;
+            TypeKeynote type = new TypeKeynote();
+            string[] sourcesType = { type.ElementKeynote, type.MaterialKeynote,type.UserKeynote };
+            AppPenalKeynoteManager.myFormKeynoteManager.dropChangeTypeKeynote.Items.AddRange(sourcesType);
+            AppPenalKeynoteManager.myFormKeynoteManager.dropChangeTypeKeynote.SelectedItem = type.ElementKeynote;
         }
     }
     public class SearchItem
     {
         public string Id { get { return "Id"; } }
         public string ParentId { get { return "ParentId"; } }
+    }
+    public class TypeKeynote
+    {
+        public string ElementKeynote { get { return "Element Keynote"; } }
+        public string MaterialKeynote { get { return "Material Keynote"; } }
+        public string UserKeynote { get { return "User Keynote"; } }
     }
 }

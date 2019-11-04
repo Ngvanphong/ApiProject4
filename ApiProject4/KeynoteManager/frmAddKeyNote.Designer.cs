@@ -91,7 +91,7 @@
             this.Controls.Add(this.dataGridViewAddKeynote);
             this.MinimizeBox = false;
             this.Name = "frmAddKeyNote";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddKeyNote";
             this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddKeyNote_FormClosed);

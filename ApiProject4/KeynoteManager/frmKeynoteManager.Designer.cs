@@ -40,6 +40,9 @@
             this.textBoxSearchKeynote = new System.Windows.Forms.TextBox();
             this.btnSearchKeynote = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dropChangeTypeKeynote = new System.Windows.Forms.ComboBox();
+            this.bttEditKeynote = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKeynote)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,12 +162,12 @@
             // 
             this.textBoxSearchKeynote.Location = new System.Drawing.Point(292, 12);
             this.textBoxSearchKeynote.Name = "textBoxSearchKeynote";
-            this.textBoxSearchKeynote.Size = new System.Drawing.Size(371, 20);
+            this.textBoxSearchKeynote.Size = new System.Drawing.Size(295, 20);
             this.textBoxSearchKeynote.TabIndex = 4;
             // 
             // btnSearchKeynote
             // 
-            this.btnSearchKeynote.Location = new System.Drawing.Point(679, 10);
+            this.btnSearchKeynote.Location = new System.Drawing.Point(593, 10);
             this.btnSearchKeynote.Name = "btnSearchKeynote";
             this.btnSearchKeynote.Size = new System.Drawing.Size(75, 23);
             this.btnSearchKeynote.TabIndex = 5;
@@ -178,22 +181,55 @@
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(770, 9);
+            this.button2.Location = new System.Drawing.Point(12, 15);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(31, 26);
             this.button2.TabIndex = 2;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(691, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Type:";
+            // 
+            // dropChangeTypeKeynote
+            // 
+            this.dropChangeTypeKeynote.FormattingEnabled = true;
+            this.dropChangeTypeKeynote.Location = new System.Drawing.Point(731, 11);
+            this.dropChangeTypeKeynote.Name = "dropChangeTypeKeynote";
+            this.dropChangeTypeKeynote.Size = new System.Drawing.Size(185, 21);
+            this.dropChangeTypeKeynote.TabIndex = 7;
+            // 
+            // bttEditKeynote
+            // 
+            this.bttEditKeynote.BackgroundImage = global::ApiProject4.Properties.Resources.icons8_edit_property_25;
+            this.bttEditKeynote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.bttEditKeynote.FlatAppearance.BorderSize = 0;
+            this.bttEditKeynote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttEditKeynote.Location = new System.Drawing.Point(12, 275);
+            this.bttEditKeynote.Name = "bttEditKeynote";
+            this.bttEditKeynote.Size = new System.Drawing.Size(31, 26);
+            this.bttEditKeynote.TabIndex = 2;
+            this.bttEditKeynote.UseVisualStyleBackColor = true;
+            this.bttEditKeynote.Click += new System.EventHandler(this.bttEditKeynote_Click);
+            // 
             // frmKeynoteManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 803);
+            this.Controls.Add(this.dropChangeTypeKeynote);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSearchKeynote);
             this.Controls.Add(this.textBoxSearchKeynote);
             this.Controls.Add(this.comboBoxSearchKeynote);
             this.Controls.Add(this.button5);
+            this.Controls.Add(this.bttEditKeynote);
             this.Controls.Add(this.btnDeleteKeynote);
             this.Controls.Add(this.btnMoveKeynote);
             this.Controls.Add(this.button2);
@@ -206,6 +242,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmKeynoteManager";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmKeynoteManager_FormClosed);
             this.Load += new System.EventHandler(this.frmKeynoteManager_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKeynote)).EndInit();
             this.ResumeLayout(false);
@@ -226,5 +263,8 @@
         public System.Windows.Forms.Button btnSearchKeynote;
         public System.Windows.Forms.ComboBox comboBoxSearchKeynote;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.ComboBox dropChangeTypeKeynote;
+        public System.Windows.Forms.Button bttEditKeynote;
     }
 }
