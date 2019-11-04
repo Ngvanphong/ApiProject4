@@ -37,7 +37,7 @@ namespace ApiProject4.KeynoteManager
             }
             catch
             {
-                MessageBox.Show("Error: You must choose keynote");
+                MessageBox.Show("Error: You must choose a keynote");
             }
         }
 

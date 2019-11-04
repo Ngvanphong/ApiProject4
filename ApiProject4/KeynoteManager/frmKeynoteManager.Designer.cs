@@ -67,7 +67,7 @@
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(12, 243);
+            this.button5.Location = new System.Drawing.Point(12, 213);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(31, 26);
             this.button5.TabIndex = 2;
@@ -104,7 +104,7 @@
             this.btnEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Location = new System.Drawing.Point(12, 204);
+            this.btnEdit.Location = new System.Drawing.Point(12, 291);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(31, 26);
             this.btnEdit.TabIndex = 2;
@@ -211,7 +211,7 @@
             this.bttEditKeynote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.bttEditKeynote.FlatAppearance.BorderSize = 0;
             this.bttEditKeynote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttEditKeynote.Location = new System.Drawing.Point(12, 275);
+            this.bttEditKeynote.Location = new System.Drawing.Point(12, 253);
             this.bttEditKeynote.Name = "bttEditKeynote";
             this.bttEditKeynote.Size = new System.Drawing.Size(31, 26);
             this.bttEditKeynote.TabIndex = 2;
