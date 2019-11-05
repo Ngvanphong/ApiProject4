@@ -24,6 +24,12 @@ namespace ApiProject4.KeynoteManager
             int rowSelect = AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.CurrentRow.Index;
             string value = AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.Rows[rowSelect].Cells[1].Value.ToString();
             string text = AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.Rows[rowSelect].Cells[2].Value.ToString();
+            int count = AppPenalKeynoteManager.entryTableKeynote.Where(x => x.Key == idParent).Count();
+            if (count == 0)
+            {
+                MessageBox.Show("Id of keynote group is not existed.");
+                return;
+            }
             var entryOld = AppPenalKeynoteManager.entryTableKeynote.Where(x => x.Key == value).First();
             KeynoteEntry entryNew = new KeynoteEntry(value, idParent, text);
             AppPenalKeynoteManager.entryTableKeynote.Remove(entryOld);
