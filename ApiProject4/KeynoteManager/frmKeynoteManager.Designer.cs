@@ -57,7 +57,7 @@
             this.dataGridViewKeynote.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewKeynote.Location = new System.Drawing.Point(50, 44);
             this.dataGridViewKeynote.Name = "dataGridViewKeynote";
-            this.dataGridViewKeynote.Size = new System.Drawing.Size(1030, 759);
+            this.dataGridViewKeynote.Size = new System.Drawing.Size(892, 759);
             this.dataGridViewKeynote.TabIndex = 1;
             this.dataGridViewKeynote.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewKeynote_CellContentClick);
             // 
@@ -222,7 +222,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1080, 803);
+            this.ClientSize = new System.Drawing.Size(942, 803);
             this.Controls.Add(this.dropChangeTypeKeynote);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSearchKeynote);
