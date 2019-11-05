@@ -53,7 +53,10 @@ namespace ApiProject4.KeynoteManager
 
         private void frmKeynoteManager_Load(object sender, EventArgs e)
         {
-          
+            this.button5.Enabled = false;
+            this.bttEditKeynote.Enabled = false;
+            this.btnDeleteKeynote.Enabled = false;
+            this.btnMoveKeynote.Enabled = false;
         }
 
 
@@ -199,6 +202,68 @@ namespace ApiProject4.KeynoteManager
         {
             _eventEditKeynote.Raise();
         }
+
+        private void dataGridViewKeynote_SelectionChanged(object sender, EventArgs e)
+        {
+            this.button5.Enabled = true;
+            this.bttEditKeynote.Enabled = true;
+            this.btnDeleteKeynote.Enabled = true;
+            this.btnMoveKeynote.Enabled = true;
+        }
+
+        private void btnDeleteKeynote_Click(object sender, EventArgs e)
+        {
+            string warning = "WARNING: Do you want to delete keynote?";
+            DialogResult result = MessageBox.Show(warning, "Delete Keynote", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+            int rowSelect = AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.CurrentRow.Index;
+            string value = AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.Rows[rowSelect].Cells[1].Value.ToString();
+            int countChild = AppPenalKeynoteManager.entryTableKeynote.Where(x => x.ParentKey == value).Count();
+            if (countChild > 0)
+            {
+                string warning2 = "WARNING: This keynote is a parent keynote, if you delete it then child keynote will be deleted. Do you want to delete ?";
+                DialogResult result2 = MessageBox.Show(warning2, "Delete Keynote group", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result2 == DialogResult.Cancel)
+                {
+                    return;
+                }
+                DeleteKeynoteGroup(value);
+                AppPenalKeynoteManager.entryTableKeynote.Remove(AppPenalKeynoteManager.entryTableKeynote.Where(x => x.Key == value).First());
+            }
+            else
+            {
+                AppPenalKeynoteManager.entryTableKeynote.Remove(AppPenalKeynoteManager.entryTableKeynote.Where(x => x.Key == value).First());
+            }
+
+            AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.DataSource = createtestdata();
+            AppPenalKeynoteManager.groupKeyNoteTree = new Subro.Controls.DataGridViewGrouper(AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote);
+            AppPenalKeynoteManager.groupKeyNoteTree.SetGroupOn("ParentId");
+            AppPenalKeynoteManager.groupKeyNoteTree.DisplayGroup += grouper_DisplayGroup;
+            try
+            {
+                AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.Rows[rowSelect - 1].Selected = true;
+                AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.FirstDisplayedScrollingRowIndex = rowSelect - 1;
+            }
+            catch { }
+        }
+        public void DeleteKeynoteGroup(string key)
+        {
+            var childParent = AppPenalKeynoteManager.entryTableKeynote.Where(x => x.ParentKey == key).ToList();
+            foreach (var item in childParent)
+            {
+                var childKey = item.Key;
+                AppPenalKeynoteManager.entryTableKeynote.Remove(item);
+                DeleteKeynoteGroup(childKey);
+            }
+        }
+
+        private void btnMoveKeynote_Click(object sender, EventArgs e)
+        {
+            AppPenalKeynoteManager.ShowMoveKeynote();
+        }
     }
     public class TestData : INotifyPropertyChanged
     {
@@ -216,6 +281,7 @@ namespace ApiProject4.KeynoteManager
         }
         public event PropertyChangedEventHandler PropertyChanged;
     }
+
 
 
 }

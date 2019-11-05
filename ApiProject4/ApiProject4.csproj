@@ -152,6 +152,12 @@
     <Compile Include="KeynoteManager\frmKeynoteManager.Designer.cs">
       <DependentUpon>frmKeynoteManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="KeynoteManager\frmMoveKeynote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeynoteManager\frmMoveKeynote.Designer.cs">
+      <DependentUpon>frmMoveKeynote.cs</DependentUpon>
+    </Compile>
     <Compile Include="KeynoteManager\KeynoteManagerBinding.cs" />
     <Compile Include="KeynoteManager\KeynoteManagerHandler.cs" />
     <Compile Include="KeynoteManager\KeynoteReloadHandler.cs" />
@@ -291,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KeynoteManager\frmKeynoteManager.resx">
       <DependentUpon>frmKeynoteManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeynoteManager\frmMoveKeynote.resx">
+      <DependentUpon>frmMoveKeynote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewSheets\frmNewSheets.resx">
       <DependentUpon>frmNewSheets.cs</DependentUpon>

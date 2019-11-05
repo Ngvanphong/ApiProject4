@@ -20,6 +20,7 @@ namespace ApiProject4.KeynoteManager
         public static ElevationWatcherUpdaterKeynote _updater = null;
         public static RevitCommandEndedMonitor comandMoniter;
         public static int countRemoveEvent = 0;
+        public static frmMoveKeynote myFormKeynoteMove;
         public static void ShowKeynoteManager()
         {
             KeynoteManagerHandler handlerKeynote = new KeynoteManagerHandler();
@@ -39,6 +40,13 @@ namespace ApiProject4.KeynoteManager
             myFormAddKeynote = new frmAddKeyNote();
             myFormAddKeynote.Owner = myFormKeynoteManager;
             myFormAddKeynote.Show();
+        }
+
+        public static void ShowMoveKeynote()
+        {
+            myFormKeynoteMove = new frmMoveKeynote();
+            myFormKeynoteMove.Owner = myFormKeynoteManager;
+            myFormKeynoteMove.Show();
         }
 
     }

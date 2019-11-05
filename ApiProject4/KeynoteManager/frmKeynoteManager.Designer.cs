@@ -60,6 +60,7 @@
             this.dataGridViewKeynote.Size = new System.Drawing.Size(892, 759);
             this.dataGridViewKeynote.TabIndex = 1;
             this.dataGridViewKeynote.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewKeynote_CellContentClick);
+            this.dataGridViewKeynote.SelectionChanged += new System.EventHandler(this.dataGridViewKeynote_SelectionChanged);
             // 
             // button5
             // 
@@ -85,6 +86,7 @@
             this.btnDeleteKeynote.Size = new System.Drawing.Size(31, 26);
             this.btnDeleteKeynote.TabIndex = 2;
             this.btnDeleteKeynote.UseVisualStyleBackColor = true;
+            this.btnDeleteKeynote.Click += new System.EventHandler(this.btnDeleteKeynote_Click);
             // 
             // btnMoveKeynote
             // 
@@ -97,6 +99,7 @@
             this.btnMoveKeynote.Size = new System.Drawing.Size(31, 26);
             this.btnMoveKeynote.TabIndex = 2;
             this.btnMoveKeynote.UseVisualStyleBackColor = true;
+            this.btnMoveKeynote.Click += new System.EventHandler(this.btnMoveKeynote_Click);
             // 
             // btnEdit
             // 
