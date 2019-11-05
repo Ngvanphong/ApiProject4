@@ -18,7 +18,7 @@ namespace ApiProject4.KeynoteManager
 
         private void PostCommand(UIApplication revitUiApplication, PostableCommand PostableCommand)
         {
-            var commandMonitor = new RevitCommandEndedMonitor(revitUiApplication);
+            AppPenalKeynoteManager.comandMoniter = new RevitCommandEndedMonitor(revitUiApplication);
             revitUiApplication.PostCommand(RevitCommandId.LookupPostableCommandId(PostableCommand));
         }
 
@@ -37,6 +37,7 @@ namespace ApiProject4.KeynoteManager
                 postCommand = PostableCommand.MaterialKeynote;
             }
             PostCommand(app, postCommand);
+            AppPenalKeynoteManager.countRemoveEvent += 1;
             if (AppPenalKeynoteManager._updater == null)
             {
                 AppPenalKeynoteManager._updater = new ElevationWatcherUpdaterKeynote(app.ActiveAddInId);
@@ -44,7 +45,6 @@ namespace ApiProject4.KeynoteManager
                 ElementCategoryFilter f = new ElementCategoryFilter(BuiltInCategory.OST_KeynoteTags);
                 UpdaterRegistry.AddTrigger(AppPenalKeynoteManager._updater.GetUpdaterId(), f, Element.GetChangeTypeElementAddition());
             }
-
         }
 
         public string GetName()
@@ -60,9 +60,8 @@ namespace ApiProject4.KeynoteManager
         public RevitCommandEndedMonitor(UIApplication revituiApplication)
         {
             _revitUiApplication = revituiApplication;
-
+           
             _revitUiApplication.DialogBoxShowing += new EventHandler<DialogBoxShowingEventArgs>(OnRevitUiApplicationDialog);
-
         }
 
         private void OnRevitUiApplicationDialog(object sender, DialogBoxShowingEventArgs diaLogEventArgs)

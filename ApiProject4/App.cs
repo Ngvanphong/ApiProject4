@@ -6,6 +6,8 @@ using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using ApiProject4.Button;
+using Autodesk.Revit.UI.Events;
+using ApiProject4.KeynoteManager;
 #endregion
 
 namespace ApiProject4
@@ -40,7 +42,22 @@ namespace ApiProject4
 
         public Result OnShutdown(UIControlledApplication a)
         {
+            for(int i = 0; i < AppPenalKeynoteManager.countRemoveEvent; i++)
+            {
+                a.DialogBoxShowing -= new EventHandler<DialogBoxShowingEventArgs>(OnRevitUiApplicationDialog);
+            }
             return Result.Succeeded;
+        }
+
+        private void OnRevitUiApplicationDialog(object sender, DialogBoxShowingEventArgs diaLogEventArgs)
+        {
+            DialogBoxShowingEventArgs t = diaLogEventArgs as DialogBoxShowingEventArgs;
+            var id = t.DialogId;
+            if (t != null && id == @"Dialog_Revit_KeynoteData")
+            {
+                diaLogEventArgs.OverrideResult(1);
+
+            }
         }
     }
 }

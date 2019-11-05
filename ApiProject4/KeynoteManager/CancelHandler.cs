@@ -20,9 +20,7 @@ namespace ApiProject4.KeynoteManager
                 AppPenalKeynoteManager._updater = null;
             }
             catch { AppPenalKeynoteManager._updater = null; }
-            
         }
-
         public string GetName()
         {
             return "DisableDialogCancel";

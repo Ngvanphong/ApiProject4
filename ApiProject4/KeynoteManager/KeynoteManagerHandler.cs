@@ -31,13 +31,11 @@ namespace ApiProject4.KeynoteManager
         {
             Document doc = data.GetDocument();
             Autodesk.Revit.ApplicationServices.Application app = doc.Application;
-            UIApplication uiAppp = new UIApplication(app);
             var listElementIdAdd = data.GetAddedElementIds().ToList();
             if (listElementIdAdd.Count == 1)
             {
                 CreateKeynote(doc, listElementIdAdd.First());
             }
-          
         }
 
         public string GetAdditionalInformation()

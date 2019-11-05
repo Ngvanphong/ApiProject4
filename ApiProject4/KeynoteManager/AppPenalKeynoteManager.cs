@@ -18,7 +18,8 @@ namespace ApiProject4.KeynoteManager
         public static int indexRowCurrent = 1;
         public static string pathTextNoteFile = string.Empty;
         public static ElevationWatcherUpdaterKeynote _updater = null;
-       
+        public static RevitCommandEndedMonitor comandMoniter;
+        public static int countRemoveEvent = 0;
         public static void ShowKeynoteManager()
         {
             KeynoteManagerHandler handlerKeynote = new KeynoteManagerHandler();
