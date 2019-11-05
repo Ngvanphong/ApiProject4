@@ -87,6 +87,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_160B2F6FF787AB53C8416C9654ED3691"
+        "OwnerKey" = "8:_7F1D775233BE4FBD98DEE55BBB1E0CE6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_160B2F6FF787AB53C8416C9654ED3691"
+        "OwnerKey" = "8:_958FB10E322E41EE9FA711F34BF2B2C7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_21D98C6BD065882653E60CC2AAF7E982"
         "OwnerKey" = "8:_5F36E92687712808FAD7F80B659A13BA"
         "MsmSig" = "8:_UNDEFINED"
@@ -1767,6 +1779,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_EE98E42100904D0CAF1F2D6EFF540992"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F34F1FCC13E1B4E05213544DD39F0A59"
         "OwnerKey" = "8:_7F1D775233BE4FBD98DEE55BBB1E0CE6"
         "MsmSig" = "8:_UNDEFINED"
@@ -1822,6 +1840,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_EE98E42100904D0CAF1F2D6EFF540992"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_C6898981B81A4D38A4EF73E07AAC5D83"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1841,6 +1865,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_5F765E63ACA4935763C60E1F10F51BF9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_160B2F6FF787AB53C8416C9654ED3691"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2186,6 +2216,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
             }
         }
         "Release"
@@ -2355,6 +2393,37 @@
                     }
                 }
             "SourcePath" = "8:InterfaceAPI.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_3E871414F52041498F896B25CCC88A0B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_160B2F6FF787AB53C8416C9654ED3691"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DataGridViewGrouper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_160B2F6FF787AB53C8416C9654ED3691"
+                    {
+                    "Name" = "8:DataGridViewGrouper.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:DataGridViewGrouper.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_3E871414F52041498F896B25CCC88A0B"
@@ -3267,6 +3336,11 @@
             "AssemblyAsmDisplayName" = "8:ApiProject4, Version=2019.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_958FB10E322E41EE9FA711F34BF2B2C7"
+                    {
+                    "Name" = "8:ApiProject4.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:..\\..\\..\\..\\AppData\\Roaming\\Autodesk\\Revit\\Addins\\2019\\ApiProject4.dll"
             "TargetName" = "8:"
@@ -3937,6 +4011,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EE98E42100904D0CAF1F2D6EFF540992"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DataGridViewGrouper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_EE98E42100904D0CAF1F2D6EFF540992"
+                    {
+                    "Name" = "8:DataGridViewGrouper.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\..\\..\\..\\AppData\\Roaming\\Autodesk\\Revit\\Addins\\2019\\DataGridViewGrouper.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_2453B0469C8C4F65B0B82B0E92A69847"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F34F1FCC13E1B4E05213544DD39F0A59"
             {
             "AssemblyRegister" = "3:1"
@@ -4099,7 +4204,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SetupApiProject42019"
         "ProductCode" = "8:{5878E835-DDA2-4DE9-A103-CA0EC815A467}"
-        "PackageCode" = "8:{2BE24192-6F7D-4437-A2B7-463A47C3589F}"
+        "PackageCode" = "8:{A68729E3-BDF6-4005-8AA6-3DC516CD02D1}"
         "UpgradeCode" = "8:{F59E31A4-732A-4BE9-8581-E50081F47871}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
