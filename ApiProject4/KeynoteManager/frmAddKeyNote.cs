@@ -37,17 +37,13 @@ namespace ApiProject4.KeynoteManager
                     return;
                 }
                 listIdAdd.Add(id);
-            }
-            for (int i = 0; i < rowCount - 1; i++)
-            {
+
                 string parentId = string.Empty;
                 try
                 {
                     parentId = AppPenalKeynoteManager.myFormAddKeynote.dataGridViewAddKeynote.Rows[i].Cells[0].Value.ToString();
                 }
                 catch { }
-
-                string id = AppPenalKeynoteManager.myFormAddKeynote.dataGridViewAddKeynote.Rows[i].Cells[1].Value.ToString();
                 string discription = AppPenalKeynoteManager.myFormAddKeynote.dataGridViewAddKeynote.Rows[i].Cells[2].Value.ToString();
                 if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(discription) || discription == "" || id == "")
                 {
@@ -58,10 +54,19 @@ namespace ApiProject4.KeynoteManager
                 {
                     return;
                 }
+            }
+            for (int i = 0; i < rowCount - 1; i++)
+            {
+                string parentId = string.Empty;
+                try
+                {
+                    parentId = AppPenalKeynoteManager.myFormAddKeynote.dataGridViewAddKeynote.Rows[i].Cells[0].Value.ToString();
+                }
+                catch { }
+                string id = AppPenalKeynoteManager.myFormAddKeynote.dataGridViewAddKeynote.Rows[i].Cells[1].Value.ToString();
+                string discription = AppPenalKeynoteManager.myFormAddKeynote.dataGridViewAddKeynote.Rows[i].Cells[2].Value.ToString();
                 KeynoteEntry entry = new KeynoteEntry(id, parentId, discription);
                 AppPenalKeynoteManager.entryTableKeynote.Add(entry);
-                
-
             }
             AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.DataSource = frmKeynoteManager.createtestdata();
             AppPenalKeynoteManager.groupKeyNoteTree = new Subro.Controls.DataGridViewGrouper(AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote);

@@ -21,29 +21,28 @@ namespace ApiProject4.KeynoteManager
         private void btnKeynoteMoveBinding_Click(object sender, EventArgs e)
         {
             string idParent = AppPenalKeynoteManager.myFormKeynoteMove.textBoxIdKeynote.Text;
-            int rowSelect = AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.CurrentRow.Index;
-            string value = AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.Rows[rowSelect].Cells[1].Value.ToString();
-            string text = AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.Rows[rowSelect].Cells[2].Value.ToString();
             int count = AppPenalKeynoteManager.entryTableKeynote.Where(x => x.Key == idParent).Count();
             if (count == 0)
             {
                 MessageBox.Show("Id of keynote group is not existed.");
                 return;
             }
-            var entryOld = AppPenalKeynoteManager.entryTableKeynote.Where(x => x.Key == value).First();
-            KeynoteEntry entryNew = new KeynoteEntry(value, idParent, text);
-            AppPenalKeynoteManager.entryTableKeynote.Remove(entryOld);
-            AppPenalKeynoteManager.entryTableKeynote.Add(entryNew);
+            var rowSelect = AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.SelectedRows;
+
+            foreach(DataGridViewRow item in rowSelect)
+            {
+                string value = AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.Rows[item.Index].Cells[1].Value.ToString();
+                string text = AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.Rows[item.Index].Cells[2].Value.ToString();
+                var entryOld = AppPenalKeynoteManager.entryTableKeynote.Where(x => x.Key == value).First();
+                KeynoteEntry entryNew = new KeynoteEntry(value, idParent, text);
+                AppPenalKeynoteManager.entryTableKeynote.Remove(entryOld);
+                AppPenalKeynoteManager.entryTableKeynote.Add(entryNew);
+            }
+
             AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.DataSource = frmKeynoteManager.createtestdata();
             AppPenalKeynoteManager.groupKeyNoteTree = new Subro.Controls.DataGridViewGrouper(AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote);
             AppPenalKeynoteManager.groupKeyNoteTree.SetGroupOn("ParentId");
             AppPenalKeynoteManager.groupKeyNoteTree.DisplayGroup += frmKeynoteManager.grouper_DisplayGroup;
-            try
-            {
-                AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.Rows[rowSelect - 1].Selected = true;
-                AppPenalKeynoteManager.myFormKeynoteManager.dataGridViewKeynote.FirstDisplayedScrollingRowIndex = rowSelect - 1;
-            }
-            catch { }
             AppPenalKeynoteManager.myFormKeynoteMove.Close();
 
         }
