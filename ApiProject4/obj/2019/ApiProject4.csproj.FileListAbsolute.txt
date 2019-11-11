@@ -26,3 +26,4 @@ C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\bin\Debug\DataG
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\bin\Debug\DataGridViewGrouper.pdb
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.KeynoteManager.frmAddKeyNote.resources
 C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.KeynoteManager.frmMoveKeynote.resources
+C:\Users\Windows 10\Documents\RevitApiV2\ApiProject4\ApiProject4\obj\2019\ApiProject4.AllginViewPort.frmAlginViewport.resources

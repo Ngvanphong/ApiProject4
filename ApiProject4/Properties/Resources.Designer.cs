@@ -93,6 +93,16 @@ namespace ApiProject4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap focus_symbol {
+            get {
+                object obj = ResourceManager.GetObject("focus_symbol", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_add_25 {
             get {
                 object obj = ResourceManager.GetObject("icons8-add-25", resourceCulture);
@@ -286,6 +296,16 @@ namespace ApiProject4.Properties {
         internal static System.Drawing.Bitmap icons8_width_162222 {
             get {
                 object obj = ResourceManager.GetObject("icons8_width_162222", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap list {
+            get {
+                object obj = ResourceManager.GetObject("list", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

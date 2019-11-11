@@ -36,7 +36,8 @@ namespace ApiProject4
             shareParaButton.ShareParameter(a);
             KeynoteManagerButton keynoteButton = new KeynoteManagerButton();
             keynoteButton.KeynoteManager(a);
-
+            AllignViewPortButton alignViewPort = new AllignViewPortButton();
+            alignViewPort.CreateAlignView(a);
             return Result.Succeeded;
         }
 

@@ -95,9 +95,19 @@
     <Compile Include="AlignElement\ArrangeBinding.cs" />
     <Compile Include="AlignElement\ArrangeHorizontallyBinding.cs" />
     <Compile Include="AlignElement\Constant.cs" />
+    <Compile Include="AllginViewPort\AlignViewportHandler.cs" />
+    <Compile Include="AllginViewPort\AllignViewPortBinding.cs" />
+    <Compile Include="AllginViewPort\AppPenalAlignViewport.cs" />
+    <Compile Include="AllginViewPort\frmAlginViewport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllginViewPort\frmAlginViewport.Designer.cs">
+      <DependentUpon>frmAlginViewport.cs</DependentUpon>
+    </Compile>
     <Compile Include="App.cs" />
     <Compile Include="Button\AlignLeftButton.cs" />
     <Compile Include="Button\AllignRightButton.cs" />
+    <Compile Include="Button\AllignViewPortButton.cs" />
     <Compile Include="Button\ColorElementButton.cs" />
     <Compile Include="Button\ExportExcelButton.cs" />
     <Compile Include="Button\KeynoteManagerButton.cs" />
@@ -251,6 +261,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApiProject4.addin" />
+    <None Include="Resources\list.png" />
+    <None Include="Resources\focus-symbol.png" />
     <None Include="Resources\icons8-expand-25.png" />
     <None Include="Resources\icons8-collapse-25.png" />
     <None Include="Resources\icons8-tree-structure-25.png" />
@@ -286,6 +298,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AllginViewPort\frmAlginViewport.resx">
+      <DependentUpon>frmAlginViewport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ColorElement\frmColorElement.resx">
       <DependentUpon>frmColorElement.cs</DependentUpon>
     </EmbeddedResource>
