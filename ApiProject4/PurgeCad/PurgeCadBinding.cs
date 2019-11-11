@@ -21,6 +21,12 @@ namespace ApiProject4.PurgeCad
             Document doc = uiApp.ActiveUIDocument.Document;
             if (CheckAccess.CheckLicense() == true)
             {
+                string warning = "WARNING: Do you want to remove import cad.";
+                DialogResult result = MessageBox.Show(warning, "Remove Cad", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result == DialogResult.Cancel)
+                {
+                    return Result.Succeeded;
+                }
                 var fileredCad = new FilteredElementCollector(doc).OfClass(typeof(ImportInstance)).Cast<ImportInstance>().Where(i => i.IsLinked == false).ToList();
                 foreach(var item in fileredCad)
                 {
