@@ -46,37 +46,59 @@ namespace ApiProject4.AllginViewPort
                 }
             }
             Autodesk.Revit.DB.View viewOrigin = doc.GetElement(viewPortChoose.ViewId) as Autodesk.Revit.DB.View;
-            BoundingBoxXYZ box = new BoundingBoxXYZ();
-            box.Min = viewOrigin.CropBox.Min;
-            box.Max = viewOrigin.CropBox.Max;
-            using (Transaction t2= new Transaction(doc, "ShowLine"))
+            if (viewOrigin.ViewType == ViewType.Legend)
             {
-                t2.Start();
-                viewOrigin.CropBoxActive = true;
-                viewOrigin.CropBoxVisible = true;
-                t2.Commit();
-            }
-            foreach(ViewSheet sheet in listSheetChoose)
-            {
-                Viewport viewPortAlign = getViewportOnSheet(doc, sheet, viewOrigin.ViewType);
-                Autodesk.Revit.DB.View viewAlgin = doc.GetElement(viewPortAlign.ViewId) as Autodesk.Revit.DB.View;
-
-                
-                BoundingBoxXYZ boxOld = new BoundingBoxXYZ();
-                boxOld.Min = viewAlgin.CropBox.Min;
-                boxOld.Max = viewAlgin.CropBox.Max;
-                using (Transaction t= new Transaction(doc, "AlignViewPorts"))
+                foreach (ViewSheet sheet in listSheetChoose)
                 {
-                    t.Start();
-                    viewAlgin.CropBoxActive = true;
-                    viewAlgin.CropBoxVisible = true;
-                    viewAlgin.CropBox = box;
-                    viewPortAlign.SetBoxCenter(viewPortChoose.GetBoxCenter());
-                    viewAlgin.CropBox = boxOld;
-                    t.Commit();
-                }  
+                    try
+                    {
+                        Viewport viewPortAlign = getViewportOnSheet(doc, sheet, viewOrigin.ViewType);
+                        using (Transaction t3 = new Transaction(doc, "AlignViewLegend"))
+                        {
+                            t3.Start();
+                            viewPortAlign.SetBoxCenter(viewPortChoose.GetBoxCenter());
+                            t3.Commit();
+                        }
+                    }
+                    catch { continue; }
+                    
+                }
             }
-
+            else
+            {
+                BoundingBoxXYZ box = new BoundingBoxXYZ();
+                box.Min = viewOrigin.CropBox.Min;
+                box.Max = viewOrigin.CropBox.Max;
+                using (Transaction t2 = new Transaction(doc, "ShowLine"))
+                {
+                    t2.Start();
+                    viewOrigin.CropBoxActive = true;
+                    viewOrigin.CropBoxVisible = true;
+                    t2.Commit();
+                }
+                foreach (ViewSheet sheet in listSheetChoose)
+                {
+                    try
+                    {
+                        Viewport viewPortAlign = getViewportOnSheet(doc, sheet, viewOrigin.ViewType);
+                        Autodesk.Revit.DB.View viewAlgin = doc.GetElement(viewPortAlign.ViewId) as Autodesk.Revit.DB.View;
+                        BoundingBoxXYZ boxOld = new BoundingBoxXYZ();
+                        boxOld.Min = viewAlgin.CropBox.Min;
+                        boxOld.Max = viewAlgin.CropBox.Max;
+                        using (Transaction t = new Transaction(doc, "AlignViewPorts"))
+                        {
+                            t.Start();
+                            viewAlgin.CropBoxActive = true;
+                            viewAlgin.CropBoxVisible = true;
+                            viewAlgin.CropBox = box;
+                            viewPortAlign.SetBoxCenter(viewPortChoose.GetBoxCenter());
+                            viewAlgin.CropBox = boxOld;
+                            t.Commit();
+                        }
+                    }
+                    catch{continue;}   
+                }
+            }
         }
 
         public string GetName()
@@ -103,6 +125,14 @@ namespace ApiProject4.AllginViewPort
                 if ((type == ViewType.AreaPlan || type == ViewType.CeilingPlan || type == ViewType.FloorPlan))
                 {
                     if(view.ViewType == ViewType.AreaPlan || view.ViewType == ViewType.CeilingPlan || view.ViewType == ViewType.FloorPlan)
+                    {
+                        result = viewPort;
+                        return result;
+                    }
+                }
+                if (type == ViewType.Section || type == ViewType.Elevation)
+                {
+                    if(view.ViewType==ViewType.Section|| view.ViewType == ViewType.Elevation)
                     {
                         result = viewPort;
                         return result;
