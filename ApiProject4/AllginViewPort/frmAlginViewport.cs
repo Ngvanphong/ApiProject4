@@ -25,5 +25,14 @@ namespace ApiProject4.AllginViewPort
         {
             _eventViewport.Raise();
         }
+
+        private void btnCheckedNone_Click(object sender, EventArgs e)
+        {
+            var itemSelect = AppPenalAlignViewport.myFromAlignViewport.listViewChooseSheet.CheckedItems;
+            foreach(ListViewItem item in itemSelect)
+            {
+                item.Checked = false;
+            }
+        }
     }
 }

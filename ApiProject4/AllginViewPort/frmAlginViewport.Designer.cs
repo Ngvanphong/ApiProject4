@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.listViewChooseSheet = new System.Windows.Forms.ListView();
-            this.btnAlignViewportBinding = new System.Windows.Forms.Button();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnAlignViewportBinding = new System.Windows.Forms.Button();
             this.btnCheckedNone = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -51,6 +51,16 @@
             this.listViewChooseSheet.UseCompatibleStateImageBehavior = false;
             this.listViewChooseSheet.View = System.Windows.Forms.View.Details;
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Sheet Number";
+            this.columnHeader1.Width = 112;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Sheet Name";
+            this.columnHeader2.Width = 414;
+            // 
             // btnAlignViewportBinding
             // 
             this.btnAlignViewportBinding.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -61,16 +71,6 @@
             this.btnAlignViewportBinding.Text = "OK";
             this.btnAlignViewportBinding.UseVisualStyleBackColor = true;
             this.btnAlignViewportBinding.Click += new System.EventHandler(this.btnAlignViewportBinding_Click);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Sheet Number";
-            this.columnHeader1.Width = 112;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Sheet Name";
-            this.columnHeader2.Width = 414;
             // 
             // btnCheckedNone
             // 
@@ -83,6 +83,7 @@
             this.btnCheckedNone.Size = new System.Drawing.Size(32, 29);
             this.btnCheckedNone.TabIndex = 1;
             this.btnCheckedNone.UseVisualStyleBackColor = true;
+            this.btnCheckedNone.Click += new System.EventHandler(this.btnCheckedNone_Click);
             // 
             // frmAlginViewport
             // 
