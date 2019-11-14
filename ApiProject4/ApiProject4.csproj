@@ -115,6 +115,7 @@
     <Compile Include="Button\PrinterSortButton.cs" />
     <Compile Include="Button\PurgeCadButton.cs" />
     <Compile Include="Button\ScopeBoxButton.cs" />
+    <Compile Include="Button\SelectionElementButton.cs" />
     <Compile Include="Button\ShareParameterButton.cs" />
     <Compile Include="ColorElement\AppPenalColorElement.cs" />
     <Compile Include="ColorElement\AutoApplyColorHandler.cs" />
@@ -209,6 +210,7 @@
     </Compile>
     <Compile Include="ScopeBox\ScopeBoxBinding.cs" />
     <Compile Include="ScopeBox\ScopeBoxHandler.cs" />
+    <Compile Include="SelectionElement\SelectionElementBinding.cs" />
     <Compile Include="ShareParameter\AddParameterHandler.cs" />
     <Compile Include="ShareParameter\AppPenalShareParameter.cs" />
     <Compile Include="ShareParameter\DisciplineConstant.cs" />
@@ -261,6 +263,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApiProject4.addin" />
+    <None Include="Resources\icons8-select-column-32.png" />
     <None Include="Resources\list.png" />
     <None Include="Resources\focus-symbol.png" />
     <None Include="Resources\icons8-expand-25.png" />

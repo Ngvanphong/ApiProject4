@@ -38,6 +38,8 @@ namespace ApiProject4
             keynoteButton.KeynoteManager(a);
             AllignViewPortButton alignViewPort = new AllignViewPortButton();
             alignViewPort.CreateAlignView(a);
+            SelectionElementButton selectButton = new SelectionElementButton();
+            selectButton.SelectionElement(a);
             return Result.Succeeded;
         }
 
