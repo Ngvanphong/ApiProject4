@@ -40,7 +40,7 @@ namespace ApiProject4.Button
 
             Image img = ApiProject4.Properties.Resources.focus_symbol;
             ImageSource imgSrc = Helper.Extension.GetImageSource(img);
-            PushButtonData btnData = new PushButtonData("AlignView", "AlginView",
+            PushButtonData btnData = new PushButtonData("AlignView", "AlignView",
                 Assembly.GetExecutingAssembly().Location, "ApiProject4.AllginViewPort.AllignViewPortBinding")
             {
                 ToolTip = "Align view on sheet",
