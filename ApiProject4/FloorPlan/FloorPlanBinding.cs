@@ -71,7 +71,6 @@ namespace ApiProject4.FloorPlan
             }
             catch { }
             return Result.Succeeded;
-
         }
     }
   

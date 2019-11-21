@@ -145,6 +145,7 @@
     </Compile>
     <Compile Include="ExportExcel\GetWorksheetHandler.cs" />
     <Compile Include="ExportExcel\ImportHandler.cs" />
+    <Compile Include="FloorPlan\Constant.cs" />
     <Compile Include="FloorPlan\FloorPlanBinding.cs" />
     <Compile Include="FloorPlan\PattenColor.cs" />
     <Compile Include="FloorPlan\SettingPatternBinding.cs" />

@@ -31,16 +31,16 @@ namespace ApiProject4.FloorPlan
             {
                 List<ParameterFilterElement> coll = new FilteredElementCollector(doc).OfClass(typeof(ParameterFilterElement)).Cast<ParameterFilterElement>().ToList();
                 List<String> listNameFilter = function.getAllFilterAddin();
-                foreach(var item in coll)
+                foreach (var item in coll)
                 {
                     if (listNameFilter.Exists(x => x == item.Name))
                     {
-                        using(Transaction t3= new Transaction(doc, "DeletePattern"))
+                        using (Transaction t3 = new Transaction(doc, "DeletePattern"))
                         {
                             t3.Start();
                             doc.Delete(item.Id);
                             t3.Commit();
-                        } 
+                        }
                     }
                 }
             }
@@ -69,7 +69,7 @@ namespace ApiProject4.FloorPlan
                 using (Transaction t = new Transaction(doc, "Add view filter"))
                 {
                     t.Start();
-                    ParameterFilterElement parameterFilterElement = ParameterFilterElement.Create(doc, filter.NameType + " " + filter.OffsetLevel * 0.3048 * 1000+" Addin", categories);
+                    ParameterFilterElement parameterFilterElement = ParameterFilterElement.Create(doc, filter.NameType + " " + filter.OffsetLevel * 0.3048 * 1000 + " Addin", categories);
                     ElementId offsetParamId = new ElementId(BuiltInParameter.FLOOR_HEIGHTABOVELEVEL_PARAM);
                     filterRules.Add(ParameterFilterRuleFactory.CreateEqualsRule(offsetParamId, filter.OffsetLevel, 0.001));
                     ElementId nameFloorParamId = new ElementId(BuiltInParameter.ALL_MODEL_TYPE_NAME);
@@ -93,6 +93,12 @@ namespace ApiProject4.FloorPlan
                 }
             }
             function.WriteXmlFloor(listFilter);
+            try
+            {
+                function.DrawingLegend(listFilter);
+            }
+            catch { }
+
 
             //}
             return Result.Succeeded;
@@ -129,7 +135,7 @@ namespace ApiProject4.FloorPlan
                         if (!listResult.Exists(x => x.Patten.Name == patern.Name))
                         {
                             FillPattern pattenDraf = patern.GetFillPattern();
-                            if (patern.Name != "<Solid fill>"&& pattenDraf.Target==FillPatternTarget.Drafting)
+                            if (patern.Name != "<Solid fill>" && pattenDraf.Target == FillPatternTarget.Drafting)
                             {
                                 filter.Patten = patern;
                                 break;
@@ -159,7 +165,7 @@ namespace ApiProject4.FloorPlan
             writer.Formatting = Formatting.Indented;
             writer.Indentation = 2;
             writer.WriteStartElement("Table");
-            foreach(var filter in listFloorSetting)
+            foreach (var filter in listFloorSetting)
             {
                 CreateNodeText(filter, writer);
             }
@@ -196,7 +202,7 @@ namespace ApiProject4.FloorPlan
                 var xmlElement = xmlDoc.Element("Table").Elements("PatternFloor");
                 foreach (var item in xmlElement)
                 {
-                    string value = item.Element("NameType").Value+ " " + item.Element("OffsetLevel").Value + " Addin";
+                    string value = item.Element("NameType").Value + " " + item.Element("OffsetLevel").Value + " Addin";
                     listNamefilter.Add(value);
                 }
             }
@@ -207,16 +213,122 @@ namespace ApiProject4.FloorPlan
         {
             List<string> listValue = new List<string>();
             string name = _doc.Title + "floorPattern.xml";
-          
-                string fullPath = Path.GetFullPath(name);
-                var xmlDoc = XDocument.Load(fullPath);
-                var xmlElement = xmlDoc.Element("Table").Elements("PatternFloor");
-                foreach (var item in xmlElement)
-                {
+
+            string fullPath = Path.GetFullPath(name);
+            var xmlDoc = XDocument.Load(fullPath);
+            var xmlElement = xmlDoc.Element("Table").Elements("PatternFloor");
+            foreach (var item in xmlElement)
+            {
                 string value = item.Element(nameChoose).Value;
-                listValue.Add(value);       
-                }
+                listValue.Add(value);
+            }
             return listValue;
+        }
+
+        public void DrawingLegend(List<FilterFloor> listFilters)
+        {
+            var viewLegend = new FilteredElementCollector(_doc).OfClass(typeof(Autodesk.Revit.DB.View))
+                .Cast<Autodesk.Revit.DB.View>().Where(x => x.ViewType == ViewType.Legend && x.Name == Constant.NameViewLegend).First();
+            if (viewLegend == null)
+            {
+                MessageBox.Show("Error: You must create: " + Constant.NameViewLegend + "before setting");
+                return;
+            }
+            double y1 = 0;
+            double distanceY = Constant.distanceY;
+            int countY = listFilters.Count();
+            double yEnd = (distanceY * countY);
+            double x1 = 0;
+            double distanceX = Constant.distanceX;
+            double xEnd = distanceX * 3;
+            double z = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                double x = distanceX * i;
+                double yBegin = y1;
+                XYZ p1 = new XYZ(x, yBegin, z);
+                XYZ p2 = new XYZ(x, yEnd, z);
+                using (Transaction t4 = new Transaction(_doc, "CreateLine1"))
+                {
+                    t4.Start();
+                    Line L = Line.CreateBound(p1, p2);
+                    _doc.Create.NewDetailCurve(viewLegend, L);
+                    t4.Commit();
+                }
+            }
+            for (int j = 0; j < countY + 1; j++)
+            {
+                double xBegin = x1;
+                double y = distanceY * j;
+                XYZ p1 = new XYZ(xBegin, y, z);
+                XYZ p2 = new XYZ(xEnd, y, z);
+                using (Transaction t5 = new Transaction(_doc, "CreateLine2"))
+                {
+                    t5.Start();
+                    Line L = Line.CreateBound(p1, p2);
+                    _doc.Create.NewDetailCurve(viewLegend, L);
+                    t5.Commit();
+                }
+            }
+
+            for (int k = 0; k < countY; k++)
+            {
+                double xp1 = distanceX * (1+Constant.rateX);
+                double xp2 = distanceX * (1+(1-Constant.rateX));
+                double xpY1 = distanceY * k + distanceY*Constant.rateY;
+                double xpY2 = distanceY * k + distanceY*(1-Constant.rateY);
+                XYZ[] points = new XYZ[5];
+                points[0] = new XYZ(xp1, xpY1, z);
+                points[1] = new XYZ(xp2, xpY1, z);
+                points[2] = new XYZ(xp2, xpY2, z);
+                points[3] = new XYZ(xp1, xpY2, z);
+                points[4]= new XYZ(xp1, xpY1, z);
+                FillPatternElement patternEle = listFilters[k].Patten;
+                Autodesk.Revit.DB.Color colorPattern = listFilters[k].ColorPatten;
+                string offsetLevel = (listFilters[k].OffsetLevel * 0.3048 * 1000).ToString();
+                string nameFloor = listFilters[k].NameType;
+                FilteredElementCollector fillRegionTypes = new FilteredElementCollector(_doc).OfClass(typeof(FilledRegionType));
+                FilledRegionType type = fillRegionTypes.First() as FilledRegionType;
+                string filterName = nameFloor + " " + offsetLevel + " Addin";
+                FilledRegionType typeNew=null;
+                
+                using (Transaction t6 = new Transaction(_doc, "CreateTypeNew"))
+                {
+                    t6.Start();
+                    try
+                    {
+                        typeNew = type.Duplicate(filterName) as FilledRegionType;
+                    }
+                    catch
+                    {
+                        typeNew = fillRegionTypes.Where(x => x.Name == filterName).First() as FilledRegionType;
+                    }                    
+                    typeNew.ForegroundPatternId = patternEle.Id;
+                    typeNew.ForegroundPatternColor = colorPattern;
+                    t6.Commit();
+                }
+
+
+                using (Transaction t5 = new Transaction(_doc, "CreatePatternS"))
+                {
+                        t5.Start();
+                        List<CurveLoop> profileloops = new List<CurveLoop>();
+                        CurveLoop profileloop = new CurveLoop();
+                        for (int i = 0; i < 4; i++)
+                        {
+                            Line line = Line.CreateBound(points[i], points[i + 1]);
+                            profileloop.Append(line); 
+                        }
+                        profileloops.Add(profileloop);
+                        FilledRegion filledRegion = FilledRegion.Create(_doc, typeNew.Id, viewLegend.Id, profileloops);
+                        t5.Commit();
+                    
+                }
+
+            }
+
+
+
         }
 
     }
