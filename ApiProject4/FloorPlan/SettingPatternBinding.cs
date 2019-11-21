@@ -320,10 +320,8 @@ namespace ApiProject4.FloorPlan
                         }
                         profileloops.Add(profileloop);
                         FilledRegion filledRegion = FilledRegion.Create(_doc, typeNew.Id, viewLegend.Id, profileloops);
-                        t5.Commit();
-                    
+                        t5.Commit(); 
                 }
-
             }
         }
 
