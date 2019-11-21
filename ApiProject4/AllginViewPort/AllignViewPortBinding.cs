@@ -19,11 +19,11 @@ namespace ApiProject4.AllginViewPort
         {
             UIApplication uiApp = commandData.Application;
             Document doc = uiApp.ActiveUIDocument.Document;
-            if (CheckAccess.CheckLicense() == true)
-            {
+            //if (CheckAccess.CheckLicense() == true)
+            //{
                 AppPenalAlignViewport.ShowAlignViewport();
                 GetSheetAll(doc);
-            }
+            //}
             return Result.Succeeded;
         }
         public void GetSheetAll(Document doc)

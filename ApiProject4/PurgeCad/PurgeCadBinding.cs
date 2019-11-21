@@ -19,8 +19,8 @@ namespace ApiProject4.PurgeCad
         {
             UIApplication uiApp = commandData.Application;
             Document doc = uiApp.ActiveUIDocument.Document;
-            if (CheckAccess.CheckLicense() == true)
-            {
+            //if (CheckAccess.CheckLicense() == true)
+            //{
                 string warning = "WARNING: Do you want to remove import cad.";
                 DialogResult result = MessageBox.Show(warning, "Remove Cad", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (result == DialogResult.Cancel)
@@ -47,7 +47,7 @@ namespace ApiProject4.PurgeCad
                     }
                 }
                 MessageBox.Show("Purging cad is finished");
-            }
+            //}
             return Result.Succeeded;
         }  
     }

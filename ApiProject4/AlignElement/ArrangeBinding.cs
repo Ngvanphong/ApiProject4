@@ -17,8 +17,8 @@ namespace ApiProject4.AlignElement
         {
             UIApplication uiApp = commandData.Application;
             Document doc = uiApp.ActiveUIDocument.Document;
-            if (CheckAccess.CheckLicense() == true)
-            {
+            //if (CheckAccess.CheckLicense() == true)
+            //{
                 var selectionIds = uiApp.ActiveUIDocument.Selection.GetElementIds();
                 List<IndependentTag> listTags = new List<IndependentTag>();
                 foreach (ElementId id in selectionIds)
@@ -35,7 +35,7 @@ namespace ApiProject4.AlignElement
                 {
                     ArrangeTag(doc, listTags);
                 }
-            }
+            //}
             return Result.Succeeded;
         }
 

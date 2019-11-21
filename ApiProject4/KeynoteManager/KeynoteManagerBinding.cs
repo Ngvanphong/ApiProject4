@@ -17,13 +17,13 @@ namespace ApiProject4.KeynoteManager
         {
             UIApplication uiApp = commandData.Application;
             Document doc = uiApp.ActiveUIDocument.Document;
-            if (CheckAccess.CheckLicense() == true)
-            {
+            //if (CheckAccess.CheckLicense() == true)
+            //{
                 GetInformation.GetFileKeynote(doc);
                 AppPenalKeynoteManager.ShowKeynoteManager();
                 GetInformation.InformationDrop();
 
-            }
+            //}
             return Result.Succeeded;
         }
     }

@@ -18,8 +18,8 @@ namespace ApiProject4.SelectionElement
         {
             UIApplication uiApp = commandData.Application;
             Document doc = uiApp.ActiveUIDocument.Document;
-            if (CheckAccess.CheckLicense() == true)
-            {
+            //if (CheckAccess.CheckLicense() == true)
+            //{
                try
                 {
                     List<Element> listAll = new List<Element>();
@@ -84,7 +84,7 @@ namespace ApiProject4.SelectionElement
                     
                 }
                 catch {}
-            }
+            //}
             return Result.Succeeded;
         }
     }

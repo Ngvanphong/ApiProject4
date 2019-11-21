@@ -20,8 +20,8 @@ namespace ApiProject4.ShareParameter
             UIApplication uiApp = commandData.Application;
             Document doc = uiApp.ActiveUIDocument.Document;
            
-            if (CheckAccess.CheckLicense() == true)
-            {
+            //if (CheckAccess.CheckLicense() == true)
+            //{
                 AppPenalShareParameter.ShowFormShareParameter();
                 GetInforDrop();
                 try
@@ -35,7 +35,7 @@ namespace ApiProject4.ShareParameter
                 }
                 catch { }
                
-            }
+            //}
             return Result.Succeeded;
         }
 

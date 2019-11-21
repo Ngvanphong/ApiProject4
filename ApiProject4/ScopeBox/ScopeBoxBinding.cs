@@ -19,11 +19,11 @@ namespace ApiProject4.ScopeBox
         {
             UIApplication uiApp = commandData.Application;
             Document doc = uiApp.ActiveUIDocument.Document;
-            if (CheckAccess.CheckLicense() == true)
-            {
+            //if (CheckAccess.CheckLicense() == true)
+            //{
                 AppPanelScopeBox.ShowScopeBox();
                 UpdateDataGridView(doc);
-            }
+            //}
             return Result.Succeeded;
         }
 

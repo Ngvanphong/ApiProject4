@@ -19,11 +19,11 @@ namespace ApiProject4.ExportExcel
         {
             UIApplication uiApp = commandData.Application;
             Document doc = uiApp.ActiveUIDocument.Document;
-            if (CheckAccess.CheckLicense() == true)
-            {
+            //if (CheckAccess.CheckLicense() == true)
+            //{
                 AppPenalExportExcel.ShowFormExportExcel();
                 Infomation.ScheduleInfor(doc);
-            }
+            //}
             return Result.Succeeded;
         }
     }

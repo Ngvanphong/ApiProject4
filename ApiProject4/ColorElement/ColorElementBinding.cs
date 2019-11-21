@@ -17,11 +17,11 @@ namespace ApiProject4.ColorElement
         {
             UIApplication uiApp = commandData.Application;
             Document doc = uiApp.ActiveUIDocument.Document;
-            if (CheckAccess.CheckLicense() == true)
-            {
+            //if (CheckAccess.CheckLicense() == true)
+            //{
                 AppPenalColorElement.ShowFormColor();
                 CategoryInfor(doc);
-            }
+            //}
             return Result.Succeeded;
         }
 

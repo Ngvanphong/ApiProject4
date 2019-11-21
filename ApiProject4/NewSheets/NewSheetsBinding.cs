@@ -17,10 +17,10 @@ namespace ApiProject4.NewSheets
         {
             UIApplication uiApp = commandData.Application;
             Document doc = uiApp.ActiveUIDocument.Document;
-            if (CheckAccess.CheckLicense() == true)
-            {
+            //if (CheckAccess.CheckLicense() == true)
+            //{
                 AppPenalNewSheets.ShowNewSheet();
-            }
+            //}
             return Result.Succeeded;
         }
     }

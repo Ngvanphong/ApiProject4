@@ -40,6 +40,8 @@ namespace ApiProject4
             alignViewPort.CreateAlignView(a);
             SelectionElementButton selectButton = new SelectionElementButton();
             selectButton.SelectionElement(a);
+            FloorPlanButton floorPlanClass = new FloorPlanButton();
+            floorPlanClass.FloorPattenCreate(a);
             return Result.Succeeded;
         }
 

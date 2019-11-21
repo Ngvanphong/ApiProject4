@@ -19,11 +19,11 @@ namespace ApiProject4.PrintSort
         {
             UIApplication uiApp = commandData.Application;
             Document doc = uiApp.ActiveUIDocument.Document;
-            if (CheckAccess.CheckLicense() == true)
-            {
+            //if (CheckAccess.CheckLicense() == true)
+            //{
                 AppPenalPrintSort.ShowFormPrint();
                 Information.GetInforForm(doc);
-            }
+            //}
             return Result.Succeeded;
         }
 
