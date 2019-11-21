@@ -308,7 +308,6 @@ namespace ApiProject4.FloorPlan
                     t6.Commit();
                 }
 
-
                 using (Transaction t5 = new Transaction(_doc, "CreatePatternS"))
                 {
                         t5.Start();
@@ -326,9 +325,6 @@ namespace ApiProject4.FloorPlan
                 }
 
             }
-
-
-
         }
 
     }
