@@ -147,6 +147,7 @@
     <Compile Include="ExportExcel\ImportHandler.cs" />
     <Compile Include="FloorPlan\FloorPlanBinding.cs" />
     <Compile Include="FloorPlan\PattenColor.cs" />
+    <Compile Include="FloorPlan\SettingPatternBinding.cs" />
     <Compile Include="Helper\CheckAccess.cs" />
     <Compile Include="Helper\Extension.cs" />
     <Compile Include="Helper\ParameterRevit.cs" />
@@ -266,6 +267,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApiProject4.addin" />
+    <None Include="Resources\icons8-gear-32.png" />
     <None Include="Resources\icons8-floor-plan-32.png" />
     <None Include="Resources\icons8-select-column-32.png" />
     <None Include="Resources\list.png" />

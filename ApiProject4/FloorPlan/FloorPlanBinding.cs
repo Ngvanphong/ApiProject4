@@ -8,6 +8,9 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using ApiProject4.Helper;
 using System.Windows.Forms;
+using System.IO;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace ApiProject4.FloorPlan
 {
@@ -18,122 +21,58 @@ namespace ApiProject4.FloorPlan
         {
             UIApplication uiApp = commandData.Application;
             Document doc = uiApp.ActiveUIDocument.Document;
-            //if (CheckAccess.CheckLicense() == true)
-            //{
-                List<ElementId> categories = new List<ElementId>();
-                categories.Add(new ElementId(BuiltInCategory.OST_Floors));
-                BindingFunction function = new BindingFunction(uiApp);
-                var listSelectIds = uiApp.ActiveUIDocument.Selection.GetElementIds();
-                List<Element> listFloorSelect = new List<Element>();
-                foreach(ElementId id in listSelectIds)
-                {
-                    try
-                    {
-                        Element ele = doc.GetElement(id);
-                        if (ele.Category.Name == "Floors")
-                        {
-                            listFloorSelect.Add(ele);
-
-                        }
-                    }
-                    catch { continue; }
-                }
-                List<FilterFloor> listFilter= function.GetAllFloorPatten(listFloorSelect);
-                Autodesk.Revit.DB.View viewActive = doc.ActiveView;
-                foreach (var filter in listFilter)
-                {
-                    List<FilterRule> filterRules = new List<FilterRule>();
-                    using (Transaction t = new Transaction(doc, "Add view filter"))
-                    {
-                        t.Start();
-                        ParameterFilterElement parameterFilterElement = ParameterFilterElement.Create(doc, filter.NameType+" "+filter.OffsetLevel * 0.3048 * 1000, categories);
-                        ElementId offsetParamId = new ElementId(BuiltInParameter.FLOOR_HEIGHTABOVELEVEL_PARAM);
-                        filterRules.Add(ParameterFilterRuleFactory.CreateEqualsRule(offsetParamId, filter.OffsetLevel, 0.001));
-                        ElementId nameFloorParamId = new ElementId(BuiltInParameter.ALL_MODEL_TYPE_NAME);
-                        filterRules.Add(ParameterFilterRuleFactory.CreateEqualsRule(nameFloorParamId, filter.NameType,false));
-
-                        List<ElementFilter> elemFilters = new List<ElementFilter>();
-                        foreach (FilterRule filterRule in filterRules)
-                        {
-                            ElementParameterFilter elemParamFilter = new ElementParameterFilter(filterRule);
-                            elemFilters.Add(elemParamFilter);
-                        }
-                        LogicalAndFilter elemFilter = new LogicalAndFilter(elemFilters);
-                       // parameterFilterElement.SetRules(filterRules);
-                        parameterFilterElement.SetElementFilter(elemFilter);
-                        viewActive.AddFilter(parameterFilterElement.Id);
-                        viewActive.SetFilterVisibility(parameterFilterElement.Id, true);
-
-                        doc.Regenerate();
-
-                        OverrideGraphicSettings overrideSettings = viewActive.GetFilterOverrides(parameterFilterElement.Id);
-                        overrideSettings.SetSurfaceForegroundPatternId( filter.Patten.Id);
-                        overrideSettings.SetSurfaceForegroundPatternColor(filter.ColorPatten);
-                        viewActive.SetFilterOverrides(parameterFilterElement.Id, overrideSettings);
-                        t.Commit();
-                    }
-                }
-               
-            //}
-            return Result.Succeeded;
-        }
-    }
-   public class BindingFunction
-    {
-        UIApplication _uiAppp;
-        Document _doc;
-        public BindingFunction(UIApplication uiAppp)
-        {
-            _uiAppp = uiAppp;
-            _doc = uiAppp.ActiveUIDocument.Document;
-        }
-        public List<FilterFloor> GetAllFloorPatten(List<Element> allElements)
-        {
-            List<FilterFloor> listResult = new List<FilterFloor>();
-            var fillPatternElements = new FilteredElementCollector(_doc).OfClass(typeof(FillPatternElement))
-                .OfType<FillPatternElement>().OrderBy(fp => fp.Name).ToList();
-            ColorWin colorWin = new ColorWin();
-            int index = 0;
-            foreach (Element el in allElements)
+            BindingFunction function = new BindingFunction(uiApp);
+            Autodesk.Revit.DB.View viewActive = doc.ActiveView;
+            try
             {
-                var offset = el.get_Parameter(BuiltInParameter.FLOOR_HEIGHTABOVELEVEL_PARAM).AsDouble();  
-                if (!listResult.Exists(x => (x.NameType == el.Name) && offset == x.OffsetLevel))
+                List<ParameterFilterElement> listFilterPattern = new FilteredElementCollector(doc).OfClass(typeof(ParameterFilterElement)).Cast<ParameterFilterElement>().ToList();
+                List<String> listNameFilter = function.getAllFilterAddin();
+                var fillPatternElements = new FilteredElementCollector(doc).OfClass(typeof(FillPatternElement))
+                .OfType<FillPatternElement>().OrderBy(fp => fp.Name).ToList();
+
+                string name = doc.Title + "floorPattern.xml";
+                string fullPath = Path.GetFullPath(name);
+                var xmlDoc = XDocument.Load(fullPath);
+                var xmlElement = xmlDoc.Element("Table").Elements("PatternFloor");
+                foreach (var item in xmlElement)
                 {
-                    FilterFloor filter = new FilterFloor();
-                    filter.NameType = el.Name;
-                    filter.OffsetLevel = offset;
-                    foreach(var patern in fillPatternElements)
+                    string nameFilter= item.Element("NameType").Value + " " + item.Element("OffsetLevel").Value + " Addin";
+                    ParameterFilterElement filterPattern = listFilterPattern.Where(x => x.Name == nameFilter).First();
+                    string namePatten = item.Element("Patten").Value;
+                    FillPatternElement fillPattern = null;
+                    foreach (var pat in fillPatternElements)
                     {
-                        if (!listResult.Exists(x => x.Patten.Name == patern.Name))
+                        FillPattern patternDraf = pat.GetFillPattern();
+                        if (patternDraf.Target == FillPatternTarget.Drafting)
                         {
-                            if(patern.Name!= "<Solid fill>")
+                            if (namePatten == pat.Name)
                             {
-                                filter.Patten = patern;
+                                fillPattern = pat;
                                 break;
-                            } 
-                        }
+                            }
+                        }            
                     }
-                    if (filter.Patten == null)
+                    string color= item.Element("ColorSystem").Value;
+                    var colorSys = System.Drawing.Color.FromArgb(Int32.Parse(color));
+                    Autodesk.Revit.DB.Color colorRevit = new Autodesk.Revit.DB.Color(colorSys.R, colorSys.G, colorSys.B);
+                    using (Transaction t3 = new Transaction(doc, "AddFilterToView"))
                     {
-                        filter.Patten = fillPatternElements.First();
+                        t3.Start();
+                        viewActive.AddFilter(filterPattern.Id);
+                        viewActive.SetFilterVisibility(filterPattern.Id, true);
+                        OverrideGraphicSettings overrideSettings = viewActive.GetFilterOverrides(filterPattern.Id);
+                        overrideSettings.SetSurfaceForegroundPatternId(fillPattern.Id);
+                        overrideSettings.SetSurfaceForegroundPatternColor(colorRevit);
+                        viewActive.SetFilterOverrides(filterPattern.Id, overrideSettings);
+                        t3.Commit();
                     }
-                    System.Drawing.Color colorS = colorWin.ColorUser[index];
-                    filter.ColorPatten=  new Autodesk.Revit.DB.Color(colorS.R, colorS.G, colorS.B);
-                    index += 1;
-                    listResult.Add(filter);
                 }
+              
             }
-            return listResult;
+            catch { }
+            return Result.Succeeded;
+
         }
     }
-    public class FilterFloor
-    {
-        public string NameType { get; set; }
-
-        public double OffsetLevel { get; set; }
-
-        public FillPatternElement Patten { get; set; }
-
-        public Autodesk.Revit.DB.Color ColorPatten { set; get; }
-    }
+  
 }

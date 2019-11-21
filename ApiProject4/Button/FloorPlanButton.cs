@@ -49,8 +49,21 @@ namespace ApiProject4.Button
                 LargeImage = imgSrc,
             };
 
-            PushButton button = panel.AddItem(btnData) as PushButton;
-            button.Enabled = true;
+            Image img4 = ApiProject4.Properties.Resources.icons8_gear_32;
+            ImageSource imgSrc4 = Helper.Extension.GetImageSource(img4);
+            PushButtonData btnData4 = new PushButtonData("SettingPattern", "SettingPattern", Assembly.GetExecutingAssembly().Location, "ApiProject4.FloorPlan.SettingPatternBinding")
+            {
+                ToolTip = "Setting for filter floor",
+                LongDescription = "Setting for filter floor",
+                Image = imgSrc4,
+                LargeImage = imgSrc4,
+            };
+
+            SplitButtonData splitData = new SplitButtonData("FilterFloor", "FilterFloor");
+            SplitButton splitButton = panel.AddItem(splitData) as SplitButton;
+            splitButton.IsSynchronizedWithCurrentItem = true;
+            splitButton.AddPushButton(btnData);
+            splitButton.AddPushButton(btnData4);
         }
     }
 }

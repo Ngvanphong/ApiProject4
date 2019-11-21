@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Table>
+  <PatternFloor>
+    <NameType>Generic - 12"</NameType>
+    <OffsetLevel>0</OffsetLevel>
+    <Patten>Aluminum</Patten>
+    <ColorSystem>-16776961</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>Generic - 12"</NameType>
+    <OffsetLevel>50</OffsetLevel>
+    <Patten>Concrete</Patten>
+    <ColorSystem>-7722014</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>LW Concrete on Metal Deck</NameType>
+    <OffsetLevel>50</OffsetLevel>
+    <Patten>Crosshatch</Patten>
+    <ColorSystem>-5952982</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>LW Concrete on Metal Deck</NameType>
+    <OffsetLevel>-50</OffsetLevel>
+    <Patten>Crosshatch-small</Patten>
+    <ColorSystem>-2180985</ColorSystem>
+  </PatternFloor>
+</Table>
