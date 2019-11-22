@@ -46,7 +46,7 @@ namespace ApiProject4.FloorPlan
         public static Color LightSteelBlue { get { return Color.LightSteelBlue; } }
         public static Color Tan { get { return Color.Tan; } }
         public static Color GreenYellow { get { return Color.GreenYellow; } }
-
+        public static Color White { get { return Color.GhostWhite; } }
         public List<Color> ColorUser { set; get; }
         public ColorWin()
         {
@@ -82,6 +82,7 @@ namespace ApiProject4.FloorPlan
                 LightSteelBlue ,
                 Tan,
                 GreenYellow,
+                White
             };
         }
 

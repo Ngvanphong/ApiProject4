@@ -3,8 +3,8 @@
   <PatternFloor>
     <NameType>Generic - 12"</NameType>
     <OffsetLevel>0</OffsetLevel>
-    <Patten>Aluminum</Patten>
-    <ColorSystem>-16776961</ColorSystem>
+    <Patten>&lt;Solid fill&gt;</Patten>
+    <ColorSystem>-460545</ColorSystem>
   </PatternFloor>
   <PatternFloor>
     <NameType>Generic - 12"</NameType>

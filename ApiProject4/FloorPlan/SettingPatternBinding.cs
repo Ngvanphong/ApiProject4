@@ -23,7 +23,9 @@ namespace ApiProject4.FloorPlan
             Document doc = uiApp.ActiveUIDocument.Document;
             //if (CheckAccess.CheckLicense() == true)
             //{
-
+            var fillPatternElements = new FilteredElementCollector(doc).OfClass(typeof(FillPatternElement))
+               .OfType<FillPatternElement>().OrderBy(fp => fp.Name).ToList();
+            FillPatternElement patternMax = fillPatternElements.Where(x => x.Name == "<Solid fill>").First();
             List<ElementId> categories = new List<ElementId>();
             categories.Add(new ElementId(BuiltInCategory.OST_Floors));
             BindingFunction function = new BindingFunction(uiApp);
@@ -62,6 +64,11 @@ namespace ApiProject4.FloorPlan
                 catch { continue; }
             }
             List<FilterFloor> listFilter = function.GetAllFloorPatten(listFloorSelect);
+            FilterFloor filterMax = function.GetMaxArea(listFloorSelect, listFilter);
+            ColorWin colorWinC = new ColorWin();
+            filterMax.ColorSysterm = colorWinC.ColorUser[30];
+            filterMax.ColorPatten= new Autodesk.Revit.DB.Color(filterMax.ColorSysterm.R, filterMax.ColorSysterm.G, filterMax.ColorSysterm.B);
+            filterMax.Patten = patternMax;
             Autodesk.Revit.DB.View viewActive = doc.ActiveView;
             foreach (var filter in listFilter)
             {
@@ -98,8 +105,6 @@ namespace ApiProject4.FloorPlan
                 function.DrawingLegend(listFilter);
             }
             catch { }
-
-
             //}
             return Result.Succeeded;
         }
@@ -153,6 +158,8 @@ namespace ApiProject4.FloorPlan
                     listResult.Add(filter);
                 }
             }
+
+
             return listResult;
         }
 
@@ -323,6 +330,31 @@ namespace ApiProject4.FloorPlan
                         t5.Commit(); 
                 }
             }
+        }
+
+        public FilterFloor GetMaxArea(List<Element> listElementSelect,List<FilterFloor> listAllFilter)
+        {
+            FilterFloor filterMax = null;
+            double totalAreaMax = 0;
+            foreach (var filter in listAllFilter)
+            {
+                double totalAreaElement = 0;
+                foreach (Element el in listElementSelect)
+                {
+                    double offset = el.get_Parameter(BuiltInParameter.FLOOR_HEIGHTABOVELEVEL_PARAM).AsDouble();
+                    if (el.Name == filter.NameType && offset == filter.OffsetLevel)
+                    {
+                        totalAreaElement = totalAreaElement + el.get_Parameter(BuiltInParameter.HOST_AREA_COMPUTED).AsDouble();
+                    }
+                    
+                }
+                if (totalAreaElement > totalAreaMax)
+                {
+                    filterMax = filter;
+                    totalAreaMax = totalAreaElement;
+                }             
+            }
+            return filterMax;             
         }
 
     }
