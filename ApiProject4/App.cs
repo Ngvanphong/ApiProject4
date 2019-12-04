@@ -42,6 +42,8 @@ namespace ApiProject4
             selectButton.SelectionElement(a);
             FloorPlanButton floorPlanClass = new FloorPlanButton();
             floorPlanClass.FloorPattenCreate(a);
+            RoomCoordinationButton roomButtonClass = new RoomCoordinationButton();
+            roomButtonClass.RoomCoordinateElement(a);
             return Result.Succeeded;
         }
 

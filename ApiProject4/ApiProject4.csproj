@@ -115,6 +115,7 @@
     <Compile Include="Button\NewSheetsButton.cs" />
     <Compile Include="Button\PrinterSortButton.cs" />
     <Compile Include="Button\PurgeCadButton.cs" />
+    <Compile Include="Button\RoomCoordinationButton.cs" />
     <Compile Include="Button\ScopeBoxButton.cs" />
     <Compile Include="Button\SelectionElementButton.cs" />
     <Compile Include="Button\ShareParameterButton.cs" />
@@ -206,6 +207,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="PurgeCad\PurgeCadBinding.cs" />
+    <Compile Include="RomCoordinate\RoomCoordinateBinding.cs" />
     <Compile Include="ScopeBox\AppPanelScopeBox.cs" />
     <Compile Include="ScopeBox\frmScopeBox.cs">
       <SubType>Form</SubType>
@@ -268,6 +270,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApiProject4.addin" />
+    <None Include="Resources\icons8-coordinate-system-32.png" />
     <None Include="Resources\icons8-gear-32.png" />
     <None Include="Resources\icons8-floor-plan-32.png" />
     <None Include="Resources\icons8-select-column-32.png" />
