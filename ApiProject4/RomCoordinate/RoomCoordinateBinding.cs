@@ -24,16 +24,24 @@ namespace ApiProject4.RomCoordinate
             List<RoomData> listDataRooms = new List<RoomData>();
             foreach(var room in listRooms)
             {
-                listDataRooms.Add(ListRoomData(room));
+                listDataRooms.Add(ListRoomData(room,doc));
             }
             CreateDataParameter(doc, app, listDataRooms);
             return Result.Succeeded;
         }
 
-        private BoundingBoxXYZ GetBoundingBox(IList<IList<BoundarySegment>> boundary)
+        private BoundingBoxXYZ GetBoundingBox(IList<IList<BoundarySegment>> boundary,Room room,Document doc)
         {
             BoundingBoxXYZ bb = new BoundingBoxXYZ();
             double infinity = double.MaxValue;
+            
+            Parameter paraUpperLimitLevel = room.get_Parameter(BuiltInParameter.ROOM_UPPER_LEVEL);
+            Parameter paraUpperOffset = room.get_Parameter(BuiltInParameter.ROOM_UPPER_OFFSET);
+            Parameter baseOffset = room.get_Parameter(BuiltInParameter.ROOM_LOWER_OFFSET);
+
+            Level levelUp = doc.GetElement(paraUpperLimitLevel.AsElementId()) as Level;
+            double offsetUp = paraUpperOffset.AsDouble();
+            double baseValue = baseOffset.AsDouble();
 
             bb.Min = new XYZ(infinity, infinity, infinity);
             bb.Max = -bb.Min;
@@ -49,10 +57,19 @@ namespace ApiProject4.RomCoordinate
                     }
                 }
             }
+            try
+            {
+                double Zmin = bb.Min.Z + baseValue;
+                double Zmax = levelUp.Elevation + offsetUp;
+                bb.Max = new XYZ(bb.Max.X, bb.Max.Y, Zmax);
+                bb.Min = new XYZ(bb.Min.X, bb.Min.Y, Zmin);
+            }
+            catch { }
+            
             return bb;
         }
 
-        private RoomData ListRoomData(Room room)
+        private RoomData ListRoomData(Room room,Document doc)
         {
             SpatialElementBoundaryOptions opt = new SpatialElementBoundaryOptions();
 
@@ -72,7 +89,7 @@ namespace ApiProject4.RomCoordinate
 
             int nFirstLoopSegments = 0 < nLoops ? boundary[0].Count : 0;
 
-            BoundingBoxXYZ boundary_bounding_box = GetBoundingBox(boundary);
+            BoundingBoxXYZ boundary_bounding_box = GetBoundingBox(boundary,room,doc);
             RoomData data = new RoomData();
             data.RoomEleent = room;
             data.BoudingData = boundary_bounding_box;
