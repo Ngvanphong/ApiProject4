@@ -207,6 +207,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="PurgeCad\PurgeCadBinding.cs" />
+    <Compile Include="RomCoordinate\JtBoundingBoxXyzExtensionMethods.cs" />
     <Compile Include="RomCoordinate\RoomCoordinateBinding.cs" />
     <Compile Include="ScopeBox\AppPanelScopeBox.cs" />
     <Compile Include="ScopeBox\frmScopeBox.cs">
