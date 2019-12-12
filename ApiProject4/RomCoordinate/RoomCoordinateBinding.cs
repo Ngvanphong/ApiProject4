@@ -133,22 +133,27 @@ namespace ApiProject4.RomCoordinate
             }
             foreach(var item in data)
             {
-                ProjectPosition pointProMax = pl.GetProjectPosition(item.BoudingData.Max);
-                ProjectPosition pointProMin = pl.GetProjectPosition(item.BoudingData.Min);
-                XYZ pointMax = new XYZ(pointProMax.EastWest,pointProMax.NorthSouth,pointProMax.Elevation);
-                XYZ pointMin = new XYZ(pointProMin.EastWest, pointProMin.NorthSouth, pointProMin.Elevation);
-                Parameter paraX = item.RoomEleent.LookupParameter("Xmax");
-                paraRevit.SetValueParameter(paraX, (Math.Round(pointMax.X * 0.3048 * 1000,2)).ToString());
-                Parameter paraY = item.RoomEleent.LookupParameter("Ymax");
-                paraRevit.SetValueParameter(paraY, (Math.Round(pointMax.Y * 0.3048 * 1000,2)).ToString());
-                Parameter paraZ = item.RoomEleent.LookupParameter("Zmax");
-                paraRevit.SetValueParameter(paraZ, (Math.Round(pointMax.Z * 0.3048 * 1000,2)).ToString());
-                Parameter paraXm = item.RoomEleent.LookupParameter("Xmin");
-                paraRevit.SetValueParameter(paraXm, (Math.Round(pointMin.X * 0.3048 * 1000,2)).ToString());
-                Parameter paraYm = item.RoomEleent.LookupParameter("Ymin");
-                paraRevit.SetValueParameter(paraYm, (Math.Round(pointMin.Y * 0.3048 * 1000,2)).ToString());
-                Parameter paraZm = item.RoomEleent.LookupParameter("Zmin");
-                paraRevit.SetValueParameter(paraZm, (Math.Round(pointMin.Z * 0.3048 * 1000,2)).ToString());
+                try
+                {
+                    ProjectPosition pointProMax = pl.GetProjectPosition(item.BoudingData.Max);
+                    ProjectPosition pointProMin = pl.GetProjectPosition(item.BoudingData.Min);
+                    XYZ pointMax = new XYZ(pointProMax.EastWest, pointProMax.NorthSouth, pointProMax.Elevation);
+                    XYZ pointMin = new XYZ(pointProMin.EastWest, pointProMin.NorthSouth, pointProMin.Elevation);
+                    Parameter paraX = item.RoomEleent.LookupParameter("Xmax");
+                    paraRevit.SetValueParameter(paraX, (Math.Round(pointMax.X * 0.3048 * 1000, 2)).ToString());
+                    Parameter paraY = item.RoomEleent.LookupParameter("Ymax");
+                    paraRevit.SetValueParameter(paraY, (Math.Round(pointMax.Y * 0.3048 * 1000, 2)).ToString());
+                    Parameter paraZ = item.RoomEleent.LookupParameter("Zmax");
+                    paraRevit.SetValueParameter(paraZ, (Math.Round(pointMax.Z * 0.3048 * 1000, 2)).ToString());
+                    Parameter paraXm = item.RoomEleent.LookupParameter("Xmin");
+                    paraRevit.SetValueParameter(paraXm, (Math.Round(pointMin.X * 0.3048 * 1000, 2)).ToString());
+                    Parameter paraYm = item.RoomEleent.LookupParameter("Ymin");
+                    paraRevit.SetValueParameter(paraYm, (Math.Round(pointMin.Y * 0.3048 * 1000, 2)).ToString());
+                    Parameter paraZm = item.RoomEleent.LookupParameter("Zmin");
+                    paraRevit.SetValueParameter(paraZm, (Math.Round(pointMin.Z * 0.3048 * 1000, 2)).ToString());
+                }
+                catch { continue; }
+               
             }
         }
     }
