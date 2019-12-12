@@ -16,7 +16,7 @@ namespace ApiProject4.AllginViewPort
             Document doc = app.ActiveUIDocument.Document;
             var selectionIds = app.ActiveUIDocument.Selection.GetElementIds();
             Viewport viewPortChoose = null;
-            foreach(ElementId id in selectionIds)
+            foreach (ElementId id in selectionIds)
             {
                 Element elementChoose = doc.GetElement(id);
                 try
@@ -34,9 +34,9 @@ namespace ApiProject4.AllginViewPort
             List<ViewSheet> listAllSheet = new FilteredElementCollector(doc).OfClass(typeof(ViewSheet)).Cast<ViewSheet>().ToList();
             List<ViewSheet> listSheetChoose = new List<ViewSheet>();
             List<Viewport> listAlginView = new List<Viewport>();
-            foreach(ListViewItem viewItem in listItemChoose)
+            foreach (ListViewItem viewItem in listItemChoose)
             {
-                foreach(ViewSheet sheet in listAllSheet)
+                foreach (ViewSheet sheet in listAllSheet)
                 {
                     if (sheet.SheetNumber == viewItem.Text)
                     {
@@ -52,7 +52,7 @@ namespace ApiProject4.AllginViewPort
                 {
                     try
                     {
-                        Viewport viewPortAlign = getViewportOnSheet(doc, sheet, viewOrigin.ViewType);
+                        Viewport viewPortAlign = getViewportOnSheet(doc, sheet, viewOrigin);
                         using (Transaction t3 = new Transaction(doc, "AlignViewLegend"))
                         {
                             t3.Start();
@@ -61,7 +61,7 @@ namespace ApiProject4.AllginViewPort
                         }
                     }
                     catch { continue; }
-                    
+
                 }
             }
             else
@@ -80,7 +80,7 @@ namespace ApiProject4.AllginViewPort
                 {
                     try
                     {
-                        Viewport viewPortAlign = getViewportOnSheet(doc, sheet, viewOrigin.ViewType);
+                        Viewport viewPortAlign = getViewportOnSheet(doc, sheet, viewOrigin);
                         Autodesk.Revit.DB.View viewAlgin = doc.GetElement(viewPortAlign.ViewId) as Autodesk.Revit.DB.View;
                         BoundingBoxXYZ boxOld = new BoundingBoxXYZ();
                         boxOld.Min = viewAlgin.CropBox.Min;
@@ -96,7 +96,7 @@ namespace ApiProject4.AllginViewPort
                             t.Commit();
                         }
                     }
-                    catch{continue;}   
+                    catch { continue; }
                 }
             }
         }
@@ -106,33 +106,34 @@ namespace ApiProject4.AllginViewPort
             return "AlignViewportHandler";
         }
 
-        public Viewport getViewportOnSheet(Document doc,ViewSheet sheet, ViewType type)
+        public Viewport getViewportOnSheet(Document doc, ViewSheet sheet, Autodesk.Revit.DB.View viewOrigin)
         {
+            ViewType type = viewOrigin.ViewType;
             Viewport result = null;
             var viewPortIds = sheet.GetAllViewports();
-            foreach(ElementId id in viewPortIds)
+            foreach (ElementId id in viewPortIds)
             {
                 Viewport viewPort = doc.GetElement(id) as Viewport;
                 Autodesk.Revit.DB.View view = doc.GetElement(viewPort.ViewId) as Autodesk.Revit.DB.View;
                 if (type == ViewType.Legend)
                 {
-                    if (view.ViewType == ViewType.Legend)
+                    if (view.ViewType == ViewType.Legend&&viewOrigin.Name==view.Name)
                     {
                         result = viewPort;
                         return result;
                     }
                 }
                 if ((type == ViewType.AreaPlan || type == ViewType.CeilingPlan || type == ViewType.FloorPlan))
-                {
-                    if(view.ViewType == ViewType.AreaPlan || view.ViewType == ViewType.CeilingPlan || view.ViewType == ViewType.FloorPlan)
+                {    
+                    if ((view.ViewType == ViewType.AreaPlan || view.ViewType == ViewType.CeilingPlan || view.ViewType == ViewType.FloorPlan) && view.Scale == viewOrigin.Scale)
                     {
                         result = viewPort;
                         return result;
                     }
                 }
                 if (type == ViewType.Section || type == ViewType.Elevation)
-                {
-                    if(view.ViewType==ViewType.Section|| view.ViewType == ViewType.Elevation)
+                {   
+                    if ((view.ViewType == ViewType.Section || view.ViewType == ViewType.Elevation) && view.Scale == viewOrigin.Scale)
                     {
                         result = viewPort;
                         return result;
@@ -144,5 +145,5 @@ namespace ApiProject4.AllginViewPort
 
     }
 
-   
+
 }
