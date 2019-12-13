@@ -23,6 +23,14 @@ namespace ApiProject4.FloorPlan
             Document doc = uiApp.ActiveUIDocument.Document;
             //if (CheckAccess.CheckLicense() == true)
             //{
+
+            string warning = "WARNING: Do you want reset filter for floor addin.";
+            DialogResult result = MessageBox.Show(warning, "FloorPlan", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (result == DialogResult.Cancel)
+            {
+                return Result.Succeeded;
+            }
+
             var fillPatternElements = new FilteredElementCollector(doc).OfClass(typeof(FillPatternElement))
                .OfType<FillPatternElement>().OrderBy(fp => fp.Name).ToList();
             FillPatternElement patternMax = fillPatternElements.Where(x => x.Name == "<Solid fill>").First();
@@ -62,6 +70,11 @@ namespace ApiProject4.FloorPlan
                     }
                 }
                 catch { continue; }
+            }
+            if (listFloorSelect.Count == 0)
+            {
+                MessageBox.Show("You must choose floor.");
+                return Result.Succeeded;
             }
             List<FilterFloor> listFilter = function.GetAllFloorPatten(listFloorSelect);
             FilterFloor filterMax = function.GetMaxArea(listFloorSelect, listFilter);
@@ -236,6 +249,20 @@ namespace ApiProject4.FloorPlan
         {
             var viewLegend = new FilteredElementCollector(_doc).OfClass(typeof(Autodesk.Revit.DB.View))
                 .Cast<Autodesk.Revit.DB.View>().Where(x => x.ViewType == ViewType.Legend && x.Name == Constant.NameViewLegend).First();
+            TextNoteType typeText = null;
+            try
+            {
+                typeText = new FilteredElementCollector(_doc)
+                          .OfClass(typeof(TextNoteType)).Where(x => x.Name == Constant.TextTypeChose).First() as TextNoteType;
+            }
+            catch
+            {
+                MessageBox.Show("You must create type of text: " + Constant.TextTypeChose);
+                return;
+            }
+            TextNoteOptions optionText = new TextNoteOptions();
+            optionText.HorizontalAlignment = HorizontalTextAlignment.Center;
+            optionText.TypeId = typeText.Id;
             if (viewLegend == null)
             {
                 MessageBox.Show("Error: You must create: " + Constant.NameViewLegend + "before setting");
@@ -329,6 +356,26 @@ namespace ApiProject4.FloorPlan
                         FilledRegion filledRegion = FilledRegion.Create(_doc, typeNew.Id, viewLegend.Id, profileloops);
                         t5.Commit(); 
                 }
+
+                double xpY6 = distanceY * k;
+                using (Transaction t8= new Transaction(_doc, "CreateTextOffset"))
+                {
+                    t8.Start();
+
+                    for (int i = 0; i < 4; i+=2)
+                    {
+                        XYZ pointText = new XYZ(distanceX*i+distanceX/2, xpY6+distanceY*(1-(2+0.5)*Constant.rateY), points[i].Z);
+                        if (i == 0)
+                        {
+                            TextNote.Create(_doc, viewLegend.Id, pointText, 0.05, nameFloor, optionText);
+                        }else
+                        {
+                            TextNote.Create(_doc, viewLegend.Id, pointText, 0.05, offsetLevel, optionText);
+                        }                        
+                    }
+                    t8.Commit();
+                }
+                
             }
         }
 

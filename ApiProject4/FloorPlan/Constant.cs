@@ -9,7 +9,7 @@ namespace ApiProject4.FloorPlan
    public class Constant
     {
         public const string NameViewLegend = "FloorPlanAddin";
-
+        public const string TextTypeChose = "2.5mm Arial";
         public const double distanceX = 1.64;
         public const double rateX = 0.125;
         public const double distanceY = 0.84;

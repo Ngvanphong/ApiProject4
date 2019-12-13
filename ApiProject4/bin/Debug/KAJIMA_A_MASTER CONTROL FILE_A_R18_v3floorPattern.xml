@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Table>
+  <PatternFloor>
+    <NameType>Generic Floor - Crosshatch Tile Floor</NameType>
+    <OffsetLevel>0</OffsetLevel>
+    <Patten>Aluminum</Patten>
+    <ColorSystem>-16776961</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>Generic Floor - 10mm + 380mm + 10mm</NameType>
+    <OffsetLevel>-100</OffsetLevel>
+    <Patten>&lt;Solid fill&gt;</Patten>
+    <ColorSystem>-1</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>Generic Floor - Light Grass + SL400mm</NameType>
+    <OffsetLevel>0</OffsetLevel>
+    <Patten>ANSI33-2</Patten>
+    <ColorSystem>-5952982</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>Generic Floor - Dark Grass Sky Terrace</NameType>
+    <OffsetLevel>0</OffsetLevel>
+    <Patten>ANSI33-CutTile</Patten>
+    <ColorSystem>-2180985</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>Generic Floor - Dark Grass</NameType>
+    <OffsetLevel>0</OffsetLevel>
+    <Patten>Clear Spac</Patten>
+    <ColorSystem>-16711681</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>Generic Floor - Wooden Floor_OA Floor</NameType>
+    <OffsetLevel>0</OffsetLevel>
+    <Patten>Concrete</Patten>
+    <ColorSystem>-8388864</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>GRATING2 - 50mm</NameType>
+    <OffsetLevel>0</OffsetLevel>
+    <Patten>Concrete 2</Patten>
+    <ColorSystem>-10185235</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>Bridge Steel 400</NameType>
+    <OffsetLevel>0</OffsetLevel>
+    <Patten>Concrete Scale 100</Patten>
+    <ColorSystem>-29696</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>BRIDGE</NameType>
+    <OffsetLevel>0</OffsetLevel>
+    <Patten>Concrete_BigScale</Patten>
+    <ColorSystem>-60269</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>Generic Floor - 600mm</NameType>
+    <OffsetLevel>0</OffsetLevel>
+    <Patten>Concrete_Precast</Patten>
+    <ColorSystem>-65536</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>Generic Floor - 300mm</NameType>
+    <OffsetLevel>-200</OffsetLevel>
+    <Patten>Concrete_Scale 1-100</Patten>
+    <ColorSystem>-14774017</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>Generic Floor - 300mm</NameType>
+    <OffsetLevel>500</OffsetLevel>
+    <Patten>Concrete-SmallScale</Patten>
+    <ColorSystem>-10496</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>Generic Floor - KT 100mm</NameType>
+    <OffsetLevel>0</OffsetLevel>
+    <Patten>Continuous 135° 2.0mm</Patten>
+    <ColorSystem>-16777077</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>Generic Floor - Interior Greenery</NameType>
+    <OffsetLevel>0</OffsetLevel>
+    <Patten>Cross scale 100</Patten>
+    <ColorSystem>-18751</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>Generic Floor_Grating - 300mm</NameType>
+    <OffsetLevel>0</OffsetLevel>
+    <Patten>Crosshatch</Patten>
+    <ColorSystem>-2987746</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>GRATING4 - 10mm _Glass Roof</NameType>
+    <OffsetLevel>-350</OffsetLevel>
+    <Patten>Crosshatch 0.85mm</Patten>
+    <ColorSystem>-1644806</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>Generic Floor - Wooden Floor 3</NameType>
+    <OffsetLevel>-600</OffsetLevel>
+    <Patten>Crosshatch 1.5mm</Patten>
+    <ColorSystem>-16728065</ColorSystem>
+  </PatternFloor>
+  <PatternFloor>
+    <NameType>Generic Floor - 40mm + 10mm</NameType>
+    <OffsetLevel>-450</OffsetLevel>
+    <Patten>Crosshatch 2.0mm</Patten>
+    <ColorSystem>-8388480</ColorSystem>
+  </PatternFloor>
+</Table>
