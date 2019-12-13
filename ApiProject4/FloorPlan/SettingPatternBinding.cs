@@ -171,8 +171,6 @@ namespace ApiProject4.FloorPlan
                     listResult.Add(filter);
                 }
             }
-
-
             return listResult;
         }
 
