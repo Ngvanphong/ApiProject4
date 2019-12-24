@@ -9,6 +9,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupApiProject42019", "Set
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridViewGrouper", "..\..\..\Downloads\DataGridViewGrouper\DataGridViewGrouper\DataGridViewGrouper\DataGridViewGrouper.csproj", "{785A6FBB-2BA0-42BE-84C4-1703BCAD15D2}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupApiProject42020", "SetupApiProject42020\SetupApiProject42020.vdproj", "{51F75230-236F-4970-BC31-F3254BC65BFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		2019|Any CPU = 2019|Any CPU
@@ -37,6 +39,10 @@ Global
 		{785A6FBB-2BA0-42BE-84C4-1703BCAD15D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{785A6FBB-2BA0-42BE-84C4-1703BCAD15D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{785A6FBB-2BA0-42BE-84C4-1703BCAD15D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51F75230-236F-4970-BC31-F3254BC65BFB}.2019|Any CPU.ActiveCfg = Release
+		{51F75230-236F-4970-BC31-F3254BC65BFB}.2020|Any CPU.ActiveCfg = Release
+		{51F75230-236F-4970-BC31-F3254BC65BFB}.Debug|Any CPU.ActiveCfg = Debug
+		{51F75230-236F-4970-BC31-F3254BC65BFB}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
