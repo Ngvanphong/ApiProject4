@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,6 +50,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.listBoxParameter);
@@ -81,6 +83,8 @@
             // 
             // listBoxParameter
             // 
+            this.listBoxParameter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listBoxParameter.FormattingEnabled = true;
             this.listBoxParameter.Location = new System.Drawing.Point(6, 177);
             this.listBoxParameter.Name = "listBoxParameter";
@@ -99,6 +103,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.dataGridViewValueParameter);
             this.groupBox2.Location = new System.Drawing.Point(267, 12);
             this.groupBox2.Name = "groupBox2";
@@ -109,16 +116,19 @@
             // 
             // dataGridViewValueParameter
             // 
+            this.dataGridViewValueParameter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewValueParameter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewValueParameter.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewValueParameter.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewValueParameter.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewValueParameter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewValueParameter.Location = new System.Drawing.Point(6, 16);
             this.dataGridViewValueParameter.Name = "dataGridViewValueParameter";
@@ -129,6 +139,7 @@
             // 
             // btnDefaultColor
             // 
+            this.btnDefaultColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDefaultColor.Location = new System.Drawing.Point(442, 407);
             this.btnDefaultColor.Name = "btnDefaultColor";
             this.btnDefaultColor.Size = new System.Drawing.Size(75, 30);
@@ -139,6 +150,7 @@
             // 
             // buttonSchamaSave
             // 
+            this.buttonSchamaSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonSchamaSave.Location = new System.Drawing.Point(267, 441);
             this.buttonSchamaSave.Name = "buttonSchamaSave";
             this.buttonSchamaSave.Size = new System.Drawing.Size(90, 30);
@@ -149,6 +161,7 @@
             // 
             // btnClearSetColor
             // 
+            this.btnClearSetColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnClearSetColor.Location = new System.Drawing.Point(363, 441);
             this.btnClearSetColor.Name = "btnClearSetColor";
             this.btnClearSetColor.Size = new System.Drawing.Size(73, 30);
@@ -159,6 +172,7 @@
             // 
             // btnLoadSchema
             // 
+            this.btnLoadSchema.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLoadSchema.Location = new System.Drawing.Point(267, 407);
             this.btnLoadSchema.Name = "btnLoadSchema";
             this.btnLoadSchema.Size = new System.Drawing.Size(90, 30);
@@ -169,6 +183,7 @@
             // 
             // btnApplyColor
             // 
+            this.btnApplyColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnApplyColor.Location = new System.Drawing.Point(363, 407);
             this.btnApplyColor.Name = "btnApplyColor";
             this.btnApplyColor.Size = new System.Drawing.Size(73, 30);
@@ -179,6 +194,7 @@
             // 
             // checkBoxAutoColor
             // 
+            this.checkBoxAutoColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxAutoColor.AutoSize = true;
             this.checkBoxAutoColor.Location = new System.Drawing.Point(18, 454);
             this.checkBoxAutoColor.Name = "checkBoxAutoColor";
@@ -190,6 +206,7 @@
             // 
             // btnCloseAppColor
             // 
+            this.btnCloseAppColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCloseAppColor.Location = new System.Drawing.Point(443, 441);
             this.btnCloseAppColor.Name = "btnCloseAppColor";
             this.btnCloseAppColor.Size = new System.Drawing.Size(73, 30);
