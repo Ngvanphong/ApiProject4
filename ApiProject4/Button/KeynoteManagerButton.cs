@@ -37,7 +37,7 @@ namespace ApiProject4.Button
             }
             Image img = ApiProject4.Properties.Resources.icons8_speaker_notes_32;
             ImageSource imgSrc = Helper.Extension.GetImageSource(img);
-            PushButtonData btnData = new PushButtonData("ManagerKeynote", "ManagerKeynote",
+            PushButtonData btnData = new PushButtonData("ManagerKeynote", "Manager \r Keynote",
                 Assembly.GetExecutingAssembly().Location, "ApiProject4.KeynoteManager.KeynoteManagerBinding")
             {
                 ToolTip = "Manager for keynote",

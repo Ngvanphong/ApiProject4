@@ -38,7 +38,7 @@ namespace ApiProject4.Button
             }
             Image img = ApiProject4.Properties.Resources.icons8_select_column_32;
             ImageSource imgSrc = Helper.Extension.GetImageSource(img);
-            PushButtonData btnData = new PushButtonData("SelectionElement", "SelectionElement",
+            PushButtonData btnData = new PushButtonData("SelectionElement", "Selection \r Element",
                 Assembly.GetExecutingAssembly().Location, "ApiProject4.SelectionElement.SelectionElementBinding")
             {
                 ToolTip = "Select element faster",

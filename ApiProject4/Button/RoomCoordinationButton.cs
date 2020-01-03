@@ -40,7 +40,7 @@ namespace ApiProject4.Button
             }
             Image img = ApiProject4.Properties.Resources.icons8_coordinate_system_32;
             ImageSource imgSrc = Helper.Extension.GetImageSource(img);
-            PushButtonData btnData = new PushButtonData("RoomCoordinate", "RoomCoordinate",
+            PushButtonData btnData = new PushButtonData("RoomCoordinate", "Room \r Coordinate",
                 Assembly.GetExecutingAssembly().Location, "ApiProject4.RomCoordinate.RoomCoordinateBinding")
             {
                 ToolTip = "Get point for room",

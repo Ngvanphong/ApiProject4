@@ -40,7 +40,7 @@ namespace ApiProject4.Button
             }
             Image img = ApiProject4.Properties.Resources.icons8_sales_performance_32;
             ImageSource imgSrc = Helper.Extension.GetImageSource(img);
-            PushButtonData btnData = new PushButtonData("ManagerParameter", "ManagerParameter",
+            PushButtonData btnData = new PushButtonData("ManagerParameter", "Manager \r Parameter",
                 Assembly.GetExecutingAssembly().Location, "ApiProject4.ShareParameter.ShareParameterBinding")
             {
                 ToolTip = "Manager for share parameter",

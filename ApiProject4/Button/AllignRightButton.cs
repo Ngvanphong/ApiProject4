@@ -40,7 +40,7 @@ namespace ApiProject4.Button
             }
             Image img = ApiProject4.Properties.Resources.icons8_multicast_16;
             ImageSource imgSrc = Helper.Extension.GetImageSource(img);
-            PushButtonData btnData = new PushButtonData("Arrange horizontally", "Arrange horizontally",
+            PushButtonData btnData = new PushButtonData("Arrange horizontally", "Arrange \r horizontally",
                Assembly.GetExecutingAssembly().Location, "ApiProject4.AlignElement.ArrangeHorizontallyBinding")
             {
                 ToolTip = "Arrange for element",
