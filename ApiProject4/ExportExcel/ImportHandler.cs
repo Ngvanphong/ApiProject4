@@ -82,10 +82,10 @@ namespace ApiProject4.ExportExcel
                                     t2.Start();
                                     try
                                     { 
-                                        Parameter para= element.GetParameters(heading).First();
+                                        Parameter para= element.LookupParameter(heading); 
                                         if (para == null)
                                         {
-                                            para =  element.LookupParameter(heading);
+                                            para =  element.GetParameters(heading).First();
                                         }                                       
                                         ParameterRevit.SetValueParaMulti(para, value);
                                         t2.Commit();
