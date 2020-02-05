@@ -107,7 +107,7 @@ namespace ApiProject4.PrintSort
                     MessageBox.Show("You must add Sheet Number to Schedule Table");
                     return;
                 }
-                var para = section.GetCellText(0, 2).ToString();
+                
                 for(int r = 1; r < nRows; r++)
                 {
                     try
