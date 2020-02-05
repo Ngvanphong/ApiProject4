@@ -168,7 +168,7 @@ namespace ApiProject4.FloorPlan
                     filter.ColorPatten = new Autodesk.Revit.DB.Color(colorS.R, colorS.G, colorS.B);
                     filter.ColorSysterm = colorS;
                     index += 1;
-                    if (index > 30)
+                    if (index > 31)
                     {
                         index = 1;
                     }
