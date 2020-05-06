@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+      None
+    </ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F6BC493F-19D1-451F-B834-0AACFD60A05B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ApiProject4</RootNamespace>
+    <AssemblyName>ApiProject4</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <StartAction>Program</StartAction>
+    <StartProgram>$(ProgramW6432)\Autodesk\Revit 2019\Revit.exe</StartProgram>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <StartAction>Program</StartAction>
+    <StartProgram>$(ProgramW6432)\Autodesk\Revit 2019\Revit.exe</StartProgram>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '2019|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;RELEASE2019</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '2020|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;RELEASE2020</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=5.1.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.1.1\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="FoxLearn.License">
+      <HintPath>..\..\..\..\Downloads\FoxLearn.License fix\FoxLearn.License.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="RevitAPI" Condition="'$(Configuration)' == '2020'">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2020\RevitAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="RevitAPIUI" Condition="'$(Configuration)' == '2020'">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2020\RevitAPIUI.dll</HintPath>
+    </Reference>
+    <Reference Include="RevitAPI" Condition="'$(Configuration)' == '2019'">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="RevitAPIUI" Condition="'$(Configuration)' == '2019'">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPIUI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Text.RegularExpressions">
+      <HintPath>..\packages\System.Text.RegularExpressions.4.3.1\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AlignElement\AlignLeftBinding.cs" />
+    <Compile Include="AlignElement\AlignTopBinding.cs" />
+    <Compile Include="AlignElement\ArrangeBinding.cs" />
+    <Compile Include="AlignElement\ArrangeHorizontallyBinding.cs" />
+    <Compile Include="AlignElement\Constant.cs" />
+    <Compile Include="AllginViewPort\AlignViewportHandler.cs" />
+    <Compile Include="AllginViewPort\AllignViewPortBinding.cs" />
+    <Compile Include="AllginViewPort\AppPenalAlignViewport.cs" />
+    <Compile Include="AllginViewPort\frmAlginViewport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllginViewPort\frmAlginViewport.Designer.cs">
+      <DependentUpon>frmAlginViewport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App.cs" />
+    <Compile Include="Button\AlignLeftButton.cs" />
+    <Compile Include="Button\AllignRightButton.cs" />
+    <Compile Include="Button\AllignViewPortButton.cs" />
+    <Compile Include="Button\ColorElementButton.cs" />
+    <Compile Include="Button\ExportExcelButton.cs" />
+    <Compile Include="Button\FloorPlanButton.cs" />
+    <Compile Include="Button\KeynoteManagerButton.cs" />
+    <Compile Include="Button\NewSheetsButton.cs" />
+    <Compile Include="Button\PrinterSortButton.cs" />
+    <Compile Include="Button\PurgeCadButton.cs" />
+    <Compile Include="Button\RoomCoordinationButton.cs" />
+    <Compile Include="Button\ScopeBoxButton.cs" />
+    <Compile Include="Button\SelectionElementButton.cs" />
+    <Compile Include="Button\ShareParameterButton.cs" />
+    <Compile Include="ColorElement\AppPenalColorElement.cs" />
+    <Compile Include="ColorElement\AutoApplyColorHandler.cs" />
+    <Compile Include="ColorElement\ColorElementBinding.cs" />
+    <Compile Include="ColorElement\ColorElementHandler.cs" />
+    <Compile Include="ColorElement\ColorSystem.cs" />
+    <Compile Include="ColorElement\frmColorElement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColorElement\frmColorElement.Designer.cs">
+      <DependentUpon>frmColorElement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorElement\ParameterLoadHandler.cs" />
+    <Compile Include="ColorElement\UpdateAllHandler.cs" />
+    <Compile Include="ColorElement\ValueParamrterHandler.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="ExportExcel\AppPenalExportExcel.cs" />
+    <Compile Include="ExportExcel\Constants.cs" />
+    <Compile Include="ExportExcel\ExportExcelBinding.cs" />
+    <Compile Include="ExportExcel\ExportExcelHandler.cs" />
+    <Compile Include="ExportExcel\frmExportExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportExcel\frmExportExcel.Designer.cs">
+      <DependentUpon>frmExportExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportExcel\GetWorksheetHandler.cs" />
+    <Compile Include="ExportExcel\ImportHandler.cs" />
+    <Compile Include="FloorPlan\Constant.cs" />
+    <Compile Include="FloorPlan\FloorPlanBinding.cs" />
+    <Compile Include="FloorPlan\PattenColor.cs" />
+    <Compile Include="FloorPlan\SettingPatternBinding.cs" />
+    <Compile Include="Helper\CheckAccess.cs" />
+    <Compile Include="Helper\Extension.cs" />
+    <Compile Include="Helper\ParameterRevit.cs" />
+    <Compile Include="KeynoteManager\AppPenalKeynoteManager.cs" />
+    <Compile Include="KeynoteManager\CancelHandler.cs" />
+    <Compile Include="KeynoteManager\DefaultValueKeynote.cs" />
+    <Compile Include="KeynoteManager\EditKeynoteHandler.cs" />
+    <Compile Include="KeynoteManager\frmAddKeyNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeynoteManager\frmAddKeyNote.Designer.cs">
+      <DependentUpon>frmAddKeyNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KeynoteManager\frmKeynoteManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeynoteManager\frmKeynoteManager.Designer.cs">
+      <DependentUpon>frmKeynoteManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KeynoteManager\frmMoveKeynote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeynoteManager\frmMoveKeynote.Designer.cs">
+      <DependentUpon>frmMoveKeynote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KeynoteManager\KeynoteManagerBinding.cs" />
+    <Compile Include="KeynoteManager\KeynoteManagerHandler.cs" />
+    <Compile Include="KeynoteManager\KeynoteReloadHandler.cs" />
+    <Compile Include="KeynoteManager\MethodExtend.cs" />
+    <Compile Include="NewSheets\AppPenalNewSheets.cs" />
+    <Compile Include="NewSheets\frmNewSheets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewSheets\frmNewSheets.Designer.cs">
+      <DependentUpon>frmNewSheets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewSheets\NewSheetsBinding.cs" />
+    <Compile Include="NewSheets\NewSheetsHandler.cs" />
+    <Compile Include="PrintSort\AppPenalPrintSort.cs" />
+    <Compile Include="PrintSort\ExportPrintHandler.cs" />
+    <Compile Include="PrintSort\frmPrintSort.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintSort\frmPrintSort.Designer.cs">
+      <DependentUpon>frmPrintSort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintSort\ImportPrintHandler.cs" />
+    <Compile Include="PrintSort\PrintActionHandler.cs" />
+    <Compile Include="PrintSort\PrintSortBinding.cs" />
+    <Compile Include="PrintSort\PrintSortHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PurgeCad\PurgeCadBinding.cs" />
+    <Compile Include="RomCoordinate\JtBoundingBoxXyzExtensionMethods.cs" />
+    <Compile Include="RomCoordinate\RoomCoordinateBinding.cs" />
+    <Compile Include="ScopeBox\AppPanelScopeBox.cs" />
+    <Compile Include="ScopeBox\frmScopeBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScopeBox\frmScopeBox.Designer.cs">
+      <DependentUpon>frmScopeBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScopeBox\ScopeBoxBinding.cs" />
+    <Compile Include="ScopeBox\ScopeBoxHandler.cs" />
+    <Compile Include="SelectionElement\SelectionElementBinding.cs" />
+    <Compile Include="ShareParameter\AddParameterHandler.cs" />
+    <Compile Include="ShareParameter\AppPenalShareParameter.cs" />
+    <Compile Include="ShareParameter\DisciplineConstant.cs" />
+    <Compile Include="ShareParameter\ExtensionMethod.cs" />
+    <Compile Include="ShareParameter\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareParameter\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShareParameter\frmAddGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareParameter\frmAddGroup.Designer.cs">
+      <DependentUpon>frmAddGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShareParameter\frmDeleteGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareParameter\frmDeleteGroup.Designer.cs">
+      <DependentUpon>frmDeleteGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShareParameter\frmMergeGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareParameter\frmMergeGroup.Designer.cs">
+      <DependentUpon>frmMergeGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShareParameter\frmModifyParameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareParameter\frmModifyParameter.Designer.cs">
+      <DependentUpon>frmModifyParameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShareParameter\frmRenameGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareParameter\frmRenameGroup.Designer.cs">
+      <DependentUpon>frmRenameGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShareParameter\frmShareParameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareParameter\frmShareParameter.Designer.cs">
+      <DependentUpon>frmShareParameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShareParameter\GroupParameters.cs" />
+    <Compile Include="ShareParameter\ShareParameterBinding.cs" />
+    <Compile Include="ShareParameter\ShareParameterHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApiProject4.addin" />
+    <None Include="Resources\icons8-coordinate-system-32.png" />
+    <None Include="Resources\icons8-gear-32.png" />
+    <None Include="Resources\icons8-floor-plan-32.png" />
+    <None Include="Resources\icons8-select-column-32.png" />
+    <None Include="Resources\list.png" />
+    <None Include="Resources\focus-symbol.png" />
+    <None Include="Resources\icons8-expand-25.png" />
+    <None Include="Resources\icons8-collapse-25.png" />
+    <None Include="Resources\icons8-tree-structure-25.png" />
+    <None Include="Resources\icons8-save-as-25.png" />
+    <None Include="Resources\icons8-add-tag-25.png" />
+    <None Include="Resources\icons8-delete-25.png" />
+    <None Include="Resources\icons8-transfer-25.png" />
+    <None Include="Resources\icons8-edit-property-25.png" />
+    <None Include="Resources\icons8-add-25.png" />
+    <None Include="Resources\icons8-speaker-notes-32.png" />
+    <None Include="Resources\icons8-sales-performance-32.png" />
+    <None Include="Resources\icons8-color-wheel-32.png" />
+    <None Include="Resources\icons8-width-162222.png" />
+    <None Include="Resources\icons8-height-16.png" />
+    <None Include="Resources\icons8-multicast-16222.png" />
+    <None Include="Resources\icons8-multicast-16.png" />
+    <None Include="Resources\icons8-box-16.png" />
+    <None Include="Resources\icons8-print-16.png" />
+    <None Include="Resources\icons8-trash-can-16.png" />
+    <None Include="Resources\icons8-create-document-32.png" />
+    <None Include="Resources\dustbin.png" />
+    <None Include="Resources\Print_icon.png" />
+    <None Include="Resources\Excel_icon.png" />
+    <None Include="Resources\box_5_16.png" />
+    <None Include="Resources\Print-icon.png" />
+    <None Include="Resources\Excel-icon.png" />
+    <None Include="Resources\box-5-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="KeynoteManager\DataGridCustomer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AllginViewPort\frmAlginViewport.resx">
+      <DependentUpon>frmAlginViewport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorElement\frmColorElement.resx">
+      <DependentUpon>frmColorElement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportExcel\frmExportExcel.resx">
+      <DependentUpon>frmExportExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeynoteManager\frmAddKeyNote.resx">
+      <DependentUpon>frmAddKeyNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeynoteManager\frmKeynoteManager.resx">
+      <DependentUpon>frmKeynoteManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeynoteManager\frmMoveKeynote.resx">
+      <DependentUpon>frmMoveKeynote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewSheets\frmNewSheets.resx">
+      <DependentUpon>frmNewSheets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintSort\frmPrintSort.resx">
+      <DependentUpon>frmPrintSort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScopeBox\frmScopeBox.resx">
+      <DependentUpon>frmScopeBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareParameter\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareParameter\frmAddGroup.resx">
+      <DependentUpon>frmAddGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareParameter\frmDeleteGroup.resx">
+      <DependentUpon>frmDeleteGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareParameter\frmMergeGroup.resx">
+      <DependentUpon>frmMergeGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareParameter\frmModifyParameter.resx">
+      <DependentUpon>frmModifyParameter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareParameter\frmRenameGroup.resx">
+      <DependentUpon>frmRenameGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareParameter\frmShareParameter.resx">
+      <DependentUpon>frmShareParameter.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataGridViewGrouper\DataGridViewGrouper.csproj">
+      <Project>{785a6fbb-2ba0-42be-84c4-1703bcad15d2}</Project>
+      <Name>DataGridViewGrouper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if  "$(ConfigurationName)" =="2020" (
+ copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\REVIT\Addins\2020"
+ copy "$(ProjectDir)bin\debug\*.dll" "$(AppData)\Autodesk\REVIT\Addins\2020"
+) 
+else if  "$(ConfigurationName)" =="2019"   ( 
+copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\REVIT\Addins\2019"
+ copy "$(ProjectDir)bin\debug\*.dll" "$(AppData)\Autodesk\REVIT\Addins\2019"
+)</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Target Name="AfterClean">
+    <Delete Files="$(AppData)\Autodesk\REVIT\Addins\2019\ApiProject4.addin" />
+    <Delete Files="$(AppData)\Autodesk\REVIT\Addins\2019\ApiProject4.dll" />
+  </Target>
+</Project>
