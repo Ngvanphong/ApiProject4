@@ -40,8 +40,9 @@
             this.btnExportPrint = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButtonAutoSchedule = new System.Windows.Forms.RadioButton();
             this.radioButtonManualChoose = new System.Windows.Forms.RadioButton();
+            this.radioButtonAutoSchedule = new System.Windows.Forms.RadioButton();
+            this.btnSaveSet = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -82,7 +83,7 @@
             // 
             // btnSetPrint
             // 
-            this.btnSetPrint.Location = new System.Drawing.Point(270, 247);
+            this.btnSetPrint.Location = new System.Drawing.Point(191, 247);
             this.btnSetPrint.Name = "btnSetPrint";
             this.btnSetPrint.Size = new System.Drawing.Size(75, 23);
             this.btnSetPrint.TabIndex = 4;
@@ -159,16 +160,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Method printing";
             // 
-            // radioButtonAutoSchedule
-            // 
-            this.radioButtonAutoSchedule.AutoSize = true;
-            this.radioButtonAutoSchedule.Location = new System.Drawing.Point(6, 17);
-            this.radioButtonAutoSchedule.Name = "radioButtonAutoSchedule";
-            this.radioButtonAutoSchedule.Size = new System.Drawing.Size(152, 17);
-            this.radioButtonAutoSchedule.TabIndex = 0;
-            this.radioButtonAutoSchedule.Text = "Auto follow schedule sheet";
-            this.radioButtonAutoSchedule.UseVisualStyleBackColor = true;
-            // 
             // radioButtonManualChoose
             // 
             this.radioButtonManualChoose.AutoSize = true;
@@ -181,11 +172,32 @@
             this.radioButtonManualChoose.Text = "Manual choose adding";
             this.radioButtonManualChoose.UseVisualStyleBackColor = true;
             // 
+            // radioButtonAutoSchedule
+            // 
+            this.radioButtonAutoSchedule.AutoSize = true;
+            this.radioButtonAutoSchedule.Location = new System.Drawing.Point(6, 17);
+            this.radioButtonAutoSchedule.Name = "radioButtonAutoSchedule";
+            this.radioButtonAutoSchedule.Size = new System.Drawing.Size(152, 17);
+            this.radioButtonAutoSchedule.TabIndex = 0;
+            this.radioButtonAutoSchedule.Text = "Auto follow schedule sheet";
+            this.radioButtonAutoSchedule.UseVisualStyleBackColor = true;
+            // 
+            // btnSaveSet
+            // 
+            this.btnSaveSet.Location = new System.Drawing.Point(272, 247);
+            this.btnSaveSet.Name = "btnSaveSet";
+            this.btnSaveSet.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveSet.TabIndex = 10;
+            this.btnSaveSet.Text = "Save";
+            this.btnSaveSet.UseVisualStyleBackColor = true;
+            this.btnSaveSet.Click += new System.EventHandler(this.btnSaveSet_Click);
+            // 
             // frmPrintSort
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 279);
+            this.Controls.Add(this.btnSaveSet);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnExportPrint);
@@ -227,5 +239,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.RadioButton radioButtonManualChoose;
         public System.Windows.Forms.RadioButton radioButtonAutoSchedule;
+        private System.Windows.Forms.Button btnSaveSet;
     }
 }

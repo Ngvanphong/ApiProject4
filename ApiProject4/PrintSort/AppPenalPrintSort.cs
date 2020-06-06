@@ -27,8 +27,11 @@ namespace ApiProject4.PrintSort
             ExternalEvent eventExportPrint = ExternalEvent.Create(handlerExport);
             ImportPrintHandler handlerImport = new ImportPrintHandler();
             ExternalEvent eventImportPrint = ExternalEvent.Create(handlerImport);
+            SaveSetHandler saveSetHandler = new SaveSetHandler();
+            ExternalEvent eventSaveSet = ExternalEvent.Create(saveSetHandler);
+
             myFormPrintSort = new frmPrintSort(eventPrint, handlerPrint, eventPrintAction, handlerPrintAction,
-               eventExportPrint, handlerExport, eventImportPrint, handlerImport);
+               eventExportPrint, handlerExport, eventImportPrint, handlerImport,eventSaveSet,saveSetHandler);
             myFormPrintSort.Show();
         }
     }

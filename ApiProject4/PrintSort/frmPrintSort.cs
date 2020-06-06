@@ -22,10 +22,13 @@ namespace ApiProject4.PrintSort
         private ExternalEvent _eventExportPrinter;
         private ImportPrintHandler _handlerImportPrinter;
         private ExternalEvent _eventImportPrinter;
+        private SaveSetHandler _saveSetHandler;
+        private ExternalEvent _eventSaveSet;
         public frmPrintSort(ExternalEvent eventPrint, PrintSortHandler handlerPrint,
             ExternalEvent eventPrintAction, PrintActionHandler handlerPrintAction,
              ExternalEvent eventExportPrinter, ExportPrintHandler handlerExportPrinter,
-            ExternalEvent eventImportPrinter, ImportPrintHandler handlerImportPrinter)
+            ExternalEvent eventImportPrinter, ImportPrintHandler handlerImportPrinter,
+            ExternalEvent eventSaveSet, SaveSetHandler saveSetHandler)
         {
             InitializeComponent();
             _eventPrint = eventPrint;
@@ -36,6 +39,8 @@ namespace ApiProject4.PrintSort
             _handlerExportPrinter = handlerExportPrinter;
             _eventImportPrinter = eventImportPrinter;
             _handlerImportPrinter = handlerImportPrinter;
+            _eventSaveSet = eventSaveSet;
+            _saveSetHandler = saveSetHandler;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -83,5 +88,9 @@ namespace ApiProject4.PrintSort
             _eventExportPrinter.Raise();
         }
 
+        private void btnSaveSet_Click(object sender, EventArgs e)
+        {
+            _eventSaveSet.Raise();
+        }
     }
 }
