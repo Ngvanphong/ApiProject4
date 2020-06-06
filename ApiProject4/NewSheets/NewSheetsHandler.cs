@@ -7,6 +7,7 @@ using Autodesk.Revit.UI;
 using Autodesk.Revit.DB;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using ApiProject4.Helper;
 
 namespace ApiProject4.NewSheets
 {
@@ -60,6 +61,39 @@ namespace ApiProject4.NewSheets
                 t.Start();
                 newSheet = ViewSheet.Create(doc, titleblock.GetTypeId());
                 newSheet.Name = nameSheet;
+                if (AppPenalNewSheets.myFormNewShees.radioCopyParameterYes.Checked)
+                {
+                    ParameterSet parametersSheet = sheet.Parameters;                   
+                    foreach(Parameter para in parametersSheet)
+                    {
+                        if(para.Id.IntegerValue != (int)BuiltInParameter.SHEET_NUMBER && para.Id.IntegerValue != (int)BuiltInParameter.SHEET_NAME
+                            &&para.Id.IntegerValue!=(int)BuiltInParameter.VIEWER_SHEET_NUMBER)
+                        {
+                            try
+                            {
+                                Parameter parasheetNew = newSheet.GetParameters(para.Definition.Name).First();
+                                switch (para.StorageType)
+                                {
+                                    case StorageType.Double:
+                                        parasheetNew.Set(para.AsDouble());
+                                        break;
+                                    case StorageType.Integer:
+                                        parasheetNew.Set(para.AsInteger());
+                                        break;
+                                    case StorageType.String:
+                                        parasheetNew.Set(para.AsString());
+                                        break;
+                                    case StorageType.ElementId:
+                                        parasheetNew.Set(para.AsElementId());
+                                        break;
+                                    case StorageType.None:
+                                        break;
+                                }
+                            }
+                            catch { continue; }
+                        }                                         
+                    }
+                }                              
                 if (begin == true)
                 {
                     if (newSheetNumber != numberStart)

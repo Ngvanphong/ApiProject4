@@ -35,6 +35,9 @@
             this.btnSheetNews = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxNumberStart = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.radioCopyParameterYes = new System.Windows.Forms.RadioButton();
+            this.radioCopyParameterNo = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // label1
@@ -96,17 +99,51 @@
             this.textBoxNumberStart.Size = new System.Drawing.Size(273, 20);
             this.textBoxNumberStart.TabIndex = 2;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 96);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Copy Parameter:";
+            // 
+            // radioCopyParameterYes
+            // 
+            this.radioCopyParameterYes.AutoSize = true;
+            this.radioCopyParameterYes.Checked = true;
+            this.radioCopyParameterYes.Location = new System.Drawing.Point(119, 96);
+            this.radioCopyParameterYes.Name = "radioCopyParameterYes";
+            this.radioCopyParameterYes.Size = new System.Drawing.Size(43, 17);
+            this.radioCopyParameterYes.TabIndex = 4;
+            this.radioCopyParameterYes.TabStop = true;
+            this.radioCopyParameterYes.Text = "Yes";
+            this.radioCopyParameterYes.UseVisualStyleBackColor = true;
+            // 
+            // radioCopyParameterNo
+            // 
+            this.radioCopyParameterNo.AutoSize = true;
+            this.radioCopyParameterNo.Location = new System.Drawing.Point(210, 94);
+            this.radioCopyParameterNo.Name = "radioCopyParameterNo";
+            this.radioCopyParameterNo.Size = new System.Drawing.Size(39, 17);
+            this.radioCopyParameterNo.TabIndex = 4;
+            this.radioCopyParameterNo.Text = "No";
+            this.radioCopyParameterNo.UseVisualStyleBackColor = true;
+            // 
             // frmNewSheets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 102);
+            this.ClientSize = new System.Drawing.Size(401, 118);
+            this.Controls.Add(this.radioCopyParameterNo);
+            this.Controls.Add(this.radioCopyParameterYes);
             this.Controls.Add(this.btnSheetNews);
             this.Controls.Add(this.textBoxNumberStart);
             this.Controls.Add(this.textBoxSheetName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxQuantitySheet);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.Name = "frmNewSheets";
@@ -127,5 +164,8 @@
         public System.Windows.Forms.TextBox textBoxSheetName;
         public System.Windows.Forms.TextBox textBoxQuantitySheet;
         public System.Windows.Forms.Button btnSheetNews;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.RadioButton radioCopyParameterYes;
+        public System.Windows.Forms.RadioButton radioCopyParameterNo;
     }
 }
