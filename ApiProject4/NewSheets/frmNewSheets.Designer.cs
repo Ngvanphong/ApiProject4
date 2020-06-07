@@ -68,6 +68,8 @@
             // 
             // textBoxSheetName
             // 
+            this.textBoxSheetName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSheetName.Location = new System.Drawing.Point(119, 38);
             this.textBoxSheetName.Name = "textBoxSheetName";
             this.textBoxSheetName.Size = new System.Drawing.Size(273, 20);
@@ -94,6 +96,8 @@
             // 
             // textBoxNumberStart
             // 
+            this.textBoxNumberStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxNumberStart.Location = new System.Drawing.Point(118, 12);
             this.textBoxNumberStart.Name = "textBoxNumberStart";
             this.textBoxNumberStart.Size = new System.Drawing.Size(273, 20);
@@ -134,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 118);
+            this.ClientSize = new System.Drawing.Size(405, 118);
             this.Controls.Add(this.radioCopyParameterNo);
             this.Controls.Add(this.radioCopyParameterYes);
             this.Controls.Add(this.btnSheetNews);

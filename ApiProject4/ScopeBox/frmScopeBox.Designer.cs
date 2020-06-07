@@ -30,11 +30,11 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.listViewScopeBox = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listViewViewScopeBox = new System.Windows.Forms.ListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // button1
@@ -49,6 +49,8 @@
             // 
             // listViewScopeBox
             // 
+            this.listViewScopeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listViewScopeBox.CheckBoxes = true;
             this.listViewScopeBox.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
@@ -61,8 +63,16 @@
             this.listViewScopeBox.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.listViewScopeBox_ItemChecked);
             this.listViewScopeBox.SelectedIndexChanged += new System.EventHandler(this.listViewScopeBox_SelectedIndexChanged);
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Scope Box Name";
+            this.columnHeader1.Width = 243;
+            // 
             // listViewViewScopeBox
             // 
+            this.listViewViewScopeBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewViewScopeBox.CheckBoxes = true;
             this.listViewViewScopeBox.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2});
@@ -72,6 +82,11 @@
             this.listViewViewScopeBox.TabIndex = 4;
             this.listViewViewScopeBox.UseCompatibleStateImageBehavior = false;
             this.listViewViewScopeBox.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Type/ViewName";
+            this.columnHeader2.Width = 1500;
             // 
             // label1
             // 
@@ -91,16 +106,6 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Choose view assign:";
             // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Scope Box Name";
-            this.columnHeader1.Width = 243;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Type/ViewName";
-            this.columnHeader2.Width = 400;
-            // 
             // frmScopeBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -111,7 +116,6 @@
             this.Controls.Add(this.listViewViewScopeBox);
             this.Controls.Add(this.listViewScopeBox);
             this.Controls.Add(this.button1);
-            this.MaximizeBox = false;
             this.Name = "frmScopeBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmScopeBox";
